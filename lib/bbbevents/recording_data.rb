@@ -1,9 +1,11 @@
+require 'json'
+
 require 'nokogiri'
 require 'nori'
 
 module BBBEvents
   class RecordingData
-    attr_reader :metadata, :meeting_id, :attendees, :files, :chat, :emojis
+    attr_reader :metadata, :meeting_id, :attendees, :files, :chat, :emojis, :polls
       
     def initialize(file)
       parser = Nori.new
@@ -18,6 +20,7 @@ module BBBEvents
       @files = []
       @chat = []
       @emojis = {}
+      @polls = []
 
       process_events(recording['event'])
     end
@@ -98,6 +101,16 @@ module BBBEvents
       att[:emojis] += 1 if att
       @emojis[e['value']] = 0 if @emojis[e['value']].nil?
       @emojis[e['value']] += 1
+    end
+  
+    def AddShapeEvent(e)
+      if e['type'] == 'poll_result'
+        @polls << {
+          initiator: e['userId'],
+          num_responders: e['num_responders'],
+          options: JSON.parse(e['result'])
+        }
+      end
     end
   
   end
