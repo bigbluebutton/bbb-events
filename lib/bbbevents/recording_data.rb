@@ -17,13 +17,15 @@ module BBBEvents
       @first_event = recording['event'][0]['@timestamp'].to_i
       @meeting_timestamp = @meeting_id.split('-')[1].to_i
       
-      @attendees = []
-      @files = []
-      @chat = []
+      @attendees, @files, @chat, @polls = [], [], [], []
       @emojis = {}
-      @polls = []
 
       process_events(recording['event'])
+      
+      @attendees.each do |att|
+        att[:join] = Time.at(att[:join]).strftime("%m/%d/%Y %H:%M:%S")
+        att[:left] = Time.at(att[:left]).strftime("%m/%d/%Y %H:%M:%S")
+      end
     end
       
     def viewers
@@ -71,8 +73,6 @@ module BBBEvents
       if att
         att[:left] = (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000
         att[:duration] = att[:left] - att[:join]
-        att[:join] = Time.at(att[:join]).strftime("%m/%d/%Y %H:%M:%S")
-        att[:left] = Time.at(att[:left]).strftime("%m/%d/%Y %H:%M:%S")
       end
     end
     
@@ -85,7 +85,7 @@ module BBBEvents
         sender: e['sender'],
         senderId: e['senderId'],
         message: e['message'],
-        timestamp: convert_time(e['@timestamp'])
+        timestamp: convert_time((e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000)
       }
       att = find_attendee(e['senderId'])
       att[:chats] += 1 if att
