@@ -1,4 +1,4 @@
-# BBB-Events
+# bbbevents
 
 bbbevents is a simple ruby gem that makes it easier to parse data from a recordings events.xml file.
 
@@ -24,14 +24,13 @@ And then execute:
 
     $ bundle
 
-
 ## Usage
 
 ```ruby
 require 'bbbevents'
 
 # Parse the recording's events.xml.
-rec = BBBEvents.parse('polls_example.xml')
+rec = BBBEvents.parse('events.xml')
 
 # Access recording data.
 puts rec.metadata
