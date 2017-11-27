@@ -14,7 +14,8 @@ module BBBEvents
       @metadata = recording['metadata']
       @meeting_id = recording['meeting']['@id']
       
-      @time_offset = recording['event'][0]['@timestamp'].to_i + @meeting_id.split('-')[1].to_i
+      @first_event = recording['event'][0]['@timestamp'].to_i
+      @meeting_timestamp = @meeting_id.split('-')[1].to_i
       
       @attendees = []
       @files = []
@@ -34,10 +35,6 @@ module BBBEvents
     end
       
     private
-    
-    def convert_time(timestamp)
-      Time.at(((timestamp.to_i - @time_offset) * -1) / 1000).strftime("%m/%d/%Y %H:%M:%S")
-    end
     
     def find_attendee(user_id)
       @attendees.each do |att|
@@ -61,7 +58,7 @@ module BBBEvents
           name: e['name'],
           user_id: e['userId'],
           moderator: e['role'] == 'MODERATOR',
-          join: convert_time(e['@timestamp']),
+          join: (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000,
           chats: 0,
           talks: 0,
           emojis: 0
@@ -71,7 +68,12 @@ module BBBEvents
     
     def ParticipantLeftEvent(e)
       att = find_attendee(e['userId'])
-      att[:left] = convert_time(e['@timestamp']) if att
+      if att
+        att[:left] = (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000
+        att[:duration] = att[:left] - att[:join]
+        att[:join] = Time.at(att[:join]).strftime("%m/%d/%Y %H:%M:%S")
+        att[:left] = Time.at(att[:left]).strftime("%m/%d/%Y %H:%M:%S")
+      end
     end
     
     def SharePresentationEvent(e)
