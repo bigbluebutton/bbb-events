@@ -72,7 +72,7 @@ module BBBEvents
       att = find_attendee(e['userId'])
       if att
         att[:left] = (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000
-        att[:duration] = att[:left] - att[:join]
+        att[:duration] = Time.at(att[:left] - att[:join]).utc.strftime("%H:%M:%S")
       end
     end
     
