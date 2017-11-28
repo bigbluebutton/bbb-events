@@ -17,7 +17,7 @@ Currently it can parse data such as...
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'bbbevents', :git => 'git://github.com/blindsidenetworks/bbb-events.git'
+gem 'bbbevents', :git => 'https://github.com/blindsidenetworks/bbb-events'
 ```
 
 And then execute:
