@@ -15,6 +15,7 @@ module BBBEvents
       @meeting_id = recording['meeting']['@id']
       
       @first_event = recording['event'][0]['@timestamp'].to_i
+      @last_event = recording['event'][-1]['@timestamp'].to_i
       @meeting_timestamp = @meeting_id.split('-')[1].to_i
       
       @attendees, @files, @chat, @polls = [], [], [], []
@@ -23,6 +24,9 @@ module BBBEvents
       process_events(recording['event'])
       
       @attendees.each do |att|
+        # Sometimes the left events are missing, use last event if that's the case.
+        att[:left] = @last_event unless att[:left]
+        att[:duration] = Time.at(att[:left] - att[:join]).utc.strftime("%H:%M:%S")
         att[:join] = Time.at(att[:join]).strftime("%m/%d/%Y %H:%M:%S")
         att[:left] = Time.at(att[:left]).strftime("%m/%d/%Y %H:%M:%S")
       end
@@ -70,10 +74,7 @@ module BBBEvents
     
     def ParticipantLeftEvent(e)
       att = find_attendee(e['userId'])
-      if att
-        att[:left] = (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000
-        att[:duration] = Time.at(att[:left] - att[:join]).utc.strftime("%H:%M:%S")
-      end
+      att[:left] = (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000 if att
     end
     
     def SharePresentationEvent(e)
