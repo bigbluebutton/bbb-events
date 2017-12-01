@@ -31,6 +31,9 @@ module BBBEvents
         att[:join] = Time.at(att[:join]).strftime("%m/%d/%Y %H:%M:%S")
         att[:left] = Time.at(att[:left]).strftime("%m/%d/%Y %H:%M:%S")
       end
+      
+      # Set meeting duration.
+      @duration = Time.at((@last_event - @first_event) / 1000).utc.strftime("%H:%M:%S")
     end
       
     def viewers
