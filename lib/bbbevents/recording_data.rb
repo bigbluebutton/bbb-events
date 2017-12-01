@@ -5,7 +5,7 @@ require 'nori'
 
 module BBBEvents
   class RecordingData
-    attr_reader :metadata, :meeting_id, :attendees, :files, :chat, :emojis, :polls
+    attr_reader :metadata, :meeting_id, :duration, :attendees, :files, :chat, :emojis, :polls
       
     def initialize(file)
       parser = Nori.new
@@ -23,6 +23,7 @@ module BBBEvents
 
       process_events(recording['event'])
       
+      # Convert times.
       @attendees.each do |att|
         # Sometimes the left events are missing, use last event if that's the case.
         att[:left] = @last_event unless att[:left]
@@ -67,7 +68,8 @@ module BBBEvents
           join: (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000,
           chats: 0,
           talks: 0,
-          emojis: 0
+          emojis: 0,
+          raisehand: 0
         }
       end
     end
@@ -101,7 +103,9 @@ module BBBEvents
     
     def ParticipantStatusChangeEvent(e)
       att = find_attendee(e['userId'])
-      att[:emojis] += 1 if att
+      if att
+        e['value'] == 'raiseHand' ? att[:raisehand] += 1 : att[:emojis] += 1
+      end
       @emojis[e['value']] = 0 if @emojis[e['value']].nil?
       @emojis[e['value']] += 1
     end
