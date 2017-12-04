@@ -5,26 +5,29 @@ require 'nori'
 
 module BBBEvents
   class RecordingData
-    attr_reader :metadata, :meeting_id, :duration, :attendees, :files, :chat, :emojis, :polls
+    attr_reader :data
       
     def initialize(file)
       parser = Nori.new
       recording = parser.parse(File.read(file))['recording']
       
-      @metadata = recording['metadata']
-      @meeting_id = recording['meeting']['@id']
+      @data = {}
+      @data[:metadata] = recording['metadata']
+      @data[:meeting_id] = recording['meeting']['@id']
+      @data[:attendees] = []
+      @data[:files] = []
+      @data[:chat] = []
+      @data[:polls] = []
+      @data[:emojis] = {}
       
       @first_event = recording['event'][0]['@timestamp'].to_i
       @last_event = recording['event'][-1]['@timestamp'].to_i
-      @meeting_timestamp = @meeting_id.split('-')[1].to_i
-      
-      @attendees, @files, @chat, @polls = [], [], [], []
-      @emojis = {}
+      @meeting_timestamp = @data[:meeting_id].split('-')[1].to_i
 
       process_events(recording['event'])
       
       # Convert times.
-      @attendees.each do |att|
+      @data[:attendees].each do |att|
         # Sometimes the left events are missing, use last event if that's the case.
         att[:left] = @last_event unless att[:left]
         att[:duration] = Time.at(att[:left] - att[:join]).utc.strftime("%H:%M:%S")
@@ -33,21 +36,30 @@ module BBBEvents
       end
       
       # Set meeting duration.
-      @duration = Time.at((@last_event - @first_event) / 1000).utc.strftime("%H:%M:%S")
+      @data[:duration] = convert_time((@last_event - @first_event) / 1000)
+    end
+      
+    # Make simple getters directly on the RecordingData object for specifics.
+    %w(metadata meeting_id attendees files chat polls emojis duration).map(&:to_sym).each do |k|
+      define_method(k) do @data[k] end
     end
       
     def viewers
-      @attendees.select do |att| !att[:moderator] end
+      @data[:attendees].select do |att| !att[:moderator] end
     end
       
     def moderators
-      @attendees.select do |att| att[:moderator] end
+      @data[:attendees].select do |att| att[:moderator] end
     end
       
     private
     
+    def convert_time(t)
+      Time.at(t).utc.strftime("%H:%M:%S")
+    end
+    
     def find_attendee(user_id)
-      @attendees.each do |att|
+      @data[:attendees].each do |att|
         return att if att[:user_id] == user_id
       end
       nil
@@ -64,7 +76,7 @@ module BBBEvents
   
     def ParticipantJoinEvent(e)
       if find_attendee(e['userId']).nil?
-        @attendees << {
+        @data[:attendees] << {
           name: e['name'],
           user_id: e['userId'],
           moderator: e['role'] == 'MODERATOR',
@@ -82,12 +94,12 @@ module BBBEvents
       att[:left] = (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000 if att
     end
     
-    def SharePresentationEvent(e)
-      @files << e['originalFilename']
+    def ConversionCompletedEvent(e)
+      @data[:files] << e['originalFilename']
     end
 
     def PublicChatEvent(e)
-      @chat << {
+      @data[:chat] << {
         sender: e['sender'],
         senderId: e['senderId'],
         message: e['message'],
@@ -109,19 +121,19 @@ module BBBEvents
       if att
         e['value'] == 'raiseHand' ? att[:raisehand] += 1 : att[:emojis] += 1
       end
-      @emojis[e['value']] = 0 if @emojis[e['value']].nil?
-      @emojis[e['value']] += 1
+      @data[:emojis][e['value']] = 0 if @data[:emojis][e['value']].nil?
+      @data[:emojis][e['value']] += 1
     end
   
     def AddShapeEvent(e)
       if e['type'] == 'poll_result'
-        @polls << {
+        @data[:polls] << {
           initiator: e['userId'],
           num_responders: e['num_responders'],
           options: JSON.parse(e['result'])
         }
       end
     end
-  
+
   end
 end
