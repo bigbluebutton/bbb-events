@@ -31,8 +31,11 @@ module BBBEvents
         # Sometimes the left events are missing, use last event if that's the case.
         att[:left] = @last_event unless att[:left]
         att[:duration] = Time.at(att[:left] - att[:join]).utc.strftime("%H:%M:%S")
+        att[:talk_time] = Time.at(att[:talk_time]).utc.strftime("%H:%M:%S")
         att[:join] = Time.at(att[:join]).strftime("%m/%d/%Y %H:%M:%S")
         att[:left] = Time.at(att[:left]).strftime("%m/%d/%Y %H:%M:%S")
+        # Remove unneeded key.
+        att.delete(:last_talking_time)
       end
       
       # Set meeting duration.
@@ -84,7 +87,9 @@ module BBBEvents
           chats: 0,
           talks: 0,
           emojis: 0,
-          raisehand: 0
+          raisehand: 0,
+          last_talking_time: nil,
+          talk_time: 0
         }
       end
     end
@@ -110,9 +115,14 @@ module BBBEvents
     end
     
     def ParticipantTalkingEvent(e)
-      if e['talking']
-        att = find_attendee(e['participant'])
-        att[:talks] += 1 if att
+      att = find_attendee(e['participant'])
+      if att
+        if e['talking']
+          att[:last_talking_time] = (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000
+          att[:talks] += 1
+        else
+          att[:talk_time] += ((e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000) - att[:last_talking_time]
+        end
       end
     end
     
