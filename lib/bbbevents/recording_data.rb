@@ -17,7 +17,7 @@ module BBBEvents
       @data[:attendees] = []
       @data[:files] = []
       @data[:chat] = []
-      @data[:polls] = []
+      @data[:polls] = {}
       @data[:emojis] = {}
       
       @first_event = recording['event'][0]['@timestamp'].to_i
@@ -87,6 +87,7 @@ module BBBEvents
           chats: 0,
           talks: 0,
           emojis: 0,
+          poll_votes: 0,
           raisehand: 0,
           last_talking_time: nil,
           talk_time: 0
@@ -135,14 +136,27 @@ module BBBEvents
       @data[:emojis][e['value']] += 1
     end
   
-    def AddShapeEvent(e)
-      if e['type'] == 'poll_result'
-        @data[:polls] << {
-          initiator: e['userId'],
-          num_responders: e['num_responders'],
-          options: JSON.parse(e['result'])
-        }
+    def PollStartedRecordEvent(e)
+      poll_id = e['pollId']
+      start = Time.at((e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000).utc.strftime("%H:%M:%S")
+      @data[:polls][poll_id] = {}
+      @data[:polls][poll_id][:metadata] = {start: start, options: []}
+      @data[:polls][poll_id][:votes] = {}
+      JSON.parse(e['answers']).each do |opt|
+        @data[:polls][poll_id][:metadata][:options] << opt['key']
       end
+      
+    end
+
+    def UserRespondedToPollRecordEvent(e)
+      poll_id = e['pollId']
+      user_id = e['userId']
+      answer = e['answerId'].to_i
+      if @data[:polls].key?(poll_id)
+        @data[:polls][poll_id][:votes][user_id] = @data[:polls][poll_id][:metadata][:options][answer]
+      end
+      att = find_attendee(e['userId'])
+      att[:poll_votes] += 1 if att
     end
 
   end
