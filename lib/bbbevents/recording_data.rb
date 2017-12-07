@@ -110,13 +110,13 @@ module BBBEvents
       }
       
       # If the attendee exists, increment their messages.
-      if att = @data[:attendees][e['userId']]
+      if att = @data[:attendees][e['senderId']]
         att[:chats] += 1
       end
     end
     
     def ParticipantTalkingEvent(e)
-      if att = @data[:attendees][e['userId']]
+      if att = @data[:attendees][e['participant']]
         # Track talk time between events and record number of times talking.
         if e['talking']
           att[:last_talking_time] = (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000
@@ -131,7 +131,7 @@ module BBBEvents
       # Track the emoji for the user (differentiate between raise hand).
       emoji = e['value']
       if att = @data[:attendees][e['userId']]
-        emoji  == 'raiseHand' ? att[:raisehand] += 1 : att[:emojis] += 1
+        emoji == 'raiseHand' ? att[:raisehand] += 1 : att[:emojis] += 1
       end
       
       # Add to the total emoji list.
