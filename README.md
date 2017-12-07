@@ -13,6 +13,8 @@ Currently it can parse data such as...
 * Number of chat, talk and emoji status events. 
 * Uploaded presentation files.
 * Chat log.
+* Total talk time per user.
+* Polls and user votes.
 
 ## Installation
 

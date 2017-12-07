@@ -1,5 +1,4 @@
 require 'json'
-
 require 'nokogiri'
 require 'nori'
 
@@ -11,14 +10,15 @@ module BBBEvents
       parser = Nori.new
       recording = parser.parse(File.read(file))['recording']
       
-      @data = {}
-      @data[:metadata] = recording['metadata']
-      @data[:meeting_id] = recording['meeting']['@id']
-      @data[:attendees] = []
-      @data[:files] = []
-      @data[:chat] = []
-      @data[:polls] = {}
-      @data[:emojis] = {}
+      @data = {
+        metadata: recording['metadata'],
+        meeting_id: recording['meeting']['@id'],
+        attendees: {},
+        files: [],
+        chat: [],
+        polls: {},
+        emojis: {}
+      }
       
       @first_event = recording['event'][0]['@timestamp'].to_i
       @last_event = recording['event'][-1]['@timestamp'].to_i
@@ -27,7 +27,7 @@ module BBBEvents
       process_events(recording['event'])
       
       # Convert times.
-      @data[:attendees].each do |att|
+      @data[:attendees].each do |uid, att|
         # Sometimes the left events are missing, use last event if that's the case.
         att[:left] = @last_event unless att[:left]
         att[:duration] = Time.at(att[:left] - att[:join]).utc.strftime("%H:%M:%S")
@@ -48,24 +48,17 @@ module BBBEvents
     end
       
     def viewers
-      @data[:attendees].select do |att| !att[:moderator] end
+      @data[:attendees].select do |uid, att| !att[:moderator] end
     end
       
     def moderators
-      @data[:attendees].select do |att| att[:moderator] end
+      @data[:attendees].select do |uid, att| att[:moderator] end
     end
       
     private
     
     def convert_time(t)
       Time.at(t).utc.strftime("%H:%M:%S")
-    end
-    
-    def find_attendee(user_id)
-      @data[:attendees].each do |att|
-        return att if att[:user_id] == user_id
-      end
-      nil
     end
     
     def process_events(events)
@@ -78,10 +71,10 @@ module BBBEvents
     end
   
     def ParticipantJoinEvent(e)
-      if find_attendee(e['userId']).nil?
-        @data[:attendees] << {
+      # If they don't exist, initialize the user.
+      unless @data[:attendees].key?(e['userId'])
+        @data[:attendees][e['userId']] = {
           name: e['name'],
-          user_id: e['userId'],
           moderator: e['role'] == 'MODERATOR',
           join: (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000,
           chats: 0,
@@ -96,28 +89,35 @@ module BBBEvents
     end
     
     def ParticipantLeftEvent(e)
-      att = find_attendee(e['userId'])
-      att[:left] = (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000 if att
+      # If the attendee exists, set their leave time.
+      if att = @data[:attendees][e['userId']]
+        att[:left] = (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000
+      end
     end
     
     def ConversionCompletedEvent(e)
+      # Add the uploaded file to the list of files.
       @data[:files] << e['originalFilename']
     end
 
     def PublicChatEvent(e)
+      # Add the chat event to the chat list.
       @data[:chat] << {
         sender: e['sender'],
         senderId: e['senderId'],
         message: e['message'],
         timestamp: convert_time((e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000)
       }
-      att = find_attendee(e['senderId'])
-      att[:chats] += 1 if att
+      
+      # If the attendee exists, increment their messages.
+      if att = @data[:attendees][e['userId']]
+        att[:chats] += 1
+      end
     end
     
     def ParticipantTalkingEvent(e)
-      att = find_attendee(e['participant'])
-      if att
+      if att = @data[:attendees][e['userId']]
+        # Track talk time between events and record number of times talking.
         if e['talking']
           att[:last_talking_time] = (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000
           att[:talks] += 1
@@ -128,35 +128,49 @@ module BBBEvents
     end
     
     def ParticipantStatusChangeEvent(e)
-      att = find_attendee(e['userId'])
-      if att
-        e['value'] == 'raiseHand' ? att[:raisehand] += 1 : att[:emojis] += 1
+      # Track the emoji for the user (differentiate between raise hand).
+      emoji = e['value']
+      if att = @data[:attendees][e['userId']]
+        emoji  == 'raiseHand' ? att[:raisehand] += 1 : att[:emojis] += 1
       end
-      @data[:emojis][e['value']] = 0 if @data[:emojis][e['value']].nil?
-      @data[:emojis][e['value']] += 1
+      
+      # Add to the total emoji list.
+      @data[:emojis][emoji] ? @data[:emojis][emoji] += 1 : @data[:emojis][emoji] = 1
     end
   
     def PollStartedRecordEvent(e)
       poll_id = e['pollId']
       start = Time.at((e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000).utc.strftime("%H:%M:%S")
-      @data[:polls][poll_id] = {}
-      @data[:polls][poll_id][:metadata] = {start: start, options: []}
-      @data[:polls][poll_id][:votes] = {}
+      
+      # Create the poll.
+      @data[:polls][poll_id] = {
+        metadata: {
+          start: start,
+          options: []
+        },
+        votes: {}
+      }
+      
+      # Populate the options.
       JSON.parse(e['answers']).each do |opt|
         @data[:polls][poll_id][:metadata][:options] << opt['key']
       end
-      
     end
 
     def UserRespondedToPollRecordEvent(e)
       poll_id = e['pollId']
       user_id = e['userId']
       answer = e['answerId'].to_i
-      if @data[:polls].key?(poll_id)
-        @data[:polls][poll_id][:votes][user_id] = @data[:polls][poll_id][:metadata][:options][answer]
+      
+      # Record the answer in the poll.
+      if poll = @data[:polls][poll_id]
+        poll[:votes][user_id] = poll[:metadata][:options][answer]
       end
-      att = find_attendee(e['userId'])
-      att[:poll_votes] += 1 if att
+      
+      # Increment the users poll votes.
+      if att = @data[:attendees][user_id]
+        att[:poll_votes] += 1
+      end
     end
 
   end
