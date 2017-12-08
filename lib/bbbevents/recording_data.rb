@@ -29,11 +29,11 @@ module BBBEvents
       # Convert times.
       @data[:attendees].each do |uid, att|
         # Sometimes the left events are missing, use last event if that's the case.
-        att[:left] = @last_event unless att[:left]
-        att[:duration] = Time.at(att[:left] - att[:join]).utc.strftime("%H:%M:%S")
-        att[:talk_time] = Time.at(att[:talk_time]).utc.strftime("%H:%M:%S")
-        att[:join] = Time.at(att[:join]).strftime("%m/%d/%Y %H:%M:%S")
-        att[:left] = Time.at(att[:left]).strftime("%m/%d/%Y %H:%M:%S")
+        att[:left] = ((@last_event - @first_event + @meeting_timestamp) / 1000) unless att[:left]
+        att[:duration] = convert_time(att[:left] - att[:join])
+        att[:talk_time] = convert_time(att[:talk_time])
+        att[:join] = convert_date(att[:join])
+        att[:left] = convert_date(att[:left])
         # Remove unneeded key.
         att.delete(:last_talking_time)
       end
@@ -59,6 +59,10 @@ module BBBEvents
     
     def convert_time(t)
       Time.at(t).utc.strftime("%H:%M:%S")
+    end
+    
+    def convert_date(t)
+      Time.at(t).strftime("%m/%d/%Y %H:%M:%S")
     end
     
     def process_events(events)
@@ -140,7 +144,7 @@ module BBBEvents
   
     def PollStartedRecordEvent(e)
       poll_id = e['pollId']
-      start = Time.at((e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000).utc.strftime("%H:%M:%S")
+      start = convert_time((e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000)
       
       # Create the poll.
       @data[:polls][poll_id] = {
