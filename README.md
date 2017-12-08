@@ -38,12 +38,16 @@ rec = BBBEvents.parse('events.xml')
 
 # Access recording data.
 puts rec.metadata
+puts rec.start
+puts rec.finish
 puts rec.attendees
 puts rec.moderators
 puts rec.viewers
 puts rec.chat
 puts rec.files
 puts rec.polls
+puts rec.published_polls
+puts rec.unpublished_polls
 ```
 
 ## License

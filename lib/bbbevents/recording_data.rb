@@ -10,19 +10,22 @@ module BBBEvents
       parser = Nori.new
       recording = parser.parse(File.read(file))['recording']
       
+      @first_event = recording['event'][0]['@timestamp'].to_i
+      @last_event = recording['event'][-1]['@timestamp'].to_i
+      @meeting_timestamp = recording['meeting']['@id'].split('-')[1].to_i
+      
       @data = {
         metadata: recording['metadata'],
         meeting_id: recording['meeting']['@id'],
+        duration: convert_time((@last_event - @first_event) / 1000),
+        start: convert_date(@meeting_timestamp / 1000),
+        finish: convert_date((@last_event - @first_event + @meeting_timestamp) / 1000),
         attendees: {},
         files: [],
         chat: [],
         polls: {},
         emojis: {}
       }
-      
-      @first_event = recording['event'][0]['@timestamp'].to_i
-      @last_event = recording['event'][-1]['@timestamp'].to_i
-      @meeting_timestamp = @data[:meeting_id].split('-')[1].to_i
 
       process_events(recording['event'])
       
@@ -37,13 +40,10 @@ module BBBEvents
         # Remove unneeded key.
         att.delete(:last_talking_time)
       end
-      
-      # Set meeting duration.
-      @data[:duration] = convert_time((@last_event - @first_event) / 1000)
     end
       
     # Make simple getters directly on the RecordingData object for specifics.
-    %w(metadata meeting_id attendees files chat polls emojis duration).map(&:to_sym).each do |k|
+    %w(metadata meeting_id duration start finish attendees files chat polls emojis).map(&:to_sym).each do |k|
       define_method(k) do @data[k] end
     end
       
@@ -53,6 +53,14 @@ module BBBEvents
       
     def moderators
       @data[:attendees].select do |uid, att| att[:moderator] end
+    end
+    
+    def published_polls
+      @data[:polls].select do |id, poll| poll[:metadata][:published] end
+    end
+      
+    def unpublished_polls
+      @data[:polls].select do |id, poll| !poll[:metadata][:published] end
     end
       
     private
@@ -150,6 +158,7 @@ module BBBEvents
       @data[:polls][poll_id] = {
         metadata: {
           start: start,
+          published: false,
           options: []
         },
         votes: {}
@@ -174,6 +183,16 @@ module BBBEvents
       # Increment the users poll votes.
       if att = @data[:attendees][user_id]
         att[:poll_votes] += 1
+      end
+    end
+    
+    def AddShapeEvent(e)
+      # If we are drawing poll results on the slide.
+      if e['type'] == 'poll_result'
+        if poll = @data[:polls][e['id']]
+          # Set the poll as published.
+          poll[:metadata][:published] = true
+        end
       end
     end
 
