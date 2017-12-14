@@ -1,6 +1,7 @@
 require 'json'
 require 'nokogiri'
 require 'nori'
+require 'csv'
 
 module BBBEvents
   class RecordingData
@@ -39,6 +40,17 @@ module BBBEvents
         att[:left] = convert_date(att[:left])
         # Remove unneeded key.
         att.delete(:last_talking_time)
+      end
+    end
+    
+    def create_csv(filepath)
+      CSV.open(filepath, "wb") do |csv|
+        # Create header row with polls.
+        csv << @data[:attendees].values.first.keys.map(&:capitalize) + (1..@data[:polls].length).map do |i| "Poll #{i}" end
+        @data[:attendees].each do |uid, att|
+          # Create a row for each attendee and add their poll answers.
+          csv << att.values + @data[:polls].values.map do |poll| poll[:votes][uid] || '-' end
+        end
       end
     end
       
@@ -88,14 +100,14 @@ module BBBEvents
         @data[:attendees][e['userId']] = {
           name: e['name'],
           moderator: e['role'] == 'MODERATOR',
-          join: (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000,
           chats: 0,
           talks: 0,
           emojis: 0,
           poll_votes: 0,
           raisehand: 0,
           last_talking_time: nil,
-          talk_time: 0
+          talk_time: 0,
+          join: (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000
         }
       end
     end
