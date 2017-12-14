@@ -48,6 +48,12 @@ puts rec.files
 puts rec.polls
 puts rec.published_polls
 puts rec.unpublished_polls
+
+# Get a hash with all of the parsed data.
+puts rec.data
+
+# Generate a CSV file with the data.
+rec.create_csv('data.csv')
 ```
 
 ## License
