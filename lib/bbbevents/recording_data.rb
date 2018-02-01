@@ -37,13 +37,16 @@ module BBBEvents
       # Convert times.
       @data[:attendees].each do |uid, att|
         # Sometimes the left events are missing, use last event if that's the case.
-        att[:left] = ((@last_event - @first_event + @meeting_timestamp) / 1000) unless att[:left]
-        att[:duration] = convert_time(att[:left] - att[:join])
+        if !att[:left]
+          att[:left] = ((@last_event - @first_event + @meeting_timestamp) / 1000)
+          att[:duration] = att[:duration] + (att[:left] - att[:last_join])
+        emd
         att[:talk_time] = convert_time(att[:talk_time])
         att[:join] = convert_date(att[:join])
         att[:left] = convert_date(att[:left])
-        # Remove unneeded key.
+        # Remove unneeded keys.
         att.delete(:last_talking_time)
+        att.delete(:last_join)
       end
     end
     
@@ -114,12 +117,16 @@ module BBBEvents
           raisehand: 0,
           last_talking_time: nil,
           talk_time: 0,
-          join: (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000
+          join: (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000,
+          duration: 0
         }
       end
+
       # Handle updates for re-joining users
       att = @data[:attendees][e['externalUserId']
       att[:name] = e['name']
+      att[:last_join] = (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000
+      att.delete(:left)
       if e['role'] == 'MODERATOR'
         att[:moderator] = true
       end
@@ -129,6 +136,7 @@ module BBBEvents
       # If the attendee exists, set their leave time.
       if att = @data[:attendees][@externalUserId[e['userId']]]
         att[:left] = (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000
+        att[:duration] = att[:duration] + (att[:left] - att[:last_join])
       end
     end
     
