@@ -40,7 +40,7 @@ module BBBEvents
         if !att[:left]
           att[:left] = ((@last_event - @first_event + @meeting_timestamp) / 1000)
           att[:duration] = att[:duration] + (att[:left] - att[:last_join])
-        emd
+        end
         att[:talk_time] = convert_time(att[:talk_time])
         att[:join] = convert_date(att[:join])
         att[:left] = convert_date(att[:left])
