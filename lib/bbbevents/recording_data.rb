@@ -123,7 +123,7 @@ module BBBEvents
       end
 
       # Handle updates for re-joining users
-      att = @data[:attendees][e['externalUserId']
+      att = @data[:attendees][e['externalUserId']]
       att[:name] = e['name']
       att[:last_join] = (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000
       att.delete(:left)
