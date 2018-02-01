@@ -28,6 +28,10 @@ module BBBEvents
         emojis: {}
       }
 
+      # Map to look up external user id (for @data[:attendees]) from the
+      # internal user id in most recording events
+      @externalUserId = {}
+
       process_events(recording['event'])
       
       # Convert times.
@@ -96,8 +100,11 @@ module BBBEvents
   
     def ParticipantJoinEvent(e)
       # If they don't exist, initialize the user.
-      unless @data[:attendees].key?(e['userId'])
-        @data[:attendees][e['userId']] = {
+      unless @externalUserId.key?(e['userId'])
+        @externalUserId[e['userId']] = e['externalUserId']
+      end
+      unless @data[:attendees].key?(e['externalUserId'])
+        @data[:attendees][e['externalUserId']] = {
           name: e['name'],
           moderator: e['role'] == 'MODERATOR',
           chats: 0,
@@ -110,11 +117,17 @@ module BBBEvents
           join: (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000
         }
       end
+      # Handle updates for re-joining users
+      att = @data[:attendees][e['externalUserId']
+      att[:name] = e['name']
+      if e['role'] == 'MODERATOR'
+        att[:moderator] = true
+      end
     end
     
     def ParticipantLeftEvent(e)
       # If the attendee exists, set their leave time.
-      if att = @data[:attendees][e['userId']]
+      if att = @data[:attendees][@externalUserId[e['userId']]]
         att[:left] = (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000
       end
     end
@@ -128,19 +141,19 @@ module BBBEvents
       # Add the chat event to the chat list.
       @data[:chat] << {
         sender: e['sender'],
-        senderId: e['senderId'],
+        senderId: @externalUserId[e['senderId']],
         message: e['message'],
         timestamp: convert_time((e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000)
       }
       
       # If the attendee exists, increment their messages.
-      if att = @data[:attendees][e['senderId']]
+      if att = @data[:attendees][@externalUserId[e['senderId']]]
         att[:chats] += 1
       end
     end
     
     def ParticipantTalkingEvent(e)
-      if att = @data[:attendees][e['participant']]
+      if att = @data[:attendees][@externalUserId[e['participant']]]
         # Track talk time between events and record number of times talking.
         if e['talking']
           att[:last_talking_time] = (e['@timestamp'].to_i - @first_event + @meeting_timestamp) / 1000
@@ -154,7 +167,7 @@ module BBBEvents
     def ParticipantStatusChangeEvent(e)
       # Track the emoji for the user (differentiate between raise hand).
       emoji = e['value']
-      if att = @data[:attendees][e['userId']]
+      if att = @data[:attendees][@externalUserId[e['userId']]]
         emoji == 'raiseHand' ? att[:raisehand] += 1 : att[:emojis] += 1
       end
       
@@ -184,7 +197,7 @@ module BBBEvents
 
     def UserRespondedToPollRecordEvent(e)
       poll_id = e['pollId']
-      user_id = e['userId']
+      user_id = @externalUserId[e['userId']]
       answer = e['answerId'].to_i
       
       # Record the answer in the poll.
