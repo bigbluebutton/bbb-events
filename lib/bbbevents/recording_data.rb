@@ -42,6 +42,7 @@ module BBBEvents
           att[:duration] = att[:duration] + (att[:left] - att[:last_join])
         end
         att[:talk_time] = convert_time(att[:talk_time])
+        att[:duration] = convert_time(att[:duration])
         att[:join] = convert_date(att[:join])
         att[:left] = convert_date(att[:left])
         # Remove unneeded keys.
