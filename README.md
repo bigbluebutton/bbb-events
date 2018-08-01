@@ -10,7 +10,7 @@ Currently it can parse data such as...
 * List of attendees.
 * Join and leave times.
 * Attendee roles.
-* Number of chat, talk and emoji status events. 
+* Number of chat, talk and emoji status events.
 * Uploaded presentation files.
 * Chat log.
 * Total talk time per user.
@@ -21,7 +21,7 @@ Currently it can parse data such as...
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'bbbevents', :git => 'https://github.com/blindsidenetworks/bbb-events'
+gem 'bbbevents'
 ```
 
 And then execute:
@@ -58,4 +58,4 @@ rec.create_csv('data.csv')
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [LGPL 3.0 License](https://www.gnu.org/licenses/lgpl-3.0.txt).

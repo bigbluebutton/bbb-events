@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{Easily parse data from a BigBlueButton recording's events.xml.}
   spec.description   = %q{Easily parse data from a BigBlueButton recording's events.xml.}
   spec.homepage      = "https://www.blindsidenetworks.com"
-  spec.license       = "MIT"
+  spec.license       = "LGPL 3.0"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
@@ -24,7 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.15"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
-  
+
   # Gem dependecies.
   spec.add_dependency "nokogiri"
   spec.add_dependency "nori"
