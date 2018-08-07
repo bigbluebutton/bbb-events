@@ -4,18 +4,6 @@ bbbevents is a simple ruby gem that makes it easier to parse data from a recordi
 
 This gem is currently being used on the recording server to parse events and build meeting dashboards.
 
-Currently it can parse data such as...
-
-* Meeting metadata.
-* List of attendees.
-* Join and leave times.
-* Attendee roles.
-* Number of chat, talk and emoji status events.
-* Uploaded presentation files.
-* Chat log.
-* Total talk time per user.
-* Polls and user votes.
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -34,26 +22,57 @@ And then execute:
 require 'bbbevents'
 
 # Parse the recording's events.xml.
-rec = BBBEvents.parse('events.xml')
+recording = BBBEvents.parse("events.xml")
 
 # Access recording data.
-puts rec.metadata
-puts rec.start
-puts rec.finish
-puts rec.attendees
-puts rec.moderators
-puts rec.viewers
-puts rec.chat
-puts rec.files
-puts rec.polls
-puts rec.published_polls
-puts rec.unpublished_polls
+recording.metadata
+recording.meeting_id
 
-# Get a hash with all of the parsed data.
-puts rec.data
+# Retrieve start, finish dates or total duration.
+recording.start
+recording.finish
+recording.duration
+
+# Returns a hash that maps user_id to Attendee object.
+# ex: pslzjdvacnlt => <BBBEvents::Attendee>
+recording.attendees
+recording.moderators
+recording.viewers
+
+# Returns an array of poll information.
+recording.polls
+recording.published_polls
+recording.unpublished_polls
+
+# Returns a list of upload files (names only).
+recording.files
 
 # Generate a CSV file with the data.
-rec.create_csv('data.csv')
+recording.create_csv("data.csv")
+
+# Fetch the first attendee.
+attendee = recording.values.first
+
+# Grab attendee info.
+attendee.name
+attendee.moderator?
+
+# Fetch join/leave times, or total duration.
+attendee.duration
+attendee.join_format
+attendee.leave_format
+
+# View attendee engagement.
+attendee.engagement
+
+# => {
+# :chats => 11,
+# :talks => 7,
+# :raisehand => 2,
+# :emojis => 5,
+# :poll_votes => 2,
+# :talk_time => 42
+# }
 ```
 
 ## License
