@@ -1,14 +1,15 @@
 require 'bbbevents/version'
 
 module BBBEvents
-  
-  class << self
-    def parse(obj)
-      raise 'BBBEvents: Invalid file.' unless File::file?(obj)
-      RecordingData.new(obj)
-    end
+  TIME_FORMAT = "%H:%M:%S"
+  DATE_FORMAT = "%m/%d/%Y %H:%M:%S"
+  UNKNOWN_DATE = "??/??/????"
+
+  def self.parse(events_xml)
+    Recording.new(events_xml)
   end
-  
 end
 
-require 'bbbevents/recording_data'
+require 'bbbevents/attendee'
+require 'bbbevents/events'
+require 'bbbevents/recording'
