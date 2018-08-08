@@ -1,5 +1,17 @@
 module BBBEvents
   module Events
+    RECORDABLE_EVENTS = [
+      "participant_join_event",
+      "participant_left_event",
+      "conversion_completed_event",
+      "public_chat_event",
+      "participant_status_change_event",
+      "participant_talking_event",
+      "poll_started_record_event",
+      "user_responded_to_poll_record_event",
+      "add_shape_event",
+    ]
+
     EMOJI_WHITELIST = %w(away neutral confused sad happy applause thumbsUp thumbsDown)
     RAISEHAND = "raiseHand"
 

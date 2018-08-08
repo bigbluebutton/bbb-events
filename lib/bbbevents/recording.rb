@@ -57,7 +57,7 @@ module BBBEvents
 
     # Retrieve a list of unpublished polls.
     def unpublished_polls
-     @polls.select { |id, poll| !poll.dig(:metadata, :published) }
+      @polls.select { |id, poll| !poll.dig(:metadata, :published) }
     end
 
     # Export recording data to a CSV file.
@@ -75,8 +75,8 @@ module BBBEvents
     # Process all the events in the events.xml file.
     def process_events(events)
       events.each do |e|
-        send(e["eventname"].underscore, e)
-        rescue
+        event = e["eventname"].underscore
+        send(event, e) if RECORDABLE_EVENTS.include?(event)
       end
     end
 
