@@ -18,6 +18,7 @@ And then execute:
 
 ## Usage
 
+### Recordings
 ```ruby
 require 'bbbevents'
 
@@ -39,7 +40,8 @@ recording.attendees
 recording.moderators
 recording.viewers
 
-# Returns an array of poll information.
+# Returns a hash that maps poll_id to Poll object.
+# ex: d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f => <BBBEvents::Poll>
 recording.polls
 recording.published_polls
 recording.unpublished_polls
@@ -50,9 +52,10 @@ recording.files
 # Generate a CSV file with the data.
 recording.create_csv("data.csv")
 
-# Fetch the first attendee.
-attendee = recording.values.first
+```
 
+### Attendees
+```ruby
 # Grab attendee info.
 attendee.name
 attendee.moderator?
@@ -73,6 +76,21 @@ attendee.engagement
 # :poll_votes => 2,
 # :talk_time => 42
 # }
+```
+
+### Polls
+```ruby
+# Determine if poll is published.
+poll.published?
+
+# Determine when the poll started.
+poll.start
+
+# Returns an Array contain possible options.
+poll.options
+
+# Returns a Hash maping user_id's to their poll votes.
+poll.votes
 ```
 
 ## License
