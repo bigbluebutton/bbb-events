@@ -14,6 +14,7 @@ module BBBEvents
 
     EMOJI_WHITELIST = %w(away neutral confused sad happy applause thumbsUp thumbsDown)
     RAISEHAND = "raiseHand"
+    POLL_PUBLISHED_STATUS = "poll_result"
 
     private
 
@@ -76,20 +77,10 @@ module BBBEvents
 
     # Log all polls with metadata, options and votes.
     def poll_started_record_event(e)
-      poll_id = e["pollId"]
+      id = e["pollId"]
 
-      @polls[poll_id] = {
-        metadata: {
-          start: timestamp_conversion(e["timestamp"]),
-          published: false,
-          options: [],
-        },
-        votes: {},
-      }
-
-      JSON.parse(e["answers"]).each do |opt|
-        @polls[poll_id][:metadata][:options] << opt["key"]
-      end
+      @polls[id] = Poll.new(e)
+      @polls[id].start = timestamp_conversion(e["timestamp"])
     end
 
     # Log user responses to polls.
@@ -98,7 +89,7 @@ module BBBEvents
       return unless attendee = @attendees[user_id]
 
       if poll = @polls[e["pollId"]]
-        poll[:votes][user_id] = poll.dig(:metadata, :options, e["answerId"].to_i)
+        poll.votes[user_id] = poll.options[e["answerId"].to_i]
       end
 
       attendee.engagement[:poll_votes] += 1
@@ -106,9 +97,9 @@ module BBBEvents
 
     # Log if the poll was published.
     def add_shape_event(e)
-      if e["type"] == "poll_result"
+      if e["type"] == POLL_PUBLISHED_STATUS
         if poll = @polls[e["id"]]
-          poll[:metadata][:published] = true
+          poll.published = true
         end
       end
     end

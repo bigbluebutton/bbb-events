@@ -1,6 +1,5 @@
 module BBBEvents
   class Attendee
-
     attr_accessor :name, :moderator, :joins, :leaves, :duration, :recent_talking_time, :engagement
 
     MODERATOR_ROLE = "MODERATOR"

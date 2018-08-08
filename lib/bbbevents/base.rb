@@ -12,4 +12,5 @@ end
 
 require 'bbbevents/attendee'
 require 'bbbevents/events'
+require 'bbbevents/poll'
 require 'bbbevents/recording'

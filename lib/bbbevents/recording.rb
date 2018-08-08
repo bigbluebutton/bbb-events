@@ -3,21 +3,22 @@ require 'json'
 require 'active_support/core_ext/hash'
 
 module BBBEvents
-
   CSV_HEADER = %w(name moderator chats talks emojis poll_votes raisehand talk_time join left duration)
   NO_VOTE_SYMBOL = "-"
 
   class Recording
     include Events
 
-    attr_accessor :metadata, :meeting_id, :attendees, :polls, :files
+    attr_accessor :metadata, :meeting_id, :timestamp, :start, :finish, :duration, :attendees, :polls, :files
 
     def initialize(events_xml)
-      raise "#{events_xml} is not a file or does not exist." unless File.file?(events_xml)
+      filename = File.basename(events_xml)
+      raise "#{filename} is not a file or does not exist." unless File.file?(events_xml)
 
       raw_recording_data = Hash.from_xml(File.read(events_xml))
 
-      raise "#{events_xml} is missing recording key." unless raw_recording_data.key?("recording")
+      raise "#{filename} is not a valid xml file (unable to parse)." if raw_recording_data.nil?
+      raise "#{filename} is missing recording key." unless raw_recording_data.key?("recording")
 
       recording_data = raw_recording_data["recording"]
       events         = recording_data["event"]
@@ -29,6 +30,7 @@ module BBBEvents
       @first_event = events.first["timestamp"].to_i
       @last_event  = events.last["timestamp"].to_i
 
+      # TODO: store these as datetimes.
       @start    = Time.at(@timestamp / 1000).strftime(DATE_FORMAT)
       @finish   = Time.at(timestamp_conversion(@last_event)).strftime(DATE_FORMAT)
       @duration = Time.at((@last_event - @first_event) / 1000).utc.strftime(TIME_FORMAT)
@@ -42,22 +44,22 @@ module BBBEvents
 
     # Retrieve a list of all the moderators.
     def moderators
-      @attendees.select { |id, att| att.moderator? }
+      @attendees.select { |_, att| att.moderator? }
     end
 
     # Retrieve a list of all the viewers.
     def viewers
-      @attendees.reject { |id, att| att.moderator? }
+      @attendees.reject { |_, att| att.moderator? }
     end
 
     # Retrieve a list of published polls.
     def published_polls
-      @polls.select { |id, poll| poll.dig(:metadata, :published) }
+      @polls.select { |_, poll| poll.published? }
     end
 
     # Retrieve a list of unpublished polls.
     def unpublished_polls
-      @polls.select { |id, poll| !poll.dig(:metadata, :published) }
+      @polls.reject { |_, poll| poll.published? }
     end
 
     # Export recording data to a CSV file.
