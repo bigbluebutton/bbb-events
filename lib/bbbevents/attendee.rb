@@ -1,11 +1,12 @@
 module BBBEvents
   class Attendee
-    attr_accessor :name, :moderator, :joins, :leaves, :duration, :recent_talking_time, :engagement
+    attr_accessor :id, :name, :moderator, :joins, :leaves, :duration, :recent_talking_time, :engagement
 
     MODERATOR_ROLE = "MODERATOR"
     VIEWER_ROLE = "VIEWER"
 
     def initialize(join_event)
+      @id        = join_event["userId"]
       @name      = join_event["name"]
       @moderator = (join_event["role"] == MODERATOR_ROLE)
 
@@ -43,7 +44,7 @@ module BBBEvents
         join_format,
         left_format,
         duration_format,
-      ]
+      ].map(&:to_s)
     end
 
     # Helper to format first join.
@@ -51,10 +52,10 @@ module BBBEvents
       Time.at(@joins.first).strftime(format)
     end
 
-    # Helper to format first leave.
+    # Helper to format last leave.
     def left_format(format = DATE_FORMAT)
       return UNKNOWN_DATE if @leaves.empty?
-      Time.at(@leaves.first).strftime(format)
+      Time.at(@leaves.last).strftime(format)
     end
 
     # Helper to format the duration (stored in seconds).

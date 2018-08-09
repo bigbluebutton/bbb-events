@@ -9,7 +9,7 @@ module BBBEvents
   class Recording
     include Events
 
-    attr_accessor :metadata, :meeting_id, :timestamp, :start, :finish, :duration, :attendees, :polls, :files
+    attr_accessor :metadata, :meeting_id, :timestamp, :start, :finish, :duration, :files
 
     def initialize(events_xml)
       filename = File.basename(events_xml)
@@ -42,32 +42,42 @@ module BBBEvents
       process_events(events)
     end
 
+    # Take only the values since we no longer need to index.
+    def attendees
+      @attendees.values
+    end
+
     # Retrieve a list of all the moderators.
     def moderators
-      @attendees.select { |_, att| att.moderator? }
+      attendees.select(&:moderator?)
     end
 
     # Retrieve a list of all the viewers.
     def viewers
-      @attendees.reject { |_, att| att.moderator? }
+      attendees.reject(&:moderator?)
+    end
+
+    # Take only the values since we no longer need to index.
+    def polls
+      @polls.values
     end
 
     # Retrieve a list of published polls.
     def published_polls
-      @polls.select { |_, poll| poll.published? }
+      polls.select(&:published?)
     end
 
     # Retrieve a list of unpublished polls.
     def unpublished_polls
-      @polls.reject { |_, poll| poll.published? }
+      polls.reject(&:published?)
     end
 
     # Export recording data to a CSV file.
     def create_csv(filepath)
       CSV.open(filepath, "wb") do |csv|
-        csv << CSV_HEADER.map(&:capitalize) + (1..@polls.length).map { |i| "Poll #{i}" }
+        csv << CSV_HEADER.map(&:capitalize) + (1..polls.length).map { |i| "Poll #{i}" }
         @attendees.each do |id, att|
-          csv << att.csv_row + @polls.values.map { |poll| poll[:votes][id] || NO_VOTE_SYMBOL }
+          csv << att.csv_row + polls.map { |poll| poll.votes[id] || NO_VOTE_SYMBOL }
         end
       end
     end

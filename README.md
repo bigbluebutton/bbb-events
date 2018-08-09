@@ -34,14 +34,12 @@ recording.start
 recording.finish
 recording.duration
 
-# Returns a hash that maps user_id to Attendee object.
-# ex: pslzjdvacnlt => <BBBEvents::Attendee>
+# Returns a list of Attendee objects.
 recording.attendees
 recording.moderators
 recording.viewers
 
-# Returns a hash that maps poll_id to Poll object.
-# ex: d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f => <BBBEvents::Poll>
+# Returns a list of Poll objects.
 recording.polls
 recording.published_polls
 recording.unpublished_polls

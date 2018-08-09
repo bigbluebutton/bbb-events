@@ -1,12 +1,12 @@
 module BBBEvents
   class Poll
-    attr_accessor :start, :published, :options, :votes
+    attr_accessor :id, :start, :published, :options, :votes
 
     def initialize(poll_event)
+      @id        = poll_event["pollId"]
       @published = false
-
-      @options = JSON.parse(poll_event["answers"]).map { |opt| opt["key"] }
-      @votes   = {}
+      @options   = JSON.parse(poll_event["answers"]).map { |opt| opt["key"] }
+      @votes     = {}
     end
 
     def published?
