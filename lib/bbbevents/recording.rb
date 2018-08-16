@@ -30,10 +30,9 @@ module BBBEvents
       @first_event = events.first["timestamp"].to_i
       @last_event  = events.last["timestamp"].to_i
 
-      # TODO: store these as datetimes.
-      @start    = Time.at(@timestamp / 1000).strftime(DATE_FORMAT)
-      @finish   = Time.at(timestamp_conversion(@last_event)).strftime(DATE_FORMAT)
-      @duration = Time.at((@last_event - @first_event) / 1000).utc.strftime(TIME_FORMAT)
+      @start    = Time.at(@timestamp / 1000)
+      @finish   = Time.at(timestamp_conversion(@last_event))
+      @duration = (@finish - @start).to_i
 
       @attendees = {}
       @polls     = {}
@@ -99,7 +98,7 @@ module BBBEvents
 
     # Converts the BigBlueButton timestamps to proper time.
     def timestamp_conversion(base)
-      (base.to_i + @first_event + @timestamp) / 1000
+      (base.to_i - @first_event + @timestamp) / 1000
     end
   end
 end
