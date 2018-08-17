@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recording meeting_id="3107946ecc201837635e07aeb86d785e9fe46507-1534433961829" bbb_version="2.0.0">
+  <meeting id="3107946ecc201837635e07aeb86d785e9fe46507-1534433961829" externalId="ae5e285551844c61c757f4c8f233850a2e0b16bf" name="Home Room" breakout="false"/>
+  <metadata gl-listed="false" isBreakout="false" meetingId="ae5e285551844c61c757f4c8f233850a2e0b16bf" meetingName="Home Room"/>
+  <event timestamp="1034088841" module="PARTICIPANT" eventname="ParticipantJoinEvent">
+    <userId>w_k961xjhcwvn2</userId>
+    <externalUserId>gl-lusgsxhnlutw</externalUserId>
+    <role>MODERATOR</role>
+    <name>Tim</name>
+  </event>
+  <event timestamp="1034088841" module="PARTICIPANT" eventname="AssignPresenterEvent">
+    <assignedBy>w_k961xjhcwvn2</assignedBy>
+    <userid>w_k961xjhcwvn2</userid>
+    <name>Tim</name>
+  </event>
+  <event timestamp="1034092888" module="PRESENTATION" eventname="ConversionCompletedEvent">
+    <presentationName>d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1534433961845</presentationName>
+    <originalFilename>default.pdf</originalFilename>
+  </event>
+  <event timestamp="1034092888" module="PRESENTATION" eventname="SharePresentationEvent">
+    <share>true</share>
+    <presentationName>d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1534433961845</presentationName>
+  </event>
+  <event timestamp="1034094288" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>-0.18450184501845018</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>-0.10384215991692627</xOffset>
+  </event>
+  <event timestamp="1034103677" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>80.44280442804428</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>40.913811007268954</xOffset>
+  </event>
+  <event timestamp="1034103766" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>80.07380073800738</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>44.02907580477674</xOffset>
+  </event>
+  <event timestamp="1034103852" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>80.07380073800738</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>56.178608515057114</xOffset>
+  </event>
+  <event timestamp="1034104044" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>67.71217712177122</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>59.39771547248183</xOffset>
+  </event>
+  <event timestamp="1034104053" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>60.51660516605166</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>60.43613707165109</xOffset>
+  </event>
+  <event timestamp="1034104134" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>56.82656826568266</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>63.75908618899273</xOffset>
+  </event>
+  <event timestamp="1034104973" module="VOICE" eventname="ParticipantJoinedEvent">
+    <muted>true</muted>
+    <callernumber>Tim</callernumber>
+    <talking>false</talking>
+    <callername>Tim</callername>
+    <bridge>20592</bridge>
+    <participant>w_k961xjhcwvn2</participant>
+  </event>
+  <event timestamp="1034105344" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>37.269372693726936</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>38.62928348909657</xOffset>
+  </event>
+  <event timestamp="1034105498" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>39.66789667896679</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>40.29075804776739</xOffset>
+  </event>
+  <event timestamp="1034105531" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>42.435424354243544</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>42.05607476635514</xOffset>
+  </event>
+  <event timestamp="1034105644" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>42.61992619926199</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>42.36760124610592</xOffset>
+  </event>
+  <event timestamp="1034105682" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>42.61992619926199</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>42.47144340602284</xOffset>
+  </event>
+  <event timestamp="1034105772" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>42.435424354243544</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>42.57528556593977</xOffset>
+  </event>
+  <event timestamp="1034105852" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>41.51291512915129</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>43.19833852544133</xOffset>
+  </event>
+  <event timestamp="1034105939" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>39.66789667896679</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>46.20976116303219</xOffset>
+  </event>
+  <event timestamp="1034106029" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>39.298892988929886</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>47.87123572170301</xOffset>
+  </event>
+  <event timestamp="1034106102" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>38.37638376383764</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>49.84423676012461</xOffset>
+  </event>
+  <event timestamp="1034106265" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>38.191881918819185</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>49.94807892004154</xOffset>
+  </event>
+  <event timestamp="1034106416" module="PARTICIPANT" eventname="ParticipantJoinEvent">
+    <userId>w_j1hyfnqifpwl</userId>
+    <externalUserId>w_j1hyfnqifpwl</externalUserId>
+    <role>VIEWER</role>
+    <name>Jeff</name>
+  </event>
+  <event timestamp="1034107061" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>38.191881918819185</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>41.74454828660436</xOffset>
+  </event>
+  <event timestamp="1034107190" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>-0.18450184501845018</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>-0.10384215991692627</xOffset>
+  </event>
+  <event timestamp="1034111603" module="VOICE" eventname="ParticipantJoinedEvent">
+    <muted>true</muted>
+    <callernumber>Jeff</callernumber>
+    <talking>false</talking>
+    <callername>Jeff</callername>
+    <bridge>20592</bridge>
+    <participant>w_j1hyfnqifpwl</participant>
+  </event>
+  <event timestamp="1034114832" module="PARTICIPANT" eventname="RecordStatusEvent">
+    <userId>w_k961xjhcwvn2</userId>
+    <status>true</status>
+  </event>
+  <event timestamp="1034115734" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>4.059040590405904</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>99.27310488058151</xOffset>
+  </event>
+  <event timestamp="1034115795" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>9.040590405904059</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>99.89615784008308</xOffset>
+  </event>
+  <event timestamp="1034115850" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>-0.18450184501845018</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>-0.10384215991692627</xOffset>
+  </event>
+  <event timestamp="1034118419" module="CHAT" eventname="PublicChatEvent">
+    <message>
+      <![CDATA[Hi!]]>
+    </message>
+    <sender>Tim</sender>
+    <senderId>w_k961xjhcwvn2</senderId>
+    <color>0</color>
+  </event>
+  <event timestamp="1034121882" module="CHAT" eventname="PublicChatEvent">
+    <message>
+      <![CDATA[Hello!]]>
+    </message>
+    <sender>Jeff</sender>
+    <senderId>w_j1hyfnqifpwl</senderId>
+    <color>0</color>
+  </event>
+  <event timestamp="1034122976" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>88.92988929889299</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>97.81931464174455</xOffset>
+  </event>
+  <event timestamp="1034123048" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>85.42435424354244</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>82.76220145379024</xOffset>
+  </event>
+  <event timestamp="1034123139" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>71.21771217712177</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>62.61682242990654</xOffset>
+  </event>
+  <event timestamp="1034123221" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>44.64944649446495</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>50.05192107995846</xOffset>
+  </event>
+  <event timestamp="1034123396" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>44.64944649446495</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>50.15576323987539</xOffset>
+  </event>
+  <event timestamp="1034123463" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>46.678966789667896</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>46.625129802699895</xOffset>
+  </event>
+  <event timestamp="1034123554" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>52.952029520295206</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>46.10591900311527</xOffset>
+  </event>
+  <event timestamp="1034123640" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>55.71955719557196</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>51.60955347871236</xOffset>
+  </event>
+  <event timestamp="1034123718" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>45.38745387453874</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>71.5472481827622</xOffset>
+  </event>
+  <event timestamp="1034123798" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>38.37638376383764</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>81.61993769470405</xOffset>
+  </event>
+  <event timestamp="1034123885" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>35.42435424354244</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>79.4392523364486</xOffset>
+  </event>
+  <event timestamp="1034123967" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>21.03321033210332</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>20.145379023883695</xOffset>
+  </event>
+  <event timestamp="1034124055" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>-0.18450184501845018</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>-0.10384215991692627</xOffset>
+  </event>
+  <event timestamp="1034126762" module="PARTICIPANT" eventname="ParticipantStatusChangeEvent">
+    <value>happy</value>
+    <userId>w_k961xjhcwvn2</userId>
+    <status>emojiStatus</status>
+  </event>
+  <event timestamp="1034130031" module="PARTICIPANT" eventname="ParticipantStatusChangeEvent">
+    <value>away</value>
+    <userId>w_j1hyfnqifpwl</userId>
+    <status>emojiStatus</status>
+  </event>
+  <event timestamp="1034131820" module="PARTICIPANT" eventname="ParticipantStatusChangeEvent">
+    <value>raiseHand</value>
+    <userId>w_j1hyfnqifpwl</userId>
+    <status>emojiStatus</status>
+  </event>
+  <event timestamp="1034133504" module="PARTICIPANT" eventname="ParticipantStatusChangeEvent">
+    <value>thumbsUp</value>
+    <userId>w_j1hyfnqifpwl</userId>
+    <status>emojiStatus</status>
+  </event>
+  <event timestamp="1034137578" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>11.808118081180812</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>22.741433021806852</xOffset>
+  </event>
+  <event timestamp="1034137648" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>10.70110701107011</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>22.637590861889926</xOffset>
+  </event>
+  <event timestamp="1034137796" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>10.14760147601476</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>22.429906542056074</xOffset>
+  </event>
+  <event timestamp="1034137878" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>9.96309963099631</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>22.637590861889926</xOffset>
+  </event>
+  <event timestamp="1034137957" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>9.59409594095941</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>22.429906542056074</xOffset>
+  </event>
+  <event timestamp="1034138043" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>9.22509225092251</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>22.326064382139148</xOffset>
+  </event>
+  <event timestamp="1034139057" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>7.380073800738008</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>22.429906542056074</xOffset>
+  </event>
+  <event timestamp="1034139135" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>-0.18450184501845018</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>-0.10384215991692627</xOffset>
+  </event>
+  <event timestamp="1034144261" module="VOICE" eventname="ParticipantLeftEvent">
+    <bridge>20592</bridge>
+    <participant>w_j1hyfnqifpwl</participant>
+  </event>
+  <event timestamp="1034151075" module="VOICE" eventname="ParticipantJoinedEvent">
+    <muted>false</muted>
+    <callernumber>w_j1hyfnqifpwl-bbbID-Jeff</callernumber>
+    <talking>false</talking>
+    <callername>Jeff</callername>
+    <bridge>20592</bridge>
+    <participant>w_j1hyfnqifpwl</participant>
+  </event>
+  <event timestamp="1034151098" module="VOICE" eventname="StartRecordingEvent">
+    <recordingTimestamp>1034151098</recordingTimestamp>
+    <bridge>20592</bridge>
+    <filename>/var/freeswitch/meetings/3107946ecc201837635e07aeb86d785e9fe46507-1534433961829-1034151077.wav</filename>
+  </event>
+  <event timestamp="1034151339" module="VOICE" eventname="ParticipantTalkingEvent">
+    <talking>true</talking>
+    <bridge>20592</bridge>
+    <participant>w_j1hyfnqifpwl</participant>
+  </event>
+  <event timestamp="1034156346" module="VOICE" eventname="ParticipantLeftEvent">
+    <bridge>20592</bridge>
+    <participant>w_j1hyfnqifpwl</participant>
+  </event>
+  <event timestamp="1034156430" module="VOICE" eventname="StopRecordingEvent">
+    <recordingTimestamp>1034156429</recordingTimestamp>
+    <bridge>20592</bridge>
+    <filename>/var/freeswitch/meetings/3107946ecc201837635e07aeb86d785e9fe46507-1534433961829-1034151077.wav</filename>
+  </event>
+  <event timestamp="1034164305" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>97.0479704797048</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>14.537902388369679</xOffset>
+  </event>
+  <event timestamp="1034164386" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>94.64944649446494</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>14.849428868120457</xOffset>
+  </event>
+  <event timestamp="1034164467" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>93.7269372693727</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>15.160955347871235</xOffset>
+  </event>
+  <event timestamp="1034164661" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>92.06642066420665</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>15.576323987538942</xOffset>
+  </event>
+  <event timestamp="1034164719" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>91.32841328413284</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>15.680166147455868</xOffset>
+  </event>
+  <event timestamp="1034164801" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>91.14391143911439</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>15.680166147455868</xOffset>
+  </event>
+  <event timestamp="1034164962" module="POLL" eventname="PollStartedRecordEvent">
+    <answers>[{"id":0,"key":"Yes"},{"id":1,"key":"No"}]</answers>
+    <pollId>d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1534433961845/1/1534434041159</pollId>
+  </event>
+  <event timestamp="1034165205" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>90.95940959409594</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>15.576323987538942</xOffset>
+  </event>
+  <event timestamp="1034165309" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>-0.18450184501845018</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>-0.10384215991692627</xOffset>
+  </event>
+  <event timestamp="1034167249" module="POLL" eventname="UserRespondedToPollRecordEvent">
+    <userId>w_j1hyfnqifpwl</userId>
+    <pollId>d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1534433961845/1/1534434041159</pollId>
+    <answerId>0</answerId>
+  </event>
+  <event timestamp="1034168558" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>87.08487084870849</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>78.40083073727934</xOffset>
+  </event>
+  <event timestamp="1034168632" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>83.57933579335793</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>70.7165109034268</xOffset>
+  </event>
+  <event timestamp="1034168713" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>81.54981549815498</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>60.64382139148494</xOffset>
+  </event>
+  <event timestamp="1034168795" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>81.73431734317343</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>59.60539979231568</xOffset>
+  </event>
+  <event timestamp="1034168894" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>83.57933579335793</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>61.2668743509865</xOffset>
+  </event>
+  <event timestamp="1034168971" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>83.94833948339483</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>63.6552440290758</xOffset>
+  </event>
+  <event timestamp="1034169128" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>84.13284132841328</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>63.75908618899273</xOffset>
+  </event>
+  <event timestamp="1034169212" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>84.68634686346863</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>63.862928348909655</xOffset>
+  </event>
+  <event timestamp="1034169296" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>84.87084870848709</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>63.862928348909655</xOffset>
+  </event>
+  <event timestamp="1034169408" module="WHITEBOARD" eventname="AddShapeEvent">
+    <userId>w_k961xjhcwvn2</userId>
+    <type>poll_result</type>
+    <status>DRAW_END</status>
+    <id>d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1534433961845/1/1534434041159</id>
+    <dataPoints>66.0,86.68,34.0,13.32</dataPoints>
+    <num_respondents>1</num_respondents>
+    <presentation>d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1534433961845</presentation>
+    <whiteboardId>d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1534433961845/1</whiteboardId>
+    <shapeId>d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1534433961845/1/1534434041159</shapeId>
+    <result>[{"num_votes":1,"id":0,"key":"Yes"},{"num_votes":0,"id":1,"key":"No"}]</result>
+    <num_responders>1</num_responders>
+    <position>0</position>
+    <pageNumber>0</pageNumber>
+  </event>
+  <event timestamp="1034169408" module="POLL" eventname="PollStoppedRecordEvent">
+    <pollId>d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1534433961845/1/1534434041159</pollId>
+  </event>
+  <event timestamp="1034170366" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>88.56088560885608</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>64.17445482866043</xOffset>
+  </event>
+  <event timestamp="1034170420" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>97.41697416974169</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>63.75908618899273</xOffset>
+  </event>
+  <event timestamp="1034170498" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>-0.18450184501845018</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>-0.10384215991692627</xOffset>
+  </event>
+  <event timestamp="1034172720" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>95.5719557195572</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>19.833852544132917</xOffset>
+  </event>
+  <event timestamp="1034172829" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>95.20295202952029</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>20.145379023883695</xOffset>
+  </event>
+  <event timestamp="1034172889" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>96.86346863468634</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>21.079958463136034</xOffset>
+  </event>
+  <event timestamp="1034172969" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>-0.18450184501845018</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>-0.10384215991692627</xOffset>
+  </event>
+  <event timestamp="1034173604" module="POLL" eventname="PollStartedRecordEvent">
+    <answers>[{"id":0,"key":"A"},{"id":1,"key":"B"},{"id":2,"key":"C"}]</answers>
+    <pollId>d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1534433961845/1/1534434049801</pollId>
+  </event>
+  <event timestamp="1034175369" module="POLL" eventname="UserRespondedToPollRecordEvent">
+    <userId>w_j1hyfnqifpwl</userId>
+    <pollId>d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1534433961845/1/1534434049801</pollId>
+    <answerId>1</answerId>
+  </event>
+  <event timestamp="1034176221" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>96.49446494464945</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>83.07372793354102</xOffset>
+  </event>
+  <event timestamp="1034176305" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>91.14391143911439</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>69.36656282450674</xOffset>
+  </event>
+  <event timestamp="1034176378" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>89.48339483394834</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>66.87435098650052</xOffset>
+  </event>
+  <event timestamp="1034176467" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>88.37638376383764</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>66.66666666666667</xOffset>
+  </event>
+  <event timestamp="1034176546" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>87.26937269372694</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>66.35514018691589</xOffset>
+  </event>
+  <event timestamp="1034176631" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>85.23985239852398</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>65.52440290758048</xOffset>
+  </event>
+  <event timestamp="1034176906" module="POLL" eventname="PollStoppedRecordEvent">
+    <pollId>d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1534433961845/1/1534434049801</pollId>
+  </event>
+  <event timestamp="1034176906" module="WHITEBOARD" eventname="AddShapeEvent">
+    <userId>w_k961xjhcwvn2</userId>
+    <type>poll_result</type>
+    <status>DRAW_END</status>
+    <id>d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1534433961845/1/1534434049801</id>
+    <dataPoints>66.0,80.02,34.0,19.98</dataPoints>
+    <num_respondents>1</num_respondents>
+    <presentation>d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1534433961845</presentation>
+    <whiteboardId>d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1534433961845/1</whiteboardId>
+    <shapeId>d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1534433961845/1/1534434049801</shapeId>
+    <result>[{"num_votes":0,"id":0,"key":"A"},{"num_votes":1,"id":1,"key":"B"},{"num_votes":0,"id":2,"key":"C"}]</result>
+    <num_responders>1</num_responders>
+    <position>1</position>
+    <pageNumber>0</pageNumber>
+  </event>
+  <event timestamp="1034177600" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>85.23985239852398</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>75.18172377985462</xOffset>
+  </event>
+  <event timestamp="1034177664" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>-0.18450184501845018</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>-0.10384215991692627</xOffset>
+  </event>
+  <event timestamp="1034181103" module="PARTICIPANT" eventname="RecordStatusEvent">
+    <userId>w_k961xjhcwvn2</userId>
+    <status>false</status>
+  </event>
+  <event timestamp="1034183903" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>6.826568265682657</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>84.42367601246106</xOffset>
+  </event>
+  <event timestamp="1034183987" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>14.944649446494465</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>77.88161993769471</xOffset>
+  </event>
+  <event timestamp="1034184069" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>12.915129151291513</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>86.60436137071652</xOffset>
+  </event>
+  <event timestamp="1034184152" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>-0.18450184501845018</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>-0.10384215991692627</xOffset>
+  </event>
+  <event timestamp="1034184229" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>14.206642066420665</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>97.19626168224299</xOffset>
+  </event>
+  <event timestamp="1034184313" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>49.44649446494465</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>75.28556593977154</xOffset>
+  </event>
+  <event timestamp="1034184409" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>67.15867158671587</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>70.50882658359293</xOffset>
+  </event>
+  <event timestamp="1034184489" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>76.01476014760148</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>68.01661474558671</xOffset>
+  </event>
+  <event timestamp="1034184569" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>78.04428044280442</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>65.42056074766356</xOffset>
+  </event>
+  <event timestamp="1034184653" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>76.56826568265683</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>60.43613707165109</xOffset>
+  </event>
+  <event timestamp="1034184736" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>67.15867158671587</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>55.14018691588785</xOffset>
+  </event>
+  <event timestamp="1034184819" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>64.02214022140221</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>52.9595015576324</xOffset>
+  </event>
+  <event timestamp="1034184907" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>64.02214022140221</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>52.12876427829699</xOffset>
+  </event>
+  <event timestamp="1034184986" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>62.730627306273064</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>49.32502596053998</xOffset>
+  </event>
+  <event timestamp="1034185064" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <yOffset>62.730627306273064</yOffset>
+    <userId>w_k961xjhcwvn2</userId>
+    <xOffset>48.90965732087228</xOffset>
+  </event>
+</recording>

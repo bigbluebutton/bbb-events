@@ -11,4 +11,13 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  config.before(:all) do
+    @sample = BBBEvents.parse(file_fixture("sample.xml"))
+  end
+end
+
+# Helper for accessing file fixtures.
+def file_fixture(file)
+  File.dirname(__FILE__) + "/fixtures/files/#{file}"
 end
