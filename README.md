@@ -29,7 +29,7 @@ recording = BBBEvents.parse("events.xml")
 recording.metadata
 recording.meeting_id
 
-# Retrieve start, finish dates or total duration.
+# Retrieve start, finish time objects or total duration in seconds.
 recording.start
 recording.finish
 recording.duration
@@ -58,10 +58,14 @@ recording.create_csv("data.csv")
 attendee.name
 attendee.moderator?
 
-# Fetch join/leave times, or total duration.
+# Fetch initial join, last leave, or total duration.
 attendee.duration
-attendee.join_format
-attendee.leave_format
+attendee.joined
+attendee.left
+
+# Fetch all recorded join/leave times.
+attendee.joins
+attendee.leaves
 
 # View attendee engagement.
 attendee.engagement

@@ -40,32 +40,27 @@ module BBBEvents
         e[:emojis],
         e[:poll_votes],
         e[:raisehand],
-        talk_time_format,
-        join_format,
-        left_format,
-        duration_format,
+        seconds_to_time(@engagement[:talk_time]),
+        joined.strftime(DATE_FORMAT),
+        left.strftime(DATE_FORMAT),
+        seconds_to_time(@duration),
       ].map(&:to_s)
     end
 
-    # Helper to format first join.
-    def join_format(format = DATE_FORMAT)
-      Time.at(@joins.first).strftime(format)
+    # Grab the initial join.
+    def joined
+      @joins.first
     end
 
-    # Helper to format last leave.
-    def left_format(format = DATE_FORMAT)
-      return UNKNOWN_DATE if @leaves.empty?
-      Time.at(@leaves.last).strftime(format)
+    # Grab the last leave.
+    def left
+      @leaves.last
     end
 
-    # Helper to format the duration (stored in seconds).
-    def duration_format(format = TIME_FORMAT)
-      Time.at(@duration).utc.strftime(format)
-    end
+    private
 
-    # Helper to format the talk time (stored in seconds).
-    def talk_time_format(format = TIME_FORMAT)
-      Time.at(@engagement[:talk_time]).utc.strftime(format)
+    def seconds_to_time(seconds)
+      [seconds / 3600, seconds / 60 % 60, seconds % 60].map { |t| t.floor.to_s.rjust(2, "0") }.join(':')
     end
   end
 end

@@ -23,18 +23,15 @@ module BBBEvents
       id = e["userId"]
 
       @attendees[id] = Attendee.new(e) unless @attendees.key?(id)
-      @attendees[id].joins << timestamp_conversion(e["timestamp"])
+      @attendees[id].joins << Time.at(timestamp_conversion(e["timestamp"]))
     end
 
     # Log a users leave.
     def participant_left_event(e)
       return unless attendee = @attendees[e["userId"]]
 
-      left = timestamp_conversion(e["timestamp"])
-      if attendee
-        attendee.leaves << left
-        attendee.duration += (left - attendee.joins.last)
-      end
+      left = Time.at(timestamp_conversion(e["timestamp"]))
+      attendee.leaves << left
     end
 
     # Log the uploaded file name.

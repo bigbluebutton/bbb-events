@@ -39,6 +39,11 @@ module BBBEvents
       @files     = []
 
       process_events(events)
+
+      @attendees.values.each do |att|
+        att.leaves << @finish if att.joins.length > att.leaves.length
+        att.duration = total_duration(att)
+      end
     end
 
     # Take only the values since we no longer need to index.
@@ -99,6 +104,17 @@ module BBBEvents
     # Converts the BigBlueButton timestamps to proper time.
     def timestamp_conversion(base)
       (base.to_i - @first_event + @timestamp) / 1000
+    end
+
+    # Calculates an attendee's duration.
+    def total_duration(att)
+      return 0 unless att.joins.length == att.leaves.length
+      total = 0
+
+      att.joins.length.times do |i|
+        total += att.leaves[i] - att.joins[i]
+      end
+      total
     end
   end
 end
