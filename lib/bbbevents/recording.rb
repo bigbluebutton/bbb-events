@@ -86,6 +86,19 @@ module BBBEvents
       end
     end
 
+    def to_json
+      {
+        metadata: @metadata,
+        meeting_id: @meeting_id,
+        duration: @duration,
+        start: @start,
+        finish: @finish,
+        attendees: attendees.map(&:to_json),
+        files: @files,
+        polls: polls.map(&:to_json),
+      }.to_json
+    end
+
     private
 
     # Process all the events in the events.xml file.

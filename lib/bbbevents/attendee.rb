@@ -30,6 +30,16 @@ module BBBEvents
       moderator
     end
 
+    # Grab the initial join.
+    def joined
+      @joins.first
+    end
+
+    # Grab the last leave.
+    def left
+      @leaves.last
+    end
+
     def csv_row
       e = @engagement
       [
@@ -47,14 +57,10 @@ module BBBEvents
       ].map(&:to_s)
     end
 
-    # Grab the initial join.
-    def joined
-      @joins.first
-    end
-
-    # Grab the last leave.
-    def left
-      @leaves.last
+    def to_json
+      hash = {}
+      instance_variables.each { |var| hash[var[1..-1]] = instance_variable_get(var) }
+      hash.to_json
     end
 
     private
