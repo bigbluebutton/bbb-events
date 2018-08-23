@@ -6,8 +6,8 @@ require "bbbevents/version"
 Gem::Specification.new do |spec|
   spec.name          = "bbbevents"
   spec.version       = BBBEvents::VERSION
-  spec.authors       = ["Joshua Arts"]
-  spec.email         = ["joshua.rts@blindsidenetworks.com"]
+  spec.authors       = ["Blindside Networks"]
+  spec.email         = ["ffdixon@blindsidenetworks.com"]
 
   spec.summary       = %q{Easily parse data from a BigBlueButton recording's events.xml.}
   spec.description   = %q{Easily parse data from a BigBlueButton recording's events.xml.}
@@ -23,9 +23,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.15"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "rspec", "~> 3.4"
 
   # Gem dependecies.
-  spec.add_dependency "nokogiri"
-  spec.add_dependency "nori"
+  spec.add_dependency "activesupport"
 end
