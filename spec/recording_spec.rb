@@ -26,13 +26,13 @@ RSpec.describe BBBEvents::Recording do
 
   context "#start" do
     it "should properly parse start time." do
-      expect(@sample.start).to eql(Time.new(2018, 8, 16, 11, 39, 21))
+      expect(@sample.start).to eql(Time.new(2018, 8, 16, 11, 39, 21, "-04:00"))
     end
   end
 
   context "#finish" do
     it "should properly parse finish time." do
-      expect(@sample.finish).to eql(Time.new(2018, 8, 16, 11, 40, 58))
+      expect(@sample.finish).to eql(Time.new(2018, 8, 16, 11, 40, 58, "-04:00"))
     end
   end
 

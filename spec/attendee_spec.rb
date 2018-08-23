@@ -25,13 +25,13 @@ RSpec.describe BBBEvents::Attendee do
 
   context "#joined" do
     it "should properly parse join time." do
-      expect(@attendee.joined).to eql(Time.new(2018, 8, 16, 11, 39, 21))
+      expect(@attendee.joined).to eql(Time.new(2018, 8, 16, 11, 39, 21, "-04:00"))
     end
   end
 
   context "#left" do
     it "should properly parse leave time." do
-      expect(@attendee.left).to eql(Time.new(2018, 8, 16, 11, 40, 58))
+      expect(@attendee.left).to eql(Time.new(2018, 8, 16, 11, 40, 58, "-04:00"))
     end
   end
 
