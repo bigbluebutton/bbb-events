@@ -13,9 +13,16 @@ module BBBEvents
       @published
     end
 
+    def to_hash
+      hash = {}
+      instance_variables.each { |var| hash[var[1..-1]] = instance_variable_get(var) }
+      hash
+    end
+
     def to_json
       hash = {}
       instance_variables.each { |var| hash[var[1..-1]] = instance_variable_get(var) }
+      puts hash.to_json
       hash.to_json
     end
   end

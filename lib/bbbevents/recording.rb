@@ -86,16 +86,34 @@ module BBBEvents
       end
     end
 
+    def attendees_to_array
+      att_array = Array.new
+      @attendees.values.map { |att| 
+        att_array.push(att.to_hash)
+      }
+      att_array
+    end
+
+    def polls_to_array
+      polls_array = Array.new
+      @polls.values.map { |poll| 
+        polls_array.push(poll.to_hash)
+      }
+      polls_array
+    end
+
     def to_json
+      att_array = attendees_to_array
+      polls_array = polls_to_array
       {
         metadata: @metadata,
         meeting_id: @meeting_id,
         duration: @duration,
         start: @start,
         finish: @finish,
-        attendees: attendees.map(&:to_json),
+        attendees: att_array, 
         files: @files,
-        polls: polls.map(&:to_json),
+        polls: polls_array,
       }.to_json
     end
 
