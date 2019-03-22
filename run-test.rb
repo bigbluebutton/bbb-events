@@ -4,7 +4,6 @@ require 'bbbevents'
 
 exit if ARGV.length < 1
 
-
 eventsxml = ARGV[0]
 
 # Parse the recording's events.xml.
