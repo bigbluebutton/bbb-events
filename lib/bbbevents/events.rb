@@ -32,11 +32,11 @@ module BBBEvents
       # integrations will be able to correlate the users with their own data.
       unless @attendees.key?(extUserId)
         @attendees[extUserId] = Attendee.new(e) unless @attendees.key?(extUserId)
-        @attendees[extUserId].joins << Time.at(timestamp_conversion(e["timestamp"]))
       end
 
       # Handle updates for re-joining users
       att = @attendees[extUserId]
+      att.joins << Time.at(timestamp_conversion(e["timestamp"]))
       att.name = e['name']
       if e['role'] == 'MODERATOR'
         att.moderator = true
