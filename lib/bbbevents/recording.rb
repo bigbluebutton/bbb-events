@@ -3,7 +3,7 @@ require 'json'
 require 'active_support/core_ext/hash'
 
 module BBBEvents
-  CSV_HEADER = %w(name moderator chats talks emojis poll_votes raisehand talk_time join left duration)
+  CSV_HEADER = %w(id extUserId name moderator chats talks emojis poll_votes raisehand talk_time join left duration)
   NO_VOTE_SYMBOL = "-"
 
   class Recording

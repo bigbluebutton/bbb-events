@@ -1,5 +1,3 @@
-require 'bbbevents/version'
-
 module BBBEvents
   TIME_FORMAT = "%H:%M:%S"
   DATE_FORMAT = "%m/%d/%Y %H:%M:%S"
@@ -10,7 +8,4 @@ module BBBEvents
   end
 end
 
-require 'bbbevents/attendee'
-require 'bbbevents/events'
-require 'bbbevents/poll'
-require 'bbbevents/recording'
+

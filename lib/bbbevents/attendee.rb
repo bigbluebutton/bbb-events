@@ -7,6 +7,7 @@ module BBBEvents
 
     def initialize(join_event)
       @id        = join_event["userId"]
+      @extUserId = join_event["externalUserId"]
       @name      = join_event["name"]
       @moderator = (join_event["role"] == MODERATOR_ROLE)
 
@@ -43,6 +44,8 @@ module BBBEvents
     def csv_row
       e = @engagement
       [
+        @id,
+        @extUserId,
         @name,
         @moderator,
         e[:chats],
