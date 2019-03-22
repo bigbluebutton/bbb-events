@@ -6,6 +6,18 @@ bbbevents is a simple ruby gem that makes it easier to parse data from a recordi
 
 This gem is currently being used on the recording server to parse events and build meeting dashboards.
 
+## Testing
+
+```
+sudo gem install activesupport
+```
+
+Copy an `events.xml` file into `testdata/` dir.
+
+```
+./run-test.rb --events testdata/events.xml
+```
+
 ## Installation
 
 Add this line to your application's Gemfile:
