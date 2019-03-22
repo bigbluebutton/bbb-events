@@ -1,16 +1,11 @@
 #!/usr/bin/ruby
 
-require './lib/bbbevents'
-require 'trollop'
+require 'bbbevents'
 
-path = File.expand_path(File.join(File.dirname(__FILE__), 'lib'))
-$LOAD_PATH << path
+exit if ARGV.length < 1
 
-opts = Trollop::options do
-  opt :events, "events.xml file", :type => String, :default => "events.xml"
-end
 
-eventsxml = opts[:events]
+eventsxml = ARGV[0]
 
 # Parse the recording's events.xml.
 recording = BBBEvents.parse(eventsxml)
@@ -39,6 +34,8 @@ recording.files
 
 # Generate a CSV file with the data.
 recording.create_csv("data.csv")
+ 
+puts "Writing the JSON data"
 
 # Write JSON data to file.
 File.open("data.json", 'w') do |f|

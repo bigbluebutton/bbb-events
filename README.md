@@ -9,13 +9,13 @@ This gem is currently being used on the recording server to parse events and bui
 ## Testing
 
 ```
-sudo gem install activesupport
+bundle install --path vendor/bundle
 ```
 
 Copy an `events.xml` file into `testdata/` dir.
 
 ```
-./run-test.rb --events testdata/events.xml
+bundle exec ./run-test.rb --events testdata/events.xml
 ```
 
 ## Installation
