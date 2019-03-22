@@ -44,8 +44,6 @@ module BBBEvents
     def csv_row
       e = @engagement
       [
-        @id,
-        @extUserId,
         @name,
         @moderator,
         e[:chats],
