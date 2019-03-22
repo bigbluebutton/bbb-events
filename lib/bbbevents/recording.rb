@@ -38,6 +38,10 @@ module BBBEvents
       @polls     = {}
       @files     = []
 
+      # Map to look up external user id (for @data[:attendees]) from the
+      # internal user id in most recording events
+      @externalUserId = {}
+
       process_events(events)
 
       @attendees.values.each do |att|
@@ -103,8 +107,10 @@ module BBBEvents
     end
 
     def to_json
+      # Convert into an array so we can generate proper json
       att_array = attendees_to_array
       polls_array = polls_to_array
+
       {
         metadata: @metadata,
         meeting_id: @meeting_id,

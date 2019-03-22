@@ -20,18 +20,37 @@ module BBBEvents
 
     # Log a users join.
     def participant_join_event(e)
-      id = e["userId"]
+      intUserId = e['userId']
+      extUserId = e['externalUserId']
 
-      @attendees[id] = Attendee.new(e) unless @attendees.key?(id)
-      @attendees[id].joins << Time.at(timestamp_conversion(e["timestamp"]))
+      # If they don't exist, initialize the user.
+      unless @externalUserId.key?(intUserId)
+        @externalUserId[intUserId] = extUserId
+      end
+
+      # We need to track the user using external userids so that 3rd party
+      # integrations will be able to correlate the users with their own data.
+      unless @attendees.key?(extUserId)
+        @attendees[extUserId] = Attendee.new(e) unless @attendees.key?(extUserId)
+        @attendees[extUserId].joins << Time.at(timestamp_conversion(e["timestamp"]))
+      end
+
+      # Handle updates for re-joining users
+      att = @attendees[extUserId]
+      att.name = e['name']
+      if e['role'] == 'MODERATOR'
+        att.moderator = true
+      end
     end
 
     # Log a users leave.
     def participant_left_event(e)
-      return unless attendee = @attendees[e["userId"]]
-
-      left = Time.at(timestamp_conversion(e["timestamp"]))
-      attendee.leaves << left
+      intUserId = e['userId']
+      # If the attendee exists, set their leave time.
+      if att = @attendees[@externalUserId[intUserId]]
+        left = Time.at(timestamp_conversion(e["timestamp"]))
+        att.leaves << left
+      end
     end
 
     # Log the uploaded file name.
@@ -41,14 +60,18 @@ module BBBEvents
 
     # Log a users public chat message
     def public_chat_event(e)
-      return unless attendee = @attendees[e["senderId"]]
-
-      attendee.engagement[:chats] += 1 if attendee
+      intUserId = e['senderId']
+      # If the attendee exists, increment their messages.
+      if att = @attendees[@externalUserId[intUserId]]
+        att.engagement[:chats] += 1
+      end
     end
 
     # Log user status changes.
     def participant_status_change_event(e)
-      return unless attendee = @attendees[e["userId"]]
+      intUserId = e['userId']
+
+      return unless attendee = @attendees[@externalUserId[intUserId]]
       status = e["value"]
 
       if attendee
@@ -62,7 +85,9 @@ module BBBEvents
 
     # Log number of speaking events and total talk time.
     def participant_talking_event(e)
-      return unless attendee = @attendees[e["participant"]]
+      intUserId = e["participant"]
+
+      return unless attendee = @attendees[@externalUserId[intUserId]]
 
       if e["talking"] == "true"
         attendee.engagement[:talks] += 1
@@ -82,11 +107,13 @@ module BBBEvents
 
     # Log user responses to polls.
     def user_responded_to_poll_record_event(e)
-      user_id = e["userId"]
-      return unless attendee = @attendees[user_id]
+      intUserId = e['userId']
+      poll_id = e['pollId']
 
-      if poll = @polls[e["pollId"]]
-        poll.votes[user_id] = poll.options[e["answerId"].to_i]
+      return unless attendee = @attendees[@externalUserId[intUserId]]
+
+      if poll = @polls[poll_id]
+        poll.votes[@externalUserId[intUserId]] = poll.options[e["answerId"].to_i]
       end
 
       attendee.engagement[:poll_votes] += 1
