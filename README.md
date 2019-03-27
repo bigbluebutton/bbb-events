@@ -15,7 +15,7 @@ bundle install --path vendor/bundle
 Copy an `events.xml` file into `testdata/` dir.
 
 ```
-bundle exec ./run-test.rb --events testdata/events.xml
+bundle exec ./example.rb spec/fixtures/files/sample.xml
 ```
 
 ## Installation

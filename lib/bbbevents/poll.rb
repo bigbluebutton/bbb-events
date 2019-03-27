@@ -13,7 +13,7 @@ module BBBEvents
       @published
     end
 
-    def to_hash
+    def to_h
       hash = {}
       instance_variables.each { |var| hash[var[1..-1]] = instance_variable_get(var) }
       hash

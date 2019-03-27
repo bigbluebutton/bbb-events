@@ -1,3 +1,5 @@
+require 'bbbevents/version'
+
 module BBBEvents
   TIME_FORMAT = "%H:%M:%S"
   DATE_FORMAT = "%m/%d/%Y %H:%M:%S"
@@ -7,5 +9,3 @@ module BBBEvents
     Recording.new(events_xml)
   end
 end
-
-
