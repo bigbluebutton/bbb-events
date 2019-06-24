@@ -13,3 +13,5 @@
 
 # testing csv file
 /spec/testing.csv
+testdata/*.xml
+

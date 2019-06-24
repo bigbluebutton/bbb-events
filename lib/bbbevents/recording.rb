@@ -38,6 +38,10 @@ module BBBEvents
       @polls     = {}
       @files     = []
 
+      # Map to look up external user id (for @data[:attendees]) from the
+      # internal user id in most recording events
+      @externalUserId = {}
+
       process_events(events)
 
       @attendees.values.each do |att|
@@ -93,9 +97,9 @@ module BBBEvents
         duration: @duration,
         start: @start,
         finish: @finish,
-        attendees: attendees.map(&:to_json),
+        attendees: attendees.map(&:to_h), 
         files: @files,
-        polls: polls.map(&:to_json),
+        polls: polls.map(&:to_h),
       }.to_json
     end
 

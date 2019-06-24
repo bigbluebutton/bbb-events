@@ -9,8 +9,3 @@ module BBBEvents
     Recording.new(events_xml)
   end
 end
-
-require 'bbbevents/attendee'
-require 'bbbevents/events'
-require 'bbbevents/poll'
-require 'bbbevents/recording'
