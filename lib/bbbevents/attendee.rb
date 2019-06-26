@@ -7,7 +7,7 @@ module BBBEvents
 
     def initialize(join_event)
       @id        = join_event["userId"]
-      @extUserId = join_event["externalUserId"]
+      @ext_user_id = join_event["externalUserId"]
       @name      = join_event["name"]
       @moderator = (join_event["role"] == MODERATOR_ROLE)
 
@@ -61,12 +61,23 @@ module BBBEvents
     def to_h
       hash = {}
       instance_variables.each { |var| hash[var[1..-1]] = instance_variable_get(var) }
+      # Convert recent_talking_time to human readable time
+      if hash["recent_talking_time"] > 0
+        hash["recent_talking_time"] = Time.at(hash["recent_talking_time"])
+      else
+        hash["recent_talking_time"] = ""
+      end
       hash
     end
 
     def to_json
       hash = {}
       instance_variables.each { |var| hash[var[1..-1]] = instance_variable_get(var) }
+      if hash["recent_talking_time"] > 0
+        hash["recent_talking_time"] = Time.at(hash["recent_talking_time"])
+      else
+        hash["recent_talking_time"] = ""
+      end
       hash.to_json
     end
 

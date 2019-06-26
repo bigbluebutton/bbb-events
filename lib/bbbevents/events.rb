@@ -102,7 +102,7 @@ module BBBEvents
       id = e["pollId"]
 
       @polls[id] = Poll.new(e)
-      @polls[id].start = timestamp_conversion(e["timestamp"])
+      @polls[id].start = Time.at(timestamp_conversion(e["timestamp"]))
     end
 
     # Log user responses to polls.
