@@ -21,7 +21,8 @@ module BBBEvents
       raise "#{filename} is missing recording key." unless raw_recording_data.key?("recording")
 
       recording_data = raw_recording_data["recording"]
-      events         = recording_data["event"]
+      events = recording_data["event"]
+      events = [events] unless events.is_a?(Array)
 
       @metadata   = recording_data["metadata"]
       @meeting_id = recording_data["metadata"]["meetingId"]
@@ -93,7 +94,7 @@ module BBBEvents
       end
     end
 
-    def to_json
+    def to_h
       # Transform any CamelCase keys to snake_case.
       @metadata.deep_transform_keys! do |key|
           k = key.to_s.underscore rescue key
@@ -106,10 +107,14 @@ module BBBEvents
         duration: @duration,
         start: @start,
         finish: @finish,
-        attendees: attendees.map(&:to_h), 
+        attendees: attendees.map(&:to_h),
         files: @files,
-        polls: polls.map(&:to_h),
-      }.to_json
+        polls: polls.map(&:to_h)
+      }
+    end
+
+    def to_json
+      to_h.to_json
     end
 
     private
