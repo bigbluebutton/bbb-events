@@ -21,7 +21,8 @@ module BBBEvents
       raise "#{filename} is missing recording key." unless raw_recording_data.key?("recording")
 
       recording_data = raw_recording_data["recording"]
-      events         = recording_data["event"]
+      events = recording_data["event"]
+      events = [events] unless events.is_a?(Array)
 
       @metadata   = recording_data["metadata"]
       @meeting_id = recording_data["meeting"]["id"]
@@ -90,17 +91,21 @@ module BBBEvents
       end
     end
 
-    def to_json
+    def to_h
       {
         metadata: @metadata,
         meeting_id: @meeting_id,
         duration: @duration,
         start: @start,
         finish: @finish,
-        attendees: attendees.map(&:to_h), 
+        attendees: attendees.map(&:to_h),
         files: @files,
-        polls: polls.map(&:to_h),
-      }.to_json
+        polls: polls.map(&:to_h)
+      }
+    end
+
+    def to_json
+      to_h.to_json
     end
 
     private
