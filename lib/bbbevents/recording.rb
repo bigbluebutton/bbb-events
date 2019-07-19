@@ -25,8 +25,11 @@ module BBBEvents
       events = [events] unless events.is_a?(Array)
 
       @metadata   = recording_data["metadata"]
-      @meeting_id = recording_data["meeting"]["id"]
-      @timestamp  = extract_timestamp(@meeting_id)
+      @meeting_id = recording_data["metadata"]["meetingId"]
+      
+      internal_meeting_id = recording_data["meeting"]["id"]
+
+      @timestamp  = extract_timestamp(internal_meeting_id)
 
       @first_event = events.first["timestamp"].to_i
       @last_event  = events.last["timestamp"].to_i
@@ -92,6 +95,12 @@ module BBBEvents
     end
 
     def to_h
+      # Transform any CamelCase keys to snake_case.
+      @metadata.deep_transform_keys! do |key|
+          k = key.to_s.underscore rescue key
+          k.to_sym rescue key
+        end       
+
       {
         metadata: @metadata,
         meeting_id: @meeting_id,

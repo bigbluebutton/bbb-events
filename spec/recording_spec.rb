@@ -14,7 +14,7 @@ RSpec.describe BBBEvents::Recording do
 
   context "#meeting_id" do
     it "should properly parse meeting_id." do
-      expect(@sample.meeting_id).to eql("3107946ecc201837635e07aeb86d785e9fe46507-1534433961829")
+      expect(@sample.meeting_id).to eql("ae5e285551844c61c757f4c8f233850a2e0b16bf")
     end
   end
 
