@@ -15,6 +15,9 @@ module BBBEvents
       filename = File.basename(events_xml)
       raise "#{filename} is not a file or does not exist." unless File.file?(events_xml)
 
+      # The Hash.from_xml automatically converts keys with dashes '-' to snake_case
+      # (i.e canvas-recording-ready-url becomes canvas_recording_ready_url)
+      # see https://www.rubydoc.info/github/datamapper/extlib/Hash.from_xml
       raw_recording_data = Hash.from_xml(File.read(events_xml))
 
       raise "#{filename} is not a valid xml file (unable to parse)." if raw_recording_data.nil?
@@ -26,7 +29,7 @@ module BBBEvents
 
       @metadata   = recording_data["metadata"]
       @meeting_id = recording_data["metadata"]["meetingId"]
-      
+
       internal_meeting_id = recording_data["meeting"]["id"]
 
       @timestamp  = extract_timestamp(internal_meeting_id)
@@ -99,7 +102,7 @@ module BBBEvents
       @metadata.deep_transform_keys! do |key|
           k = key.to_s.underscore rescue key
           k.to_sym rescue key
-        end       
+        end
 
       {
         metadata: @metadata,

@@ -45,6 +45,3 @@ DEPENDENCIES
   bundler (~> 1.15)
   rake (~> 13.0)
   rspec (~> 3.4)
-
-BUNDLED WITH
-   1.17.3
