@@ -18,6 +18,11 @@ RSpec.describe BBBEvents do
       expect { BBBEvents.parse(file_fixture("no_key.xml")) }.to raise_error("no_key.xml is missing recording key.")
     end
 
+    it "should return BBBEvents::Recording when valid xml content but no events." do
+      sample_no_events = BBBEvents.parse(file_fixture("sample_no_events.xml"))
+      expect(sample_no_events).to be_an_instance_of(BBBEvents::Recording)
+    end
+
     it "should return BBBEvents::Recording." do
       expect(@sample).to be_an_instance_of(BBBEvents::Recording)
     end
