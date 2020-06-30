@@ -25,6 +25,7 @@ module BBBEvents
 
       recording_data = raw_recording_data["recording"]
       events = recording_data["event"]
+      events = [] if events.nil?
       events = [events] unless events.is_a?(Array)
 
       @metadata   = recording_data["metadata"]
@@ -33,12 +34,15 @@ module BBBEvents
       internal_meeting_id = recording_data["meeting"]["id"]
 
       @timestamp  = extract_timestamp(internal_meeting_id)
+      @start = Time.at(@timestamp / 1000)
 
-      @first_event = events.first["timestamp"].to_i
-      @last_event  = events.last["timestamp"].to_i
-
-      @start    = Time.at(@timestamp / 1000)
-      @finish   = Time.at(timestamp_conversion(@last_event))
+      if events.length > 0
+        @first_event = events.first["timestamp"].to_i
+        @last_event  = events.last["timestamp"].to_i
+        @finish = Time.at(timestamp_conversion(@last_event))
+      else
+        @finish = @start
+      end
       @duration = (@finish - @start).to_i
 
       @attendees = {}
