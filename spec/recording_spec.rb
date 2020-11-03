@@ -141,4 +141,58 @@ RSpec.describe BBBEvents::Recording do
       expect(csv_row).to eql(first_user[0...csv_row.length])
     end
   end
+
+  context "#user duration calculations" do
+    it "should calculate user duration and return 2145" do
+      joins = ["2020-10-26 08:16:52 +0000", "2020-10-26 08:27:43 +0000", "2020-10-26 08:28:25 +0000"]
+      leaves = ["2020-10-26 08:26:55 +0000", "2020-10-26 08:28:25 +0000", "2020-10-26 08:53:25 +0000"]
+
+      joins_formatted = []
+      joins.each { |j| joins_formatted.append(Time.parse(j))}
+
+      leaves_formatted = []
+      leaves.each { |j| leaves_formatted.append(Time.parse(j))}
+
+      expect(@sample.calculate_user_duration(joins_formatted, leaves_formatted)).to eql(2145)
+    end
+
+    it "should calculate user duration and return 2977" do
+      joins = ["2020-10-26 08:06:18 +0000", "2020-10-26 08:09:08 +0000", "2020-10-26 08:10:47 +0000", "2020-10-26 08:12:24 +0000", "2020-10-26 08:13:10 +0000"]
+      leaves = ["2020-10-26 08:10:35 +0000", "2020-10-26 08:12:05 +0000", "2020-10-26 08:13:05 +0000", "2020-10-26 08:53:35 +0000", "2020-10-26 08:56:31 +0000"]
+
+      joins_formatted = []
+      joins.each { |j| joins_formatted.append(Time.parse(j))}
+
+      leaves_formatted = []
+      leaves.each { |j| leaves_formatted.append(Time.parse(j))}
+
+      expect(@sample.calculate_user_duration(joins_formatted, leaves_formatted)).to eql(2977)
+    end
+
+    it "should calculate user duration and return 249" do
+      joins = ["2020-10-26 08:49:25 +0000", "2020-10-26 08:49:53 +0000", "2020-10-26 08:56:12 +0000"]
+      leaves = ["2020-10-26 08:49:55 +0000", "2020-10-26 08:53:15 +0000", "2020-10-26 08:56:31 +0000"]
+
+      joins_formatted = []
+      joins.each { |j| joins_formatted.append(Time.parse(j))}
+
+      leaves_formatted = []
+      leaves.each { |j| leaves_formatted.append(Time.parse(j))}
+
+      expect(@sample.calculate_user_duration(joins_formatted, leaves_formatted)).to eql(249)
+    end
+
+    it "should calculate user duration and return 3092" do
+      joins = ["2020-10-26 08:04:51 +0000", "2020-10-26 08:05:37 +0000", "2020-10-26 08:06:26 +0000", "2020-10-26 08:06:28 +0000", "2020-10-26 08:07:20 +0000", "2020-10-26 08:08:03 +0000", "2020-10-26 08:17:43 +0000", "2020-10-26 08:53:50 +0000"]
+      leaves = ["2020-10-26 08:07:55 +0000", "2020-10-26 08:56:31 +0000"]
+
+      joins_formatted = []
+      joins.each { |j| joins_formatted.append(Time.parse(j))}
+
+      leaves_formatted = []
+      leaves.each { |j| leaves_formatted.append(Time.parse(j))}
+
+      expect(@sample.calculate_user_duration(joins_formatted, leaves_formatted)).to eql(3092)
+    end
+  end
 end

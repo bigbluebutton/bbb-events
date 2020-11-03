@@ -124,6 +124,32 @@ module BBBEvents
       to_h.to_json
     end
 
+    def calculate_user_duration(join_events, left_events)
+      joins_leaves_arr = []
+      join_events.each { |j| joins_leaves_arr.append({:time => j.to_i, :datetime => j, :event => :join})}
+      left_events.each { |j| joins_leaves_arr.append({:time => j.to_i, :datetime => j, :event => :left})}
+
+      joins_leaves_arr_sorted = joins_leaves_arr.sort_by { |event| event[:time] }
+
+      partial_duration = 0
+      prev_event = nil
+
+      joins_leaves_arr_sorted.each do |cur_event|
+        duration = 0
+        if prev_event != nil and cur_event[:event] == :join and prev_event[:event] == :left
+          # user left and rejoining, don't update duration
+          prev_event = cur_event
+        elsif prev_event != nil
+          duration = cur_event[:time] - prev_event[:time]
+          partial_duration += duration
+          prev_event = cur_event
+        else
+          prev_event = cur_event
+        end
+      end
+      return partial_duration
+    end
+
     private
 
     # Process all the events in the events.xml file.
@@ -146,13 +172,7 @@ module BBBEvents
 
     # Calculates an attendee's duration.
     def total_duration(att)
-      return 0 unless att.joins.length == att.leaves.length
-      total = 0
-
-      att.joins.length.times do |i|
-        total += att.leaves[i] - att.joins[i]
-      end
-      total
+      calculate_user_duration(att.joins, att.leaves)
     end
   end
 end
