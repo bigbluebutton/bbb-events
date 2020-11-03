@@ -152,14 +152,14 @@ module BBBEvents
       att.joins.each { |j| joins_leaves_arr.append({:time => j.to_i, :datetime => j, :event => :join})}
       att.leaves.each { |j| joins_leaves_arr.append({:time => j.to_i, :datetime => j, :event => :left})}
 
-      puts "BEGIN ============"
-      puts "user: #{att.name} #{att.id} #{att.ext_user_id}"
-      puts " Events: "
+      #puts "BEGIN ============"
+      #puts "user: #{att.name} #{att.id} #{att.ext_user_id}"
+      #puts " Events: "
 
       joins_leaves_arr_sorted = joins_leaves_arr.sort_by { |event| event[:time] }
 
-      puts joins_leaves_arr_sorted
-      puts "\n Calculating duration: "
+      #puts joins_leaves_arr_sorted
+      #puts "\n Calculating duration: "
 
       partial_duration = 0
       prev_event = nil
@@ -177,14 +177,14 @@ module BBBEvents
           prev_event = cur_event
         end
 
-        puts "#{cur_event[:datetime]} cur_duration=#{Time.at(duration).utc.strftime("%H:%M:%S")} duration=#{Time.at(partial_duration).utc.strftime("%H:%M:%S")} join=#{cur_event[:event]} "
+        #puts "#{cur_event[:datetime]} cur_duration=#{Time.at(duration).utc.strftime("%H:%M:%S")} duration=#{Time.at(partial_duration).utc.strftime("%H:%M:%S")} join=#{cur_event[:event]} "
       end
 
-      puts "\n"
-      puts "------------"
-      puts "user duration = #{Time.at(partial_duration).utc.strftime("%H:%M:%S")}"
-      puts "============ END"
-      puts "\n"
+      #puts "\n"
+      #puts "------------"
+      #puts "user duration = #{Time.at(partial_duration).utc.strftime("%H:%M:%S")}"
+      #puts "============ END"
+      #puts "\n"
       return partial_duration
     end
   end
