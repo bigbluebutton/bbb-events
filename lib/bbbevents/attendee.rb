@@ -1,6 +1,6 @@
 module BBBEvents
   class Attendee
-    attr_accessor :id, :ext_user_id, :name, :moderator, :joins, :leaves, :duration, :duration_human, :recent_talking_time, :engagement
+    attr_accessor :id, :ext_user_id, :name, :moderator, :joins, :leaves, :duration, :recent_talking_time, :engagement
 
     MODERATOR_ROLE = "MODERATOR"
     VIEWER_ROLE = "VIEWER"
@@ -14,7 +14,6 @@ module BBBEvents
       @joins    = []
       @leaves   = []
       @duration = 0
-      @duration_human = ""
 
       @recent_talking_time = 0
 

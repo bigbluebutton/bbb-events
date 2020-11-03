@@ -59,7 +59,6 @@ module BBBEvents
       @attendees.values.each do |att|
         att.leaves << @finish if att.joins.length > att.leaves.length
         att.duration = total_duration(att)
-        att.duration_human = Time.at(att.duration).utc.strftime("%H:%M:%S")
       end
     end
 
@@ -126,6 +125,32 @@ module BBBEvents
       to_h.to_json
     end
 
+    def calculate_user_duration(join_events, left_events)
+      joins_leaves_arr = []
+      join_events.each { |j| joins_leaves_arr.append({:time => j.to_i, :datetime => j, :event => :join})}
+      left_events.each { |j| joins_leaves_arr.append({:time => j.to_i, :datetime => j, :event => :left})}
+
+      joins_leaves_arr_sorted = joins_leaves_arr.sort_by { |event| event[:time] }
+
+      partial_duration = 0
+      prev_event = nil
+
+      joins_leaves_arr_sorted.each do |cur_event|
+        duration = 0
+        if prev_event != nil and cur_event[:event] == :join and prev_event[:event] == :left
+          # user left and rejoining, don't update duration
+          prev_event = cur_event
+        elsif prev_event != nil
+          duration = cur_event[:time] - prev_event[:time]
+          partial_duration += duration
+          prev_event = cur_event
+        else
+          prev_event = cur_event
+        end
+      end
+      return partial_duration
+    end
+
     private
 
     # Process all the events in the events.xml file.
@@ -148,44 +173,7 @@ module BBBEvents
 
     # Calculates an attendee's duration.
     def total_duration(att)
-      joins_leaves_arr = []
-      att.joins.each { |j| joins_leaves_arr.append({:time => j.to_i, :datetime => j, :event => :join})}
-      att.leaves.each { |j| joins_leaves_arr.append({:time => j.to_i, :datetime => j, :event => :left})}
-
-      #puts "BEGIN ============"
-      #puts "user: #{att.name} #{att.id} #{att.ext_user_id}"
-      #puts " Events: "
-
-      joins_leaves_arr_sorted = joins_leaves_arr.sort_by { |event| event[:time] }
-
-      #puts joins_leaves_arr_sorted
-      #puts "\n Calculating duration: "
-
-      partial_duration = 0
-      prev_event = nil
-
-      joins_leaves_arr_sorted.each do |cur_event|
-        duration = 0
-        if prev_event != nil and cur_event[:event] == :join and prev_event[:event] == :left
-          # user left and rejoining, don't update duration
-          prev_event = cur_event
-        elsif prev_event != nil
-          duration = cur_event[:time] - prev_event[:time]
-          partial_duration += duration
-          prev_event = cur_event
-        else
-          prev_event = cur_event
-        end
-
-        #puts "#{cur_event[:datetime]} cur_duration=#{Time.at(duration).utc.strftime("%H:%M:%S")} duration=#{Time.at(partial_duration).utc.strftime("%H:%M:%S")} join=#{cur_event[:event]} "
-      end
-
-      #puts "\n"
-      #puts "------------"
-      #puts "user duration = #{Time.at(partial_duration).utc.strftime("%H:%M:%S")}"
-      #puts "============ END"
-      #puts "\n"
-      return partial_duration
+      calculate_user_duration(att.joins, att.leaves)
     end
   end
 end
