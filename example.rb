@@ -1,6 +1,7 @@
 #!/usr/bin/ruby
 
 require 'bbbevents'
+require 'date'
 
 exit if ARGV.length < 1
 
@@ -33,7 +34,7 @@ recording.files
 
 # Generate a CSV file with the data.
 recording.create_csv("data.csv")
- 
+
 puts "Writing the JSON data"
 
 # Write JSON data to file.
@@ -42,3 +43,10 @@ File.open("data.json", 'w') do |f|
 end
 
 
+puts "start: #{recording.start} end: #{recording.finish}"
+recording.attendees.each do |att|
+  puts "#{att.name} #{recording.finish}\n"
+
+  recording.calculate_user_duration_based_on_userid(recording.finish, att.sessions)
+  puts "\n\n"
+end

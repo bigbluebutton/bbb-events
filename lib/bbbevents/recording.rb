@@ -146,8 +146,307 @@ module BBBEvents
         else
           prev_event = cur_event
         end
+        #puts "#{cur_event} #{duration} #{partial_duration}"
       end
+
       return partial_duration
+    end
+
+    def calculate_user_duration_based_on_userid(last_event_ts, sessions)
+      print_joins_by_userid(sessions)
+
+      joins_leaves_arr = build_join_lefts_array(last_event_ts, sessions)
+
+      joins_leaves_arr_sorted = joins_leaves_arr.sort_by { |event| event[:timestamp] }
+
+      #joins_leaves_arr_sorted.each do |event|
+      #  puts "    #{event}"
+      #end
+      #puts "\n"
+
+      jl_tuples = build_join_left_tuples(joins_leaves_arr_sorted)
+
+      #print_durations(att.duration, jl_tuples)
+
+      combined_tuples = combine_tuples_by_userid(sessions)
+
+      #print_combined_tuples(combined_tuples)
+
+      combined_tuples_sorted = fill_missing_left_events(combined_tuples)
+
+      #puts "\n"
+      #puts "  Sorting combined events:\n"
+
+      #joins_leaves_arr_sorted.each do |event|
+      #  puts "    #{event}"
+      #end
+      #puts "\n"
+
+      tuple_index = 0
+      combined_tuples_sorted.each do |tuple|
+        #puts "    #{tuple}"
+        if tuple[:left].nil? and tuple_index != combined_tuples_sorted.length - 1
+          puts " ****** left nil on non last element"
+        end
+        tuple_index += 1
+      end
+      puts "\n"
+
+      prepare_joins_lefts_for_overlap_checks(joins_leaves_arr_sorted)
+
+      #joins_leaves_arr_sorted.each do |event|
+      #  puts "    #{event}"
+      #end
+      #puts "\n"
+
+      mark_overlapping_events(combined_tuples_sorted, joins_leaves_arr_sorted)
+
+      #joins_leaves_arr_sorted.each do |event|
+      #  puts "    #{event}"
+      #end
+      #puts "\n"
+
+      removed_overlap_events = remove_overlapping_events(joins_leaves_arr_sorted)
+
+      if not removed_overlap_events.length.even?
+        puts " !!!!!!! Overlapping events not even !!!!!"
+      end
+
+      removed_overlap_events.each do |event|
+        puts "    #{event}"
+      end
+      puts "\n"
+
+      duration_tuples = build_join_left_tuples(removed_overlap_events)
+
+      #duration_tuples.each do |tuple|
+      #  puts "    #{tuple}"
+      #end
+
+      #puts "\n"
+
+      partial_duration = 0
+      duration_tuples.each do |tuple|
+        duration = tuple[:left][:timestamp].to_i - tuple[:join][:timestamp].to_i
+        partial_duration += duration
+        duration_hms = Time.at(duration).utc.strftime("%H:%M:%S")
+        partial_duration_hms = Time.at(partial_duration).utc.strftime("%H:%M:%S")
+        puts "      start: #{tuple[:join][:timestamp]} end: #{tuple[:left][:timestamp]} duration: #{duration_hms} total: #{partial_duration_hms}"
+      end
+
+      puts partial_duration
+      partial_duration
+    end
+
+    def tuples_by_userid(joins_arr, lefts_arr)
+      joins_length = joins_arr.length - 1
+      tuples = []
+      for i in 0..joins_length
+        tuple = {:join => joins_arr[i], :left => nil}
+
+        if i <= lefts_arr.length - 1
+          tuple[:left] = lefts_arr[i]
+        end
+        tuples.append(tuple)
+      end
+      tuples
+    end
+
+    def combine_tuples_by_userid(user_sessions)
+      combined_tuples = []
+
+      user_sessions.each do | userid, joins_lefts |
+        joins_leaves_arr = []
+        joins_lefts[:joins].each { |j| joins_leaves_arr.append(j)}
+        joins_lefts[:lefts].each { |j| joins_leaves_arr.append(j)}
+
+        joins_leaves_arr_sorted = joins_leaves_arr.sort_by { |event| event[:timestamp] }
+
+        tuples = tuples_by_userid(joins_lefts[:joins], joins_lefts[:lefts])
+
+        tuples.each do |tuple|
+          combined_tuples.append(tuple)
+        end
+      end
+
+      combined_tuples
+    end
+
+    def fill_missing_left_events(combined_tuples)
+      joins_leaves_arr_sorted = combined_tuples.sort_by { |event| event[:join][:timestamp]}
+
+      joins_leaves_arr_sorted_length = joins_leaves_arr_sorted.length - 1
+      for i in 0..joins_leaves_arr_sorted_length
+        cur_event = joins_leaves_arr_sorted[i]
+        if cur_event[:left].nil?
+          unless joins_leaves_arr_sorted_length == i
+            # Take the next event as the left event for this current event
+            next_event = joins_leaves_arr_sorted[i + 1]
+            left_event = {:timestamp => next_event[:timestamp], :userid => cur_event[:userid], :event => :left}
+
+            cur_event[:left] = left_event
+          end
+        end
+      end
+
+      joins_leaves_arr_sorted
+    end
+
+    def build_join_left_tuples(joins_leaves_arr_sorted)
+      jl_tuples = []
+      jl_tuple = {:join => nil, :left => nil}
+      loop_state = :find_join
+
+      events_length = joins_leaves_arr_sorted.length - 1
+      for i in 0..events_length
+
+        cur_event = joins_leaves_arr_sorted[i]
+
+        if loop_state == :find_join and cur_event[:event] == :join
+          jl_tuple[:join] = cur_event
+          loop_state = :find_left
+        end
+
+        next_event = nil
+        if i < events_length
+          next_event = joins_leaves_arr_sorted[i + 1]
+        end
+
+        if loop_state == :find_left
+          if next_event != nil and next_event[:event] == :left
+            # skip the current event to get to the next event
+          elsif (cur_event[:event] == :left and next_event != nil and next_event[:event] == :join) or (i == events_length)
+            jl_tuple[:left] = cur_event
+            jl_tuples.append(jl_tuple)
+            jl_tuple = {:join => nil, :left => nil}
+            loop_state = :find_join
+          end
+        end
+      end
+
+      jl_tuples
+    end
+
+    def print_durations(old_duration, jl_tuples)
+      partial_duration = 0
+
+      puts "  Tuples: \n"
+      jl_tuples.each do |t|
+        duration = t[:left][:timestamp].to_i - t[:join][:timestamp].to_i
+        partial_duration += duration
+        duration_hms = Time.at(duration).utc.strftime("%H:%M:%S")
+        partial_duration_hms = Time.at(partial_duration).utc.strftime("%H:%M:%S")
+        puts "      join: #{t[:join][:timestamp]} left: #{t[:left][:timestamp]} duration: #{duration_hms} total: #{partial_duration_hms}"
+      end
+
+      puts "\n"
+      old_duration_hms = Time.at(old_duration).utc.strftime("%H:%M:%S")
+      partial_duration_hms = Time.at(partial_duration).utc.strftime("%H:%M:%S")
+      puts "  Duration Calculations: old = #{old_duration_hms} new = #{partial_duration_hms}"
+      puts "\n"
+    end
+
+    def print_joins_by_userid(user_sessions)
+      puts "  Joins by userid:"
+      user_sessions.each do | userid, joins_lefts |
+        puts "    #{userid}:"
+        puts "      joins: "
+        joins_lefts[:joins].each do |join|
+          puts "        #{join}"
+        end
+
+        puts "      lefts:"
+        joins_lefts[:lefts].each do |left|
+          puts "        #{left}"
+        end
+
+        puts "\n"
+      end
+      puts user_sessions
+    end
+
+    def build_join_lefts_array(last_event_timestamp, user_session)
+      joins_leaves_arr = []
+      lefts_count = 0
+      joins_count = 0
+
+      user_session.each do | userid, joins_lefts |
+        lefts_count += joins_lefts[:lefts].length
+        joins_count += joins_lefts[:joins].length
+        joins_lefts[:joins].each { |j| joins_leaves_arr.append(j)}
+        joins_lefts[:lefts].each { |j| joins_leaves_arr.append(j)}
+      end
+
+      if joins_count > lefts_count
+        last_event = joins_leaves_arr[-1]
+        joins_leaves_arr.append({:timestamp => last_event_timestamp, :userid => "    system    ", :ext_userid=> last_event[:ext_userid], :event => :left})
+      end
+
+      joins_leaves_arr
+    end
+
+    def print_combined_tuples(combined_tuples)
+      puts "  Combined Tuples:"
+      combined_tuples.each do |tuple|
+        left_timestamp = "none"
+        left_userid = "none"
+        unless tuple[:left].nil?
+          left_timestamp = tuple[:left][:timestamp]
+          left_userid = tuple[:left][:userid]
+        end
+        puts "    #{tuple[:join][:timestamp]} #{tuple[:join][:userid]} #{left_timestamp} #{left_userid}"
+      end
+      puts "\n"
+    end
+
+    def prepare_joins_lefts_for_overlap_checks(joins_leaves_arr_sorted)
+      joins_leaves_arr_sorted.each do |event|
+        event[:remove] = false
+      end
+    end
+
+    def mark_overlapping_events(combined_tuples_sorted, joins_leaves_arr_sorted)
+      combined_tuples_sorted.each do |ce|
+        joins_leaves_arr_sorted.each do |jl|
+          event_ts = jl[:timestamp].to_i
+          ce_join = ce[:join][:timestamp].to_i
+          #ce_left = ce[:left][:timestamp].to_i
+          if event_ts > ce_join and not ce[:left].nil? and event_ts < ce[:left][:timestamp].to_i
+            jl[:remove] = true
+          end
+        end
+      end
+    end
+
+    def remove_overlapping_events(joins_leaves_arr_sorted)
+      keep_events = []
+      joins_leaves_arr_sorted.each do |ev|
+        if not ev[:remove]
+          keep_events.append(ev)
+        end
+      end
+      keep_events
+    end
+
+    def build_tuples_of_kept_events(kept_events)
+      odd_events = []
+      even_events = []
+      for i in 0..kept_events.length - 1
+        odd_even = i + 1
+        if odd_even.even?
+          even_events.append(kept_events[i])
+        else
+          odd_events.append(kept_events[i])
+        end
+      end
+
+      tuples = []
+      for i in 0..odd_events.length - 1
+        tuple = {:start => odd_events[i], :end => even_events[i]}
+        tuples.append(tuple)
+      end
+
+      tuples
     end
 
     private
