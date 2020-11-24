@@ -42,11 +42,7 @@ File.open("data.json", 'w') do |f|
   f.write(recording.to_json)
 end
 
-
-puts "start: #{recording.start} end: #{recording.finish}"
 recording.attendees.each do |att|
-  puts "#{att.name} #{recording.finish}\n"
-
   recording.calculate_user_duration_based_on_userid(recording.finish, att.sessions)
-  puts "\n\n"
+
 end
