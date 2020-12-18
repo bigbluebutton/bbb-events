@@ -34,13 +34,23 @@ module BBBEvents
         @attendees[extUserId] = Attendee.new(e) unless @attendees.key?(extUserId)
       end
 
+      join_ts = Time.at(timestamp_conversion(e["timestamp"]))
+
       # Handle updates for re-joining users
       att = @attendees[extUserId]
-      att.joins << Time.at(timestamp_conversion(e["timestamp"]))
+      att.joins << join_ts
       att.name = e['name']
       if e['role'] == 'MODERATOR'
         att.moderator = true
       end
+
+      join_2 = {:timestamp => join_ts, :userid => intUserId, :ext_userid => extUserId, :event => :join}
+
+      unless att.sessions.key?(intUserId)
+        att.sessions[intUserId] = { :joins => [], :lefts => []}
+      end
+
+      att.sessions[intUserId][:joins] << join_2
     end
 
     # Log a users leave.
@@ -48,8 +58,16 @@ module BBBEvents
       intUserId = e['userId']
       # If the attendee exists, set their leave time.
       if att = @attendees[@externalUserId[intUserId]]
-        left = Time.at(timestamp_conversion(e["timestamp"]))
-        att.leaves << left
+        left_ts = Time.at(timestamp_conversion(e["timestamp"]))
+        att.leaves << left_ts
+
+        extUserId = 'missing'
+        if @externalUserId.key?(intUserId)
+          extUserId = @externalUserId[intUserId]
+        end
+
+        left_2 = {:timestamp => left_ts, :userid => intUserId, :ext_userid => extUserId, :event => :left}
+        att.sessions[intUserId][:lefts] << left_2
       end
     end
 

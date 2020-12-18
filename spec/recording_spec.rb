@@ -195,4 +195,257 @@ RSpec.describe BBBEvents::Recording do
       expect(@sample.calculate_user_duration(joins_formatted, leaves_formatted)).to eql(3092)
     end
   end
+
+  context "#duration calculations based on userid" do
+    it "should calculate user duration and return 135 seconds" do
+      sessions = {"w_fgwzlytmwbgi" =>
+                    { :joins =>
+                        [
+                          { :timestamp => Time.parse("2020-10-26 08:54:16 +0000"),
+                            :userid => "w_fgwzlytmwbgi",
+                            :ext_userid => "39566",
+                            :event => :join
+                            }
+                        ],
+                      :lefts => []
+                    }
+                }
+
+      finish = Time.parse("2020-10-26 08:56:31 +0000")
+
+      expect(@sample.calculate_user_duration_based_on_userid(finish, sessions)).to eql(135)
+    end
+
+    it "should calculate user duration and return 6598 seconds" do
+      sessions = {
+                    "w_zgljgd7tuijf" =>
+                      {
+                        :joins =>
+                          [
+                            { :timestamp => Time.parse("2020-11-16 17:29:43 +0000"),
+                              :userid => "w_zgljgd7tuijf",
+                              :ext_userid => "4561",
+                              :event => :join
+                            },
+                            { :timestamp => Time.parse("2020-11-16 18:09:37 +0000"),
+                              :userid => "w_zgljgd7tuijf",
+                              :ext_userid => "4561",
+                              :event => :join
+                            },
+                            { :timestamp => Time.parse("2020-11-16 18:14:43 +0000"),
+                              :userid => "w_zgljgd7tuijf",
+                              :ext_userid => "4561",
+                              :event => :join
+                            }
+                          ],
+                        :lefts =>
+                          [
+                            { :timestamp => Time.parse("2020-11-16 18:03:02 +0000"),
+                              :userid => "w_zgljgd7tuijf",
+                              :ext_userid => "4561",
+                              :event => :left
+                            },
+                            { :timestamp => Time.parse("2020-11-16 18:10:42 +0000"),
+                              :userid => "w_zgljgd7tuijf",
+                              :ext_userid => "4561",
+                              :event => :left
+                            },
+                            { :timestamp => Time.parse("2020-11-16 18:15:32 +0000"),
+                              :userid => "w_zgljgd7tuijf",
+                              :ext_userid => "4561",
+                              :event => :left
+                            }
+                          ]
+                        },
+                      "w_wbmrqo72jnjo" =>
+                        {
+                          :joins =>
+                            [
+                              { :timestamp => Time.parse("2020-11-16 18:01:34 +0000"),
+                                :userid => "w_wbmrqo72jnjo",
+                                :ext_userid => "4561",
+                                :event => :join
+                              },
+                              { :timestamp => Time.parse("2020-11-16 19:11:28 +0000"),
+                                :userid => "w_wbmrqo72jnjo",
+                                :ext_userid => "4561",
+                                :event => :join
+                              },
+                              { :timestamp => Time.parse("2020-11-16 19:14:47 +0000"),
+                                :userid => "w_wbmrqo72jnjo",
+                                :ext_userid => "4561",
+                                :event => :join
+                              },
+                              { :timestamp => Time.parse("2020-11-16 19:16:12 +0000"),
+                                :userid => "w_wbmrqo72jnjo",
+                                :ext_userid => "4561",
+                                :event => :join
+                              },
+                              { :timestamp => Time.parse("2020-11-16 19:18:02 +0000"),
+                                :userid => "w_wbmrqo72jnjo",
+                                :ext_userid => "4561",
+                                :event => :join
+                              }
+                            ],
+                          :lefts =>
+                            [
+                              { :timestamp => Time.parse("2020-11-16 19:10:52 +0000"),
+                                :userid => "w_wbmrqo72jnjo",
+                                :ext_userid => "4561",
+                                :event => :left
+                              },
+                              { :timestamp => Time.parse("2020-11-16 19:14:32 +0000"),
+                                :userid => "w_wbmrqo72jnjo",
+                                :ext_userid => "4561",
+                                :event => :left
+                              },
+                              { :timestamp => Time.parse("2020-11-16 19:15:42 +0000"),
+                                :userid => "w_wbmrqo72jnjo",
+                                :ext_userid => "4561",
+                                :event => :left
+                              },
+                              { :timestamp => Time.parse("2020-11-16 19:17:02 +0000"),
+                                :userid => "w_wbmrqo72jnjo",
+                                :ext_userid => "4561",
+                                :event => :left
+                              },
+                              { :timestamp => Time.parse("2020-11-16 19:22:02 +0000"),
+                                :userid => "w_wbmrqo72jnjo",
+                                :ext_userid => "4561",
+                                :event => :left
+                              }
+                            ]
+                        },
+                      "w_tkerwwfgsede" =>
+                        {
+                          :joins =>
+                            [
+                              { :timestamp => Time.parse("2020-11-16 19:18:05 +0000"),
+                                :userid => "w_tkerwwfgsede",
+                                :ext_userid => "4561",
+                                :event => :join
+                              }
+                            ],
+                          :lefts =>
+                            [
+                              { :timestamp => Time.parse("2020-11-16 19:21:12 +0000"),
+                                :userid => "w_tkerwwfgsede",
+                                :ext_userid => "4561",
+                                :event => :left
+                              }
+                            ]
+                        }
+                    }
+
+      finish = Time.parse("2020-11-16 19:23:12 +0000")
+
+      expect(@sample.calculate_user_duration_based_on_userid(finish, sessions)).to eql(6598)
+    end
+
+    it "should calculate user duration and return 6735 seconds" do
+      sessions = {
+                    "w_awh9rd167wx5" =>
+                      {
+                        :joins =>
+                          [
+                            { :timestamp => Time.parse("2020-11-16 17:28:56 +0000"),
+                              :userid => "w_awh9rd167wx5",
+                              :ext_userid => "4310",
+                              :event => :join
+                            }
+                          ],
+                        :lefts =>
+                          [
+                            { :timestamp => Time.parse("2020-11-16 17:29:42 +0000"),
+                              :userid => "w_awh9rd167wx5",
+                              :ext_userid => "4310",
+                              :event => :left
+                            }
+                          ]
+                      },
+                    "w_uhcrcgoenwub" =>
+                      {
+                        :joins =>
+                          [
+                            { :timestamp => Time.parse("2020-11-16 17:29:43 +0000"),
+                              :userid => "w_uhcrcgoenwub",
+                              :ext_userid => "4310",
+                              :event => :join
+                            }
+                          ],
+                        :lefts =>
+                          [
+                            { :timestamp => Time.parse("2020-11-16 17:30:22 +0000"),
+                              :userid => "w_uhcrcgoenwub",
+                              :ext_userid => "4310",
+                              :event => :left
+                            }
+                          ]
+                      },
+                    "w_scp19cxkjwyo" =>
+                      {
+                        :joins =>
+                          [
+                            { :timestamp => Time.parse("2020-11-16 17:30:15 +0000"),
+                              :userid => "w_scp19cxkjwyo",
+                              :ext_userid => "4310",
+                              :event => :join
+                            },
+                            { :timestamp => Time.parse("2020-11-16 18:08:14 +0000"),
+                              :userid => "w_scp19cxkjwyo",
+                              :ext_userid => "4310",
+                              :event => :join
+                            },
+                            { :timestamp => Time.parse("2020-11-16 18:53:50 +0000"),
+                              :userid => "w_scp19cxkjwyo",
+                              :ext_userid => "4310",
+                              :event => :join
+                            }
+                          ],
+                        :lefts =>
+                          [
+                            { :timestamp => Time.parse("2020-11-16 18:04:12 +0000"),
+                              :userid => "w_scp19cxkjwyo",
+                              :ext_userid => "4310",
+                              :event => :left
+                            },
+                            { :timestamp => Time.parse("2020-11-16 18:09:02 +0000"),
+                              :userid => "w_scp19cxkjwyo",
+                              :ext_userid => "4310",
+                              :event => :left
+                            },
+                            { :timestamp => Time.parse("2020-11-16 19:21:12 +0000"),
+                              :userid => "w_scp19cxkjwyo",
+                              :ext_userid => "4310",
+                              :event => :left
+                            }
+                          ]
+                        },
+                      "w_irmlt2pgxdnk" =>
+                        {
+                          :joins =>
+                            [
+                              { :timestamp => Time.parse("2020-11-16 18:02:34 +0000"),
+                                :userid => "w_irmlt2pgxdnk",
+                                :ext_userid => "4310",
+                                :event => :join
+                              }
+                            ],
+                          :lefts =>
+                            [
+                              { :timestamp => Time.parse("2020-11-16 18:56:42 +0000"),
+                                :userid => "w_irmlt2pgxdnk",
+                                :ext_userid => "4310",
+                                :event => :left
+                              }
+                            ]
+                          }
+                    }
+
+
+      finish = Time.parse("2020-11-16 19:23:12 +0000")
+
+      expect(@sample.calculate_user_duration_based_on_userid(finish, sessions)).to eql(6735)
+    end
+  end
 end

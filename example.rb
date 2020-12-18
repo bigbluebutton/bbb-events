@@ -33,12 +33,10 @@ recording.files
 
 # Generate a CSV file with the data.
 recording.create_csv("data.csv")
- 
+
 puts "Writing the JSON data"
 
 # Write JSON data to file.
 File.open("data.json", 'w') do |f|
   f.write(recording.to_json)
 end
-
-

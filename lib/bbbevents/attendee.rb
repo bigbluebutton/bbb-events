@@ -1,6 +1,6 @@
 module BBBEvents
   class Attendee
-    attr_accessor :id, :ext_user_id, :name, :moderator, :joins, :leaves, :duration, :recent_talking_time, :engagement
+    attr_accessor :id, :ext_user_id, :name, :moderator, :joins, :leaves, :duration, :recent_talking_time, :engagement, :sessions
 
     MODERATOR_ROLE = "MODERATOR"
     VIEWER_ROLE = "VIEWER"
@@ -25,6 +25,10 @@ module BBBEvents
         poll_votes: 0,
         talk_time: 0,
       }
+
+      # A hash of join and lefts arrays for each internal user id
+      # { "w_5lmcgjboagjc" => { :joins => [], :lefts => []}}
+      @sessions = Hash.new
     end
 
     def moderator?
