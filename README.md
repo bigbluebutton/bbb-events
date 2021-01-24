@@ -102,10 +102,10 @@ poll.published?
 # Determine when the poll started.
 poll.start
 
-# Returns an Array contain possible options.
+# Returns an Array containing possible options.
 poll.options
 
-# Returns a Hash maping user_id's to their poll votes.
+# Returns a Hash mapping user_id's to their poll votes.
 poll.votes
 ```
 
