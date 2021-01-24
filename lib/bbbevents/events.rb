@@ -7,6 +7,7 @@ module BBBEvents
       "public_chat_event",
       "participant_status_change_event",
       "participant_talking_event",
+      "participant_muted_event",
       "poll_started_record_event",
       "user_responded_to_poll_record_event",
       "add_shape_event",
@@ -68,6 +69,8 @@ module BBBEvents
 
         left_2 = {:timestamp => left_ts, :userid => intUserId, :ext_userid => extUserId, :event => :left}
         att.sessions[intUserId][:lefts] << left_2
+
+        record_stop_talking(att, e["timestamp"])
       end
     end
 
@@ -111,7 +114,24 @@ module BBBEvents
         attendee.engagement[:talks] += 1
         attendee.recent_talking_time = timestamp_conversion(e["timestamp"])
       else
-        attendee.engagement[:talk_time] += timestamp_conversion(e["timestamp"]) - attendee.recent_talking_time
+        record_stop_talking(attendee, e["timestamp"])
+      end
+    end
+
+    def record_stop_talking(attendee, timestamp_s)
+      return if attendee.recent_talking_time == 0
+
+      attendee.engagement[:talk_time] += timestamp_conversion(timestamp_s) - attendee.recent_talking_time
+      attendee.recent_talking_time = 0
+    end
+
+    def participant_muted_event(e)
+      intUserId = e["participant"]
+
+      return unless attendee = @attendees[@externalUserId[intUserId]]
+
+      if e["muted"] == "true"
+        record_stop_talking(attendee, e["timestamp"])
       end
     end
 
