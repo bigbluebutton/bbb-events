@@ -6,6 +6,7 @@
 /pkg/
 /spec/reports/
 /tmp/
+/vendor/
 
 # rspec failure tracking
 .rspec_status
@@ -16,3 +17,7 @@ testdata/*.xml
 
 /bbbevents-*
 /pec
+
+# result of the example script
+/data.csv
+/data.json
