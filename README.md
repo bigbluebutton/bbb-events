@@ -15,7 +15,7 @@ bundle install --path vendor/bundle
 Copy an `events.xml` file into `testdata/` dir.
 
 ```
-bundle exec ./example.rb spec/fixtures/files/sample-events.xml
+bundle exec ruby example.rb testdata/events.xml
 ```
 
 ## Installation
@@ -102,10 +102,10 @@ poll.published?
 # Determine when the poll started.
 poll.start
 
-# Returns an Array contain possible options.
+# Returns an Array containing possible options.
 poll.options
 
-# Returns a Hash maping user_id's to their poll votes.
+# Returns a Hash mapping user_id's to their poll votes.
 poll.votes
 ```
 
