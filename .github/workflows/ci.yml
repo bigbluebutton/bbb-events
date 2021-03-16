@@ -1,0 +1,40 @@
+env:
+  RUBY_VERSION: 2.7.2
+  DATABASE_URL: postgres://postgres:postgres@localhost:5432/postgres
+
+name: CI
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: Rubocop + Rails Test
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Ruby ${{ env.RUBY_VERSION }}
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+
+      - name: Bundle cache
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Bundle install
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Run Rubocop
+        run: bundle exec rubocop
+
+      - name: Run Rails Test
+        run:  |
+          bundler exec rails test:db
