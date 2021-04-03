@@ -9,7 +9,7 @@ module BBBEvents
   class Recording
     include Events
 
-    attr_accessor :metadata, :meeting_id, :timestamp, :start, :finish, :duration, :files
+    attr_accessor :metadata, :meeting_id, :timestamp, :start, :finish, :duration, :files, :recorded_segments
 
     def initialize(events_xml)
       filename = File.basename(events_xml)
@@ -45,9 +45,10 @@ module BBBEvents
       end
       @duration = (@finish - @start).to_i
 
-      @attendees = {}
-      @polls     = {}
-      @files     = []
+      @attendees         = {}
+      @polls             = {}
+      @files             = []
+      @recorded_segments = []
 
       # Map to look up external user id (for @data[:attendees]) from the
       # internal user id in most recording events
@@ -58,6 +59,10 @@ module BBBEvents
       @attendees.values.each do |att|
         att.leaves << @finish if att.joins.length > att.leaves.length
         att.duration = total_duration(@finish, att)
+      end
+
+      if ! @recorded_segments.empty? and @recorded_segments.last.stop.nil?
+        @recorded_segments.last.stop = @finish
       end
     end
 
@@ -116,7 +121,8 @@ module BBBEvents
         finish: @finish,
         attendees: attendees.map(&:to_h),
         files: @files,
-        polls: polls.map(&:to_h)
+        polls: polls.map(&:to_h),
+        recorded_segments: @recorded_segments.map(&:to_h),
       }
     end
 

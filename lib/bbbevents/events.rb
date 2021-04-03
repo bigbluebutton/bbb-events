@@ -11,6 +11,7 @@ module BBBEvents
       "poll_started_record_event",
       "user_responded_to_poll_record_event",
       "add_shape_event",
+      "record_status_event",
     ]
 
     EMOJI_WHITELIST = %w(away neutral confused sad happy applause thumbsUp thumbsDown)
@@ -163,6 +164,16 @@ module BBBEvents
         if poll = @polls[e["id"]]
           poll.published = true
         end
+      end
+    end
+
+    def record_status_event(e)
+      if e["status"] == "true"
+        r = RecordedSegment.new
+        r.start = Time.at(timestamp_conversion(e["timestamp"]))
+        @recorded_segments << r
+      else
+        @recorded_segments.last.stop = Time.at(timestamp_conversion(e["timestamp"]))
       end
     end
   end

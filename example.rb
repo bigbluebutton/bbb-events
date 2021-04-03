@@ -31,6 +31,9 @@ recording.unpublished_polls
 # Returns a list of upload files (names only).
 recording.files
 
+# Returns a list of RecordedSegment objects.
+recording.recorded_segments
+
 # Generate a CSV file with the data.
 recording.create_csv("data.csv")
 
