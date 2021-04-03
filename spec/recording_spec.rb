@@ -110,6 +110,28 @@ RSpec.describe BBBEvents::Recording do
     end
   end
 
+  context "#recorded_segments" do
+    it "should be an Array." do
+      expect(@sample.recorded_segments).to be_an(Array)
+    end
+
+    it "should not be empty." do
+      expect(@sample.recorded_segments.length).to eql(1)
+    end
+
+    it "should properly parse start of recorded segment." do
+      expect(@sample.recorded_segments.first.start).to eql(Time.new(2018, 8, 16, 11, 39, 47, "-04:00"))
+    end
+
+    it "should properly parse stop of recorded segment." do
+      expect(@sample.recorded_segments.first.stop).to eql(Time.new(2018, 8, 16, 11, 40, 54, "-04:00"))
+    end
+
+    it "should determine recorded segment duration." do
+      expect(@sample.recorded_segments.first.duration).to eql(67)
+    end
+  end
+
   context "#files" do
     it "should properly parse uploaded file names." do
       expect(@sample.files).to contain_exactly("default.pdf")
