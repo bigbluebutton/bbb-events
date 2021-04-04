@@ -58,6 +58,9 @@ recording.polls
 recording.published_polls
 recording.unpublished_polls
 
+# Returns a list of RecordedSegment objects.
+recording.recorded_segments
+
 # Returns a list of upload files (names only).
 recording.files
 
@@ -107,6 +110,18 @@ poll.options
 
 # Returns a Hash mapping user_id's to their poll votes.
 poll.votes
+```
+
+### Recorded segments
+```ruby
+# Determine when the recorded segment started.
+recorded_segment.start
+
+# Determine when the recorded segment stopped.
+recorded_segment.stop
+
+# Determine duration in seconds of the recorded segment.
+recorded_segment.duration
 ```
 
 ## License
