@@ -12,6 +12,8 @@ module BBBEvents
       "user_responded_to_poll_record_event",
       "add_shape_event",
       "record_status_event",
+      "user_connected_to_transfer_event",
+      "user_disconnected_from_transfer_event",
     ]
 
     EMOJI_WHITELIST = %w(away neutral confused sad happy applause thumbsUp thumbsDown)
@@ -175,6 +177,14 @@ module BBBEvents
       else
         @recorded_segments.last.stop = Time.at(timestamp_conversion(e["timestamp"]))
       end
+    end
+
+    def user_connected_to_transfer_event(e)
+      @transfer_attendees << e["name"] unless @transfer_attendees.include? e["name"]
+    end
+
+    def user_disconnected_from_transfer_event(e)
+      # do nothing
     end
   end
 end

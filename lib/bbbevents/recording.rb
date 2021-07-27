@@ -46,6 +46,7 @@ module BBBEvents
       @duration = (@finish - @start).to_i
 
       @attendees         = {}
+      @transfer_attendees = []
       @polls             = {}
       @files             = []
       @recorded_segments = []
@@ -96,6 +97,10 @@ module BBBEvents
       polls.reject(&:published?)
     end
 
+    def transfer_attendees
+      @transfer_attendees
+    end
+
     # Export recording data to a CSV file.
     def create_csv(filepath)
       CSV.open(filepath, "wb") do |csv|
@@ -123,6 +128,7 @@ module BBBEvents
         files: @files,
         polls: polls.map(&:to_h),
         recorded_segments: @recorded_segments.map(&:to_h),
+        transfer_attendees: @transfer_attendees,
       }
     end
 
