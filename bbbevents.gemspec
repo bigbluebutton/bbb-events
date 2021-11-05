@@ -21,11 +21,12 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.15"
+  spec.add_development_dependency "bundler", "~> 2.0"
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rspec", "~> 3.4"
 
   # Gem dependecies.
   spec.add_dependency 'activesupport', '>= 5.0.0.1', '< 7'
+  spec.add_dependency 'rexml' # Required for activesupport from_xml
 
 end
