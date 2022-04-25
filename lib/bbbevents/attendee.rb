@@ -69,28 +69,28 @@ module BBBEvents
       # Convert timestamps to "2021-09-23T16:08:29.000+00:00" format
       joins_arr = []
       @joins.each { |j|
-        joins_arr.append(BBBEvents.to_iso8601(j))
+        joins_arr.append(BBBEvents.format_datetime(j))
       }
       hash["joins"] = joins_arr
 
       leaves_arr = []
       @leaves.each { |l|
-        leaves_arr.append(BBBEvents.to_iso8601(l))
+        leaves_arr.append(BBBEvents.format_datetime(l))
       }
       hash["leaves"] = leaves_arr
 
       @sessions.each_value { |val|
         val[:joins].each { |j|
-          j[:timestamp] = BBBEvents.to_iso8601(j[:timestamp])
+          j[:timestamp] = BBBEvents.format_datetime(j[:timestamp])
         }
         val[:lefts].each { |j|
-          j[:timestamp] = BBBEvents.to_iso8601(j[:timestamp])
+          j[:timestamp] = BBBEvents.format_datetime(j[:timestamp])
         }
       }
 
       # Convert timestamps to "2021-09-23T16:08:29.000+00:00" format
       if hash["recent_talking_time"] > 0
-        hash["recent_talking_time"] = BBBEvents.to_iso8601(Time.at(hash["recent_talking_time"]))
+        hash["recent_talking_time"] = BBBEvents.format_datetime(Time.at(hash["recent_talking_time"]))
       else
         hash["recent_talking_time"] = ""
       end
@@ -102,7 +102,7 @@ module BBBEvents
       instance_variables.each { |var| hash[var[1..-1]] = instance_variable_get(var) }
       # Convert timestamps to "2021-09-23T16:08:29.000+00:00" format
       if hash["recent_talking_time"] > 0
-        hash["recent_talking_time"] = BBBEvents.to_iso8601(Time.at(hash["recent_talking_time"]))
+        hash["recent_talking_time"] = BBBEvents.format_datetime(Time.at(hash["recent_talking_time"]))
       else
         hash["recent_talking_time"] = ""
       end

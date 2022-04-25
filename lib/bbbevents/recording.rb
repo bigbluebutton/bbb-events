@@ -115,8 +115,8 @@ module BBBEvents
         meeting_id: @meeting_id,
         duration: @duration,
         # convert to "2021-09-23T16:08:29.000+00:00" format
-        start: BBBEvents.to_iso8601(@start),
-        finish: BBBEvents.to_iso8601(@finish),
+        start: BBBEvents.format_datetime(@start),
+        finish: BBBEvents.format_datetime(@finish),
 
         attendees: attendees.map(&:to_h),
         files: @files,
