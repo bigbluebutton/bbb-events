@@ -65,9 +65,32 @@ module BBBEvents
     def to_h
       hash = {}
       instance_variables.each { |var| hash[var[1..-1]] = instance_variable_get(var) }
-      # Convert recent_talking_time to human readable time
+
+      # Convert timestamps to "2021-09-23T16:08:29.000+00:00" format
+      joins_arr = []
+      @joins.each { |j|
+        joins_arr.append(j.utc.to_datetime)
+      }
+      hash["joins"] = joins_arr
+
+      leaves_arr = []
+      @leaves.each { |l|
+        leaves_arr.append(l.utc.to_datetime)
+      }
+      hash["leaves"] = leaves_arr
+
+      @sessions.each_value { |val|
+        val[:joins].each { |j|
+          j[:timestamp] = j[:timestamp].utc.to_datetime
+        }
+        val[:lefts].each { |j|
+          j[:timestamp] = j[:timestamp].utc.to_datetime
+        }
+      }
+
+      # Convert timestamps to "2021-09-23T16:08:29.000+00:00" format
       if hash["recent_talking_time"] > 0
-        hash["recent_talking_time"] = Time.at(hash["recent_talking_time"])
+        hash["recent_talking_time"] = Time.at(hash["recent_talking_time"]).utc.to_datetime
       else
         hash["recent_talking_time"] = ""
       end
@@ -77,8 +100,9 @@ module BBBEvents
     def to_json
       hash = {}
       instance_variables.each { |var| hash[var[1..-1]] = instance_variable_get(var) }
+      # Convert timestamps to "2021-09-23T16:08:29.000+00:00" format
       if hash["recent_talking_time"] > 0
-        hash["recent_talking_time"] = Time.at(hash["recent_talking_time"])
+        hash["recent_talking_time"] = Time.at(hash["recent_talking_time"]).utc.to_datetime
       else
         hash["recent_talking_time"] = ""
       end

@@ -3,6 +3,7 @@ require 'json'
 require 'active_support'
 require 'active_support/core_ext/hash'
 
+
 module BBBEvents
   CSV_HEADER = %w(name moderator chats talks emojis poll_votes raisehand talk_time join left duration)
   NO_VOTE_SYMBOL = "-"
@@ -113,8 +114,10 @@ module BBBEvents
         metadata: @metadata,
         meeting_id: @meeting_id,
         duration: @duration,
-        start: @start,
-        finish: @finish,
+        # convert to "2021-09-23T16:08:29.000+00:00" format
+        start: @start.utc.to_datetime,
+        finish: @finish.utc.to_datetime,
+
         attendees: attendees.map(&:to_h),
         files: @files,
         polls: polls.map(&:to_h)
