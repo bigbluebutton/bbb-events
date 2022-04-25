@@ -18,11 +18,10 @@ module BBBEvents
       instance_variables.each { |var| hash[var[1..-1]] = instance_variable_get(var) }
       hash
     end
+    alias_method :as_json, :to_h
 
     def to_json
-      hash = {}
-      instance_variables.each { |var| hash[var[1..-1]] = instance_variable_get(var) }
-      hash.to_json
+      JSON.generate(as_json)
     end
   end
 end

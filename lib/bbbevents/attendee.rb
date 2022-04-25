@@ -63,50 +63,41 @@ module BBBEvents
     end
 
     def to_h
-      hash = {}
-      instance_variables.each { |var| hash[var[1..-1]] = instance_variable_get(var) }
-
-      # Convert timestamps to "2021-09-23T16:08:29.000+00:00" format
-      joins_arr = []
-      @joins.each { |j|
-        joins_arr.append(BBBEvents.format_datetime(j))
+      {
+        id: @id,
+        ext_user_id: @ext_user_id,
+        name: @name,
+        moderator: @moderator,
+        joins: @joins,
+        leaves: @leaves,
+        duration: @duration,
+        recent_talking_time: @recent_talking_time > 0 ? Time.at(@recent_talking_time) : '',
+        engagement: @engagement,
+        sessions: @sessions,
       }
-      hash["joins"] = joins_arr
+    end
 
-      leaves_arr = []
-      @leaves.each { |l|
-        leaves_arr.append(BBBEvents.format_datetime(l))
-      }
-      hash["leaves"] = leaves_arr
-
-      @sessions.each_value { |val|
-        val[:joins].each { |j|
-          j[:timestamp] = BBBEvents.format_datetime(j[:timestamp])
+    def as_json
+      {
+        id: @id,
+        ext_user_id: @ext_user_id,
+        name: @name,
+        moderator: @moderator,
+        joins: @joins.map { |join| BBBEvents.format_datetime(join) },
+        leaves: @leaves.map { |leave| BBBEvents.format_datetime(leave) },
+        duration: @duration,
+        recent_talking_time: @recent_talking_time > 0 ? BBBEvents.format_datetime(Time.at(@recent_talking_time)) : '',
+        engagement: @engagement,
+        sessions: @sessions.map { |session| {
+            joins: session[:joins].map { |join| join.merge({ timestamp: BBBEvents.format_datetime(join[:timestamp])}) },
+            leaves: session[:leaves].map { |leave| leave.merge({ timestamp: BBBEvents.format_datetime(leave[:timestamp])}) }
+          }
         }
-        val[:lefts].each { |j|
-          j[:timestamp] = BBBEvents.format_datetime(j[:timestamp])
-        }
       }
-
-      # Convert timestamps to "2021-09-23T16:08:29.000+00:00" format
-      if hash["recent_talking_time"] > 0
-        hash["recent_talking_time"] = BBBEvents.format_datetime(Time.at(hash["recent_talking_time"]))
-      else
-        hash["recent_talking_time"] = ""
-      end
-      hash
     end
 
     def to_json
-      hash = {}
-      instance_variables.each { |var| hash[var[1..-1]] = instance_variable_get(var) }
-      # Convert timestamps to "2021-09-23T16:08:29.000+00:00" format
-      if hash["recent_talking_time"] > 0
-        hash["recent_talking_time"] = BBBEvents.format_datetime(Time.at(hash["recent_talking_time"]))
-      else
-        hash["recent_talking_time"] = ""
-      end
-      hash.to_json
+      JSON.generate(as_json)
     end
 
     private

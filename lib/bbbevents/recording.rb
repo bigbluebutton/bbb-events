@@ -103,29 +103,42 @@ module BBBEvents
       end
     end
 
-    def to_h
-      # Transform any CamelCase keys to snake_case.
-      @metadata.deep_transform_keys! do |key|
-          k = key.to_s.underscore rescue key
-          k.to_sym rescue key
-        end
+    # Transform any CamelCase keys to snake_case
+    def transform_metadata
+      @metadata.deep_transform_keys do |key|
+        k = key.to_s.underscore rescue key
+        k.to_sym rescue key
+      end
+    end
 
+    def to_h
       {
-        metadata: @metadata,
+        metadata: transform_metadata,
         meeting_id: @meeting_id,
         duration: @duration,
-        # convert to "2021-09-23T16:08:29.000+00:00" format
-        start: BBBEvents.format_datetime(@start),
-        finish: BBBEvents.format_datetime(@finish),
-
+        start: @start,
+        finish: @finish,
         attendees: attendees.map(&:to_h),
         files: @files,
         polls: polls.map(&:to_h)
       }
     end
 
+    def as_json
+      {
+        metadata: transform_metadata,
+        meeting_id: @meeting_id,
+        duration: @duration,
+        start: BBBEvents.format_datetime(@start),
+        finish: BBBEvents.format_datetime(@finish),
+        attendees: attendees.map(&:as_json),
+        files: @files,
+        polls: polls.map(&:as_json)
+      }
+    end
+
     def to_json
-      to_h.to_json
+      JSON.generate(as_json)
     end
 
     def calculate_user_duration(join_events, left_events)
