@@ -11,6 +11,7 @@ module BBBEvents
       "poll_started_record_event",
       "user_responded_to_poll_record_event",
       "add_shape_event",
+      "poll_published_record_event",
     ]
 
     EMOJI_WHITELIST = %w(away neutral confused sad happy applause thumbsUp thumbsDown)
@@ -161,6 +162,14 @@ module BBBEvents
     def add_shape_event(e)
       if e["type"] == POLL_PUBLISHED_STATUS
         if poll = @polls[e["id"]]
+          poll.published = true
+        end
+      end
+    end
+
+    def poll_published_record_event(e)
+      unless e["pollId"].nil?
+        if poll = @polls[e["pollId"]]
           poll.published = true
         end
       end
