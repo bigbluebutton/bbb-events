@@ -1,0 +1,1063 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recording meeting_id="7b647dc3d3dfaa5262e4a01b8828639bb1d6c5c8-1684349961662" bbb_version="2.6.1">
+  <meeting id="7b647dc3d3dfaa5262e4a01b8828639bb1d6c5c8-1684349961662" externalId="test-polling_bn-qa_" name="test-polling" breakout="false"/>
+  <metadata bn-meetingid="test-polling" bn-priority="1" bn-stats="true" bn-userid="bn-qa" isBreakout="false" meetingId="test-polling_bn-qa_" meetingName="test-polling"/>
+  <breakout/>
+  <breakoutRooms/>
+  <event timestamp="30499650" module="CONFIG" eventname="MeetingConfigurationEvent">
+    <date>2023-05-17T18:59:21.778Z</date>
+    <timestampUTC>1684349961778</timestampUTC>
+    <webcamsOnlyForModerator>true</webcamsOnlyForModerator>
+  </event>
+  <event timestamp="30499682" module="PRESENTATION" eventname="CreatePresentationPodEvent">
+    <date>2023-05-17T18:59:21.811Z</date>
+    <currentPresenter/>
+    <timestampUTC>1684349961811</timestampUTC>
+    <podId>DEFAULT_PRESENTATION_POD</podId>
+  </event>
+  <event timestamp="30500305" module="PAD" eventname="PadCreatedEvent">
+    <date>2023-05-17T18:59:22.434Z</date>
+    <padId>g.80cK76b7XAOdEaFL$notes</padId>
+    <timestampUTC>1684349962434</timestampUTC>
+  </event>
+  <event timestamp="30506481" module="PRESENTATION" eventname="ConversionCompletedEvent">
+    <date>2023-05-17T18:59:28.610Z</date>
+    <originalFilename>default.pdf</originalFilename>
+    <timestampUTC>1684349968610</timestampUTC>
+    <presentationName>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentationName>
+    <podId>DEFAULT_PRESENTATION_POD</podId>
+  </event>
+  <event timestamp="30506486" module="PRESENTATION" eventname="SharePresentationEvent">
+    <share>true</share>
+    <date>2023-05-17T18:59:28.614Z</date>
+    <timestampUTC>1684349968614</timestampUTC>
+    <presentationName>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentationName>
+    <podId>DEFAULT_PRESENTATION_POD</podId>
+  </event>
+  <event timestamp="30506488" module="PRESENTATION" eventname="SetPresentationDownloadable">
+    <timestampUTC>1684349968616</timestampUTC>
+    <presentationName>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentationName>
+    <podId>DEFAULT_PRESENTATION_POD</podId>
+    <date>2023-05-17T18:59:28.616Z</date>
+    <downloadable>false</downloadable>
+  </event>
+  <event timestamp="30507235" module="PARTICIPANT" eventname="ParticipantJoinEvent">
+    <name>viewer</name>
+    <role>MODERATOR</role>
+    <date>2023-05-17T18:59:29.363Z</date>
+    <externalUserId>w_7essiaz9n8n8</externalUserId>
+    <userId>w_7essiaz9n8n8</userId>
+    <timestampUTC>1684349969363</timestampUTC>
+  </event>
+  <event timestamp="30507247" module="PARTICIPANT" eventname="AssignPresenterEvent">
+    <name>viewer</name>
+    <userid>w_7essiaz9n8n8</userid>
+    <assignedBy>w_7essiaz9n8n8</assignedBy>
+    <date>2023-05-17T18:59:29.376Z</date>
+    <timestampUTC>1684349969376</timestampUTC>
+  </event>
+  <event timestamp="30507283" module="PARTICIPANT" eventname="AssignPresenterEvent">
+    <name>viewer</name>
+    <userid>w_7essiaz9n8n8</userid>
+    <assignedBy>w_7essiaz9n8n8</assignedBy>
+    <date>2023-05-17T18:59:29.412Z</date>
+    <timestampUTC>1684349969412</timestampUTC>
+  </event>
+  <event timestamp="30507288" module="PRESENTATION" eventname="SetPresenterInPodEvent">
+    <date>2023-05-17T18:59:29.416Z</date>
+    <nextPresenterId>w_7essiaz9n8n8</nextPresenterId>
+    <timestampUTC>1684349969416</timestampUTC>
+    <podId>DEFAULT_PRESENTATION_POD</podId>
+  </event>
+  <event timestamp="30507298" module="PARTICIPANT" eventname="AssignPresenterEvent">
+    <name>viewer</name>
+    <userid>w_7essiaz9n8n8</userid>
+    <assignedBy>w_7essiaz9n8n8</assignedBy>
+    <date>2023-05-17T18:59:29.426Z</date>
+    <timestampUTC>1684349969426</timestampUTC>
+  </event>
+  <event timestamp="30507303" module="PRESENTATION" eventname="SetPresenterInPodEvent">
+    <date>2023-05-17T18:59:29.431Z</date>
+    <nextPresenterId>w_7essiaz9n8n8</nextPresenterId>
+    <timestampUTC>1684349969431</timestampUTC>
+    <podId>DEFAULT_PRESENTATION_POD</podId>
+  </event>
+  <event timestamp="30511773" module="VOICE" eventname="ParticipantJoinedEvent">
+    <participant>w_7essiaz9n8n8</participant>
+    <bridge>439647003</bridge>
+    <talking>false</talking>
+    <callernumber>w_7essiaz9n8n8_1-bbbID-viewer</callernumber>
+    <date>2023-05-17T18:59:33.901Z</date>
+    <muted>false</muted>
+    <timestampUTC>1684349973901</timestampUTC>
+    <callername>viewer</callername>
+  </event>
+  <event timestamp="30511795" module="VOICE" eventname="StartRecordingEvent">
+    <timestampUTC>1684349973923</timestampUTC>
+    <filename>/var/freeswitch/meetings/7b647dc3d3dfaa5262e4a01b8828639bb1d6c5c8-1684349961662-30511770.opus</filename>
+    <date>2023-05-17T18:59:33.923Z</date>
+    <recordingTimestamp>30511794</recordingTimestamp>
+    <bridge>439647003</bridge>
+  </event>
+  <event timestamp="30511941" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>0.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349974069</timestampUTC>
+    <xOffset>0.0</xOffset>
+    <date>2023-05-17T18:59:34.069Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30512588" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>625.5510534846028</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349974716</timestampUTC>
+    <xOffset>663.9870340356564</xOffset>
+    <date>2023-05-17T18:59:34.716Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30512737" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>612.4230145867098</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349974866</timestampUTC>
+    <xOffset>639.1896272285252</xOffset>
+    <date>2023-05-17T18:59:34.866Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30512887" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>592.0016207455428</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349975016</timestampUTC>
+    <xOffset>591.0534846029174</xOffset>
+    <date>2023-05-17T18:59:35.016Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30513038" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>584.708265802269</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349975167</timestampUTC>
+    <xOffset>570.6320907617504</xOffset>
+    <date>2023-05-17T18:59:35.167Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30513190" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>573.0388978930307</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349975319</timestampUTC>
+    <xOffset>535.6239870340357</xOffset>
+    <date>2023-05-17T18:59:35.319Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30513352" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>586.1669367909237</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349975480</timestampUTC>
+    <xOffset>455.3970826580227</xOffset>
+    <date>2023-05-17T18:59:35.480Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30513506" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>669.3111831442462</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349975634</timestampUTC>
+    <xOffset>468.52512155591575</xOffset>
+    <date>2023-05-17T18:59:35.634Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30513656" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349975784</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T18:59:35.784Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30514304" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>802.0502431118313</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349976432</timestampUTC>
+    <xOffset>499.15721231766616</xOffset>
+    <date>2023-05-17T18:59:36.432Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30514455" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>206.91247974068065</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349976584</timestampUTC>
+    <xOffset>653.7763371150729</xOffset>
+    <date>2023-05-17T18:59:36.584Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30514606" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349976735</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T18:59:36.735Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30516491" module="PARTICIPANT" eventname="RecordStatusEvent">
+    <date>2023-05-17T18:59:38.620Z</date>
+    <status>true</status>
+    <userId>w_7essiaz9n8n8</userId>
+    <timestampUTC>1684349978620</timestampUTC>
+  </event>
+  <event timestamp="30516510" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>27.495948136142573</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349978638</timestampUTC>
+    <xOffset>675.6564019448947</xOffset>
+    <date>2023-05-17T18:59:38.638Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30516659" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>482.6012965964343</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349978787</timestampUTC>
+    <xOffset>382.4635332252837</xOffset>
+    <date>2023-05-17T18:59:38.787Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30516823" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>330.8995137763371</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349978951</timestampUTC>
+    <xOffset>1295.5915721231768</xOffset>
+    <date>2023-05-17T18:59:38.951Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30516972" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349979100</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T18:59:39.100Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30521537" module="PARTICIPANT" eventname="ParticipantJoinEvent">
+    <name>viewer</name>
+    <role>VIEWER</role>
+    <date>2023-05-17T18:59:43.666Z</date>
+    <externalUserId>w_njutzvmeygba</externalUserId>
+    <userId>w_njutzvmeygba</userId>
+    <timestampUTC>1684349983666</timestampUTC>
+  </event>
+  <event timestamp="30528740" module="VOICE" eventname="ParticipantJoinedEvent">
+    <participant>w_njutzvmeygba</participant>
+    <bridge>439647003</bridge>
+    <talking>false</talking>
+    <callernumber>w_njutzvmeygba_1-bbbID-viewer</callernumber>
+    <date>2023-05-17T18:59:50.869Z</date>
+    <muted>false</muted>
+    <timestampUTC>1684349990869</timestampUTC>
+    <callername>viewer</callername>
+  </event>
+  <event timestamp="30531863" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>313.3954619124797</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349993992</timestampUTC>
+    <xOffset>1391.8638573743922</xOffset>
+    <date>2023-05-17T18:59:53.992Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30532204" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>762.6661264181522</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349994333</timestampUTC>
+    <xOffset>143.24149108589958</xOffset>
+    <date>2023-05-17T18:59:54.333Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30532358" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>558.4521880064829</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349994486</timestampUTC>
+    <xOffset>19.25445705024318</xOffset>
+    <date>2023-05-17T18:59:54.486Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30532519" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349994648</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T18:59:54.648Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30534943" module="POLL" eventname="PollStartedRecordEvent">
+    <secretPoll>false</secretPoll>
+    <question/>
+    <pollId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684349997071</pollId>
+    <type>TF</type>
+    <answers>[{"id":0,"key":"True"},{"id":1,"key":"False"}]</answers>
+    <timestampUTC>1684349997072</timestampUTC>
+    <date>2023-05-17T18:59:57.072Z</date>
+  </event>
+  <event timestamp="30536852" module="POLL" eventname="UserRespondedToPollRecordEvent">
+    <timestampUTC>1684349998980</timestampUTC>
+    <date>2023-05-17T18:59:58.980Z</date>
+    <userId>w_njutzvmeygba</userId>
+    <pollId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684349997071</pollId>
+    <answerId>0</answerId>
+    <answer>True</answer>
+  </event>
+  <event timestamp="30537422" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>530.7374392220421</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349999550</timestampUTC>
+    <xOffset>6.126418152350147</xOffset>
+    <date>2023-05-17T18:59:59.550Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30537578" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>667.8525121555915</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349999707</timestampUTC>
+    <xOffset>519.578606158833</xOffset>
+    <date>2023-05-17T18:59:59.707Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30537725" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>664.935170178282</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684349999854</timestampUTC>
+    <xOffset>296.4019448946516</xOffset>
+    <date>2023-05-17T18:59:59.854Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30537899" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>643.0551053484602</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350000027</timestampUTC>
+    <xOffset>138.86547811993523</xOffset>
+    <date>2023-05-17T19:00:00.027Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30538039" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>629.9270664505672</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350000167</timestampUTC>
+    <xOffset>67.39059967585095</xOffset>
+    <date>2023-05-17T19:00:00.167Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30538190" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>657.641815235008</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350000319</timestampUTC>
+    <xOffset>116.98541329011351</xOffset>
+    <date>2023-05-17T19:00:00.319Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30538340" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>794.7568881685573</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350000469</timestampUTC>
+    <xOffset>208.8816855753647</xOffset>
+    <date>2023-05-17T19:00:00.469Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30538491" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350000619</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T19:00:00.619Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30540613" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>794.7568881685573</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350002741</timestampUTC>
+    <xOffset>208.8816855753647</xOffset>
+    <date>2023-05-17T19:00:02.741Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30541995" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>771.4181523500808</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350004123</timestampUTC>
+    <xOffset>133.0307941653161</xOffset>
+    <date>2023-05-17T19:00:04.123Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30542137" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350004265</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T19:00:04.265Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30543763" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>664.935170178282</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350005892</timestampUTC>
+    <xOffset>13.419773095624052</xOffset>
+    <date>2023-05-17T19:00:05.892Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30543911" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350006039</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T19:00:06.039Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30546531" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>753.9141004862234</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350008659</timestampUTC>
+    <xOffset>211.7990275526743</xOffset>
+    <date>2023-05-17T19:00:08.659Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30547152" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>750.9967585089139</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350009280</timestampUTC>
+    <xOffset>140.32414910859</xOffset>
+    <date>2023-05-17T19:00:09.280Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30547298" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350009426</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T19:00:09.426Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30548246" module="POLL" eventname="PollPublishedRecordEvent">
+    <question/>
+    <pollId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684349997071</pollId>
+    <numResponders>1</numResponders>
+    <answers>[{"id":0,"key":"True","numVotes":1},{"id":1,"key":"False","numVotes":0}]</answers>
+    <numRespondents>1</numRespondents>
+    <timestampUTC>1684350010374</timestampUTC>
+    <date>2023-05-17T19:00:10.374Z</date>
+  </event>
+  <event timestamp="30548251" module="POLL" eventname="PollStoppedRecordEvent">
+    <date>2023-05-17T19:00:10.379Z</date>
+    <timestampUTC>1684350010379</timestampUTC>
+    <pollId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684349997071</pollId>
+  </event>
+  <event timestamp="30548412" module="WHITEBOARD" eventname="AddTldrawShapeEvent">
+    <timestampUTC>1684350010540</timestampUTC>
+    <date>2023-05-17T19:00:10.540Z</date>
+    <pageNumber>0</pageNumber>
+    <shapeData>{"size":[573,86],"style":{"isFilled":true,"size":"small","scale":1,"color":"white","font":"mono","dash":"solid"},"label":"True: 1 ||||||||||||||||||||| 100%\nFalse: 0                      | 0%\n","id":"bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684349997071","labelPoint":[0.5,0.5],"questionType":false,"type":"rectangle","parentId":"1","childIndex":0,"name":"poll-result-bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684349997071","point":[867,724]}</shapeData>
+    <userId>w_7essiaz9n8n8</userId>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <shapeId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684349997071</shapeId>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30548865" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>577.4149108589951</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350010994</timestampUTC>
+    <xOffset>19.25445705024318</xOffset>
+    <date>2023-05-17T19:00:10.994Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30549020" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350011148</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T19:00:11.148Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30550953" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>788.9222042139382</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350013081</timestampUTC>
+    <xOffset>48.4278768233388</xOffset>
+    <date>2023-05-17T19:00:13.081Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30551106" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>734.9513776337114</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350013235</timestampUTC>
+    <xOffset>130.11345218800653</xOffset>
+    <date>2023-05-17T19:00:13.235Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30551493" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>729.1166936790924</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350013622</timestampUTC>
+    <xOffset>130.11345218800653</xOffset>
+    <date>2023-05-17T19:00:13.622Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30551592" module="VOICE" eventname="ParticipantTalkingEvent">
+    <participant>w_njutzvmeygba</participant>
+    <bridge>439647003</bridge>
+    <talking>true</talking>
+    <date>2023-05-17T19:00:13.721Z</date>
+    <timestampUTC>1684350013721</timestampUTC>
+  </event>
+  <event timestamp="30551593" module="VOICE" eventname="ParticipantTalkingEvent">
+    <participant>w_7essiaz9n8n8</participant>
+    <bridge>439647003</bridge>
+    <talking>true</talking>
+    <date>2023-05-17T19:00:13.722Z</date>
+    <timestampUTC>1684350013722</timestampUTC>
+  </event>
+  <event timestamp="30551635" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>532.1961102106968</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350013763</timestampUTC>
+    <xOffset>45.51053484602924</xOffset>
+    <date>2023-05-17T19:00:13.763Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30551787" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350013915</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T19:00:13.915Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30552413" module="VOICE" eventname="ParticipantTalkingEvent">
+    <participant>w_7essiaz9n8n8</participant>
+    <bridge>439647003</bridge>
+    <talking>false</talking>
+    <date>2023-05-17T19:00:14.542Z</date>
+    <timestampUTC>1684350014542</timestampUTC>
+  </event>
+  <event timestamp="30552420" module="VOICE" eventname="ParticipantTalkingEvent">
+    <participant>w_njutzvmeygba</participant>
+    <bridge>439647003</bridge>
+    <talking>false</talking>
+    <date>2023-05-17T19:00:14.549Z</date>
+    <timestampUTC>1684350014549</timestampUTC>
+  </event>
+  <event timestamp="30558148" module="POLL" eventname="PollStartedRecordEvent">
+    <secretPoll>false</secretPoll>
+    <question/>
+    <pollId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350020274</pollId>
+    <type>A-4</type>
+    <answers>[{"id":0,"key":"A"},{"id":1,"key":"B"},{"id":2,"key":"C"},{"id":3,"key":"D"}]</answers>
+    <timestampUTC>1684350020276</timestampUTC>
+    <date>2023-05-17T19:00:20.276Z</date>
+  </event>
+  <event timestamp="30560342" module="POLL" eventname="UserRespondedToPollRecordEvent">
+    <timestampUTC>1684350022470</timestampUTC>
+    <date>2023-05-17T19:00:22.470Z</date>
+    <userId>w_njutzvmeygba</userId>
+    <pollId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350020274</pollId>
+    <answerId>2</answerId>
+    <answer>C</answer>
+  </event>
+  <event timestamp="30560981" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>532.1961102106968</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350023109</timestampUTC>
+    <xOffset>45.51053484602924</xOffset>
+    <date>2023-05-17T19:00:23.109Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30561133" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>634.3030794165315</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350023262</timestampUTC>
+    <xOffset>235.13776337115078</xOffset>
+    <date>2023-05-17T19:00:23.262Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30561301" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350023429</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T19:00:23.429Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30562318" module="POLL" eventname="PollPublishedRecordEvent">
+    <question/>
+    <pollId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350020274</pollId>
+    <numResponders>1</numResponders>
+    <answers>[{"id":0,"key":"A","numVotes":0},{"id":1,"key":"B","numVotes":0},{"id":2,"key":"C","numVotes":1},{"id":3,"key":"D","numVotes":0}]</answers>
+    <numRespondents>1</numRespondents>
+    <timestampUTC>1684350024446</timestampUTC>
+    <date>2023-05-17T19:00:24.446Z</date>
+  </event>
+  <event timestamp="30562322" module="POLL" eventname="PollStoppedRecordEvent">
+    <date>2023-05-17T19:00:24.451Z</date>
+    <timestampUTC>1684350024451</timestampUTC>
+    <pollId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350020274</pollId>
+  </event>
+  <event timestamp="30562471" module="WHITEBOARD" eventname="AddTldrawShapeEvent">
+    <timestampUTC>1684350024599</timestampUTC>
+    <date>2023-05-17T19:00:24.599Z</date>
+    <pageNumber>0</pageNumber>
+    <shapeData>{"size":[525,142],"style":{"isFilled":true,"size":"small","scale":1,"color":"white","font":"mono","dash":"solid"},"label":"A: 0                       | 0%\nB: 0                       | 0%\nC: 1 ||||||||||||||||||||| 100%\nD: 0                       | 0%\n","id":"bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350020274","labelPoint":[0.5,0.5],"questionType":false,"type":"rectangle","parentId":"1","childIndex":0,"name":"poll-result-bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350020274","point":[915,668]}</shapeData>
+    <userId>w_7essiaz9n8n8</userId>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <shapeId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350020274</shapeId>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30563113" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>583.2495948136142</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350025241</timestampUTC>
+    <xOffset>-1.1669367909237587</xOffset>
+    <date>2023-05-17T19:00:25.241Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30563264" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350025393</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T19:00:25.393Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30565883" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>777.2528363046999</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350028012</timestampUTC>
+    <xOffset>210.34035656401952</xOffset>
+    <date>2023-05-17T19:00:28.012Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30566415" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>759.7487844408427</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350028544</timestampUTC>
+    <xOffset>151.99351701782825</xOffset>
+    <date>2023-05-17T19:00:28.544Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30566566" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>742.2447325769854</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350028694</timestampUTC>
+    <xOffset>134.48946515397088</xOffset>
+    <date>2023-05-17T19:00:28.694Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30566730" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>733.4927066450566</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350028858</timestampUTC>
+    <xOffset>121.36142625607786</xOffset>
+    <date>2023-05-17T19:00:28.858Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30566887" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350029015</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T19:00:29.015Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30572471" module="POLL" eventname="PollStartedRecordEvent">
+    <secretPoll>false</secretPoll>
+    <question/>
+    <pollId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350034599</pollId>
+    <type>YNA</type>
+    <answers>[{"id":0,"key":"Yes"},{"id":1,"key":"No"},{"id":2,"key":"Abstention"}]</answers>
+    <timestampUTC>1684350034599</timestampUTC>
+    <date>2023-05-17T19:00:34.599Z</date>
+  </event>
+  <event timestamp="30573417" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>565.7455429497568</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350035545</timestampUTC>
+    <xOffset>3.2090761750405847</xOffset>
+    <date>2023-05-17T19:00:35.545Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30573569" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>625.5510534846028</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350035698</timestampUTC>
+    <xOffset>1054.9108589951377</xOffset>
+    <date>2023-05-17T19:00:35.698Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30573721" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350035850</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T19:00:35.850Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30574637" module="POLL" eventname="UserRespondedToPollRecordEvent">
+    <timestampUTC>1684350036765</timestampUTC>
+    <date>2023-05-17T19:00:36.765Z</date>
+    <userId>w_njutzvmeygba</userId>
+    <pollId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350034599</pollId>
+    <answerId>2</answerId>
+    <answer>Abstention</answer>
+  </event>
+  <event timestamp="30574983" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>701.4019448946515</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350037112</timestampUTC>
+    <xOffset>1393.322528363047</xOffset>
+    <date>2023-05-17T19:00:37.112Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30575133" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350037262</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T19:00:37.262Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30575904" module="POLL" eventname="PollPublishedRecordEvent">
+    <question/>
+    <pollId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350034599</pollId>
+    <numResponders>1</numResponders>
+    <answers>[{"id":0,"key":"Yes","numVotes":0},{"id":1,"key":"No","numVotes":0},{"id":2,"key":"Abstention","numVotes":1}]</answers>
+    <numRespondents>1</numRespondents>
+    <timestampUTC>1684350038033</timestampUTC>
+    <date>2023-05-17T19:00:38.033Z</date>
+  </event>
+  <event timestamp="30575910" module="POLL" eventname="PollStoppedRecordEvent">
+    <date>2023-05-17T19:00:38.039Z</date>
+    <timestampUTC>1684350038039</timestampUTC>
+    <pollId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350034599</pollId>
+  </event>
+  <event timestamp="30575997" module="WHITEBOARD" eventname="AddTldrawShapeEvent">
+    <timestampUTC>1684350038125</timestampUTC>
+    <date>2023-05-17T19:00:38.125Z</date>
+    <pageNumber>0</pageNumber>
+    <shapeData>{"size":[668,114],"style":{"isFilled":true,"size":"small","scale":1,"color":"white","font":"mono","dash":"solid"},"label":"Yes: 0                              | 0%\nNo: 0                               | 0%\nAbstention: 1 ||||||||||||||||||||| 100%\n","id":"bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350034599","labelPoint":[0.5,0.5],"questionType":false,"type":"rectangle","parentId":"1","childIndex":0,"name":"poll-result-bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350034599","point":[772,696]}</shapeData>
+    <userId>w_7essiaz9n8n8</userId>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <shapeId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350034599</shapeId>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30582948" module="VOICE" eventname="ParticipantTalkingEvent">
+    <participant>w_njutzvmeygba</participant>
+    <bridge>439647003</bridge>
+    <talking>true</talking>
+    <date>2023-05-17T19:00:45.076Z</date>
+    <timestampUTC>1684350045076</timestampUTC>
+  </event>
+  <event timestamp="30584366" module="VOICE" eventname="ParticipantTalkingEvent">
+    <participant>w_njutzvmeygba</participant>
+    <bridge>439647003</bridge>
+    <talking>false</talking>
+    <date>2023-05-17T19:00:46.494Z</date>
+    <timestampUTC>1684350046494</timestampUTC>
+  </event>
+  <event timestamp="30587558" module="POLL" eventname="PollStartedRecordEvent">
+    <secretPoll>false</secretPoll>
+    <question>what is your name?</question>
+    <pollId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350049686</pollId>
+    <type>R-</type>
+    <answers>[]</answers>
+    <timestampUTC>1684350049687</timestampUTC>
+    <date>2023-05-17T19:00:49.687Z</date>
+  </event>
+  <event timestamp="30589101" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>276.92868719611016</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350051229</timestampUTC>
+    <xOffset>11.961102106969271</xOffset>
+    <date>2023-05-17T19:00:51.229Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30589253" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350051381</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T19:00:51.381Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30589399" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350051527</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T19:00:51.527Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30593478" module="POLL" eventname="UserRespondedToPollRecordEvent">
+    <timestampUTC>1684350055606</timestampUTC>
+    <date>2023-05-17T19:00:55.606Z</date>
+    <userId>w_njutzvmeygba</userId>
+    <pollId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350049686</pollId>
+    <answerId>0</answerId>
+    <answer>richard</answer>
+  </event>
+  <event timestamp="30594068" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>662.0178282009724</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350056196</timestampUTC>
+    <xOffset>1421.0372771474879</xOffset>
+    <date>2023-05-17T19:00:56.196Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30594197" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350056325</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T19:00:56.325Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30594907" module="POLL" eventname="PollPublishedRecordEvent">
+    <question>what is your name?</question>
+    <pollId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350049686</pollId>
+    <numResponders>1</numResponders>
+    <answers>[{"id":0,"key":"richard","numVotes":1}]</answers>
+    <numRespondents>1</numRespondents>
+    <timestampUTC>1684350057036</timestampUTC>
+    <date>2023-05-17T19:00:57.036Z</date>
+  </event>
+  <event timestamp="30594912" module="POLL" eventname="PollStoppedRecordEvent">
+    <date>2023-05-17T19:00:57.040Z</date>
+    <timestampUTC>1684350057040</timestampUTC>
+    <pollId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350049686</pollId>
+  </event>
+  <event timestamp="30595022" module="WHITEBOARD" eventname="AddTldrawShapeEvent">
+    <timestampUTC>1684350057150</timestampUTC>
+    <date>2023-05-17T19:00:57.150Z</date>
+    <pageNumber>0</pageNumber>
+    <shapeData>{"size":[525,254],"style":{"isFilled":true,"size":"small","scale":1,"color":"white","font":"mono","dash":"solid"},"label":"Polling Question\nwhat is your name?\n\n1: 1 ||||||||||||||||||||| 100%\n\n\nPolling options\n1: richard\n","id":"bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350049686","labelPoint":[0.5,0.5],"questionType":false,"type":"rectangle","parentId":"1","childIndex":0,"name":"poll-result-bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350049686","point":[915,556]}</shapeData>
+    <userId>w_7essiaz9n8n8</userId>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <shapeId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1/1684350049686</shapeId>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30595935" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>291.51539708265796</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350058063</timestampUTC>
+    <xOffset>93.64667747163702</xOffset>
+    <date>2023-05-17T19:00:58.063Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30596090" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>222.95786061588325</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350058218</timestampUTC>
+    <xOffset>639.1896272285252</xOffset>
+    <date>2023-05-17T19:00:58.218Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30596239" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>196.70178282009718</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350058367</timestampUTC>
+    <xOffset>1057.8282009724473</xOffset>
+    <date>2023-05-17T19:00:58.367Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30596393" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>88.76012965964338</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350058521</timestampUTC>
+    <xOffset>1104.5056726094003</xOffset>
+    <date>2023-05-17T19:00:58.521Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30596559" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350058688</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T19:00:58.688Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30599810" module="PARTICIPANT" eventname="RecordStatusEvent">
+    <date>2023-05-17T19:01:01.938Z</date>
+    <status>false</status>
+    <userId>w_7essiaz9n8n8</userId>
+    <timestampUTC>1684350061938</timestampUTC>
+  </event>
+  <event timestamp="30599831" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>4.157212317666077</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350061959</timestampUTC>
+    <xOffset>1140.97244732577</xOffset>
+    <date>2023-05-17T19:01:01.959Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30600378" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>497.1880064829821</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350062506</timestampUTC>
+    <xOffset>290.5672609400325</xOffset>
+    <date>2023-05-17T19:01:02.506Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30600556" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>72.71474878444079</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350062684</timestampUTC>
+    <xOffset>895.9157212317666</xOffset>
+    <date>2023-05-17T19:01:02.684Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30600693" module="WHITEBOARD" eventname="WhiteboardCursorMoveEvent">
+    <pageNumber>0</pageNumber>
+    <userId>w_7essiaz9n8n8</userId>
+    <yOffset>-1.0</yOffset>
+    <presentation>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676</presentation>
+    <timestampUTC>1684350062821</timestampUTC>
+    <xOffset>-1.0</xOffset>
+    <date>2023-05-17T19:01:02.821Z</date>
+    <whiteboardId>bd5a59a3f61d1ec7402cf9105a090e84f867421f-1684349961676/1</whiteboardId>
+  </event>
+  <event timestamp="30604743" module="PARTICIPANT" eventname="EndAndKickAllEvent">
+    <reason>ENDED_AFTER_USER_LOGGED_OUT</reason>
+    <date>2023-05-17T19:01:06.872Z</date>
+    <timestampUTC>1684350066872</timestampUTC>
+  </event>
+</recording>
