@@ -3,6 +3,7 @@ require 'json'
 require 'active_support'
 require 'active_support/core_ext/hash'
 
+
 module BBBEvents
   CSV_HEADER = %w(name moderator chats talks emojis poll_votes raisehand talk_time join left duration)
   NO_VOTE_SYMBOL = "-"
@@ -102,15 +103,17 @@ module BBBEvents
       end
     end
 
-    def to_h
-      # Transform any CamelCase keys to snake_case.
-      @metadata.deep_transform_keys! do |key|
-          k = key.to_s.underscore rescue key
-          k.to_sym rescue key
-        end
+    # Transform any CamelCase keys to snake_case
+    def transform_metadata
+      @metadata.deep_transform_keys do |key|
+        k = key.to_s.underscore rescue key
+        k.to_sym rescue key
+      end
+    end
 
+    def to_h
       {
-        metadata: @metadata,
+        metadata: transform_metadata,
         meeting_id: @meeting_id,
         duration: @duration,
         start: @start,
@@ -121,8 +124,21 @@ module BBBEvents
       }
     end
 
+    def as_json
+      {
+        metadata: transform_metadata,
+        meeting_id: @meeting_id,
+        duration: @duration,
+        start: BBBEvents.format_datetime(@start),
+        finish: BBBEvents.format_datetime(@finish),
+        attendees: attendees.map(&:as_json),
+        files: @files,
+        polls: polls.map(&:as_json)
+      }
+    end
+
     def to_json
-      to_h.to_json
+      JSON.generate(as_json)
     end
 
     def calculate_user_duration(join_events, left_events)

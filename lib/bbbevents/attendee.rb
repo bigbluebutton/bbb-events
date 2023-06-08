@@ -63,26 +63,41 @@ module BBBEvents
     end
 
     def to_h
-      hash = {}
-      instance_variables.each { |var| hash[var[1..-1]] = instance_variable_get(var) }
-      # Convert recent_talking_time to human readable time
-      if hash["recent_talking_time"] > 0
-        hash["recent_talking_time"] = Time.at(hash["recent_talking_time"])
-      else
-        hash["recent_talking_time"] = ""
-      end
-      hash
+      {
+        id: @id,
+        ext_user_id: @ext_user_id,
+        name: @name,
+        moderator: @moderator,
+        joins: @joins,
+        leaves: @leaves,
+        duration: @duration,
+        recent_talking_time: @recent_talking_time > 0 ? Time.at(@recent_talking_time) : '',
+        engagement: @engagement,
+        sessions: @sessions,
+      }
+    end
+
+    def as_json
+      {
+        id: @id,
+        ext_user_id: @ext_user_id,
+        name: @name,
+        moderator: @moderator,
+        joins: @joins.map { |join| BBBEvents.format_datetime(join) },
+        leaves: @leaves.map { |leave| BBBEvents.format_datetime(leave) },
+        duration: @duration,
+        recent_talking_time: @recent_talking_time > 0 ? BBBEvents.format_datetime(Time.at(@recent_talking_time)) : '',
+        engagement: @engagement,
+        sessions: @sessions.map { |session| {
+            joins: session[:joins].map { |join| join.merge({ timestamp: BBBEvents.format_datetime(join[:timestamp])}) },
+            leaves: session[:leaves].map { |leave| leave.merge({ timestamp: BBBEvents.format_datetime(leave[:timestamp])}) }
+          }
+        }
+      }
     end
 
     def to_json
-      hash = {}
-      instance_variables.each { |var| hash[var[1..-1]] = instance_variable_get(var) }
-      if hash["recent_talking_time"] > 0
-        hash["recent_talking_time"] = Time.at(hash["recent_talking_time"])
-      else
-        hash["recent_talking_time"] = ""
-      end
-      hash.to_json
+      JSON.generate(as_json)
     end
 
     private
