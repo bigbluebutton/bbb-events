@@ -1,0 +1,31 @@
+name: bbbevents gem release
+on:
+  pull_request:
+    types:
+      - merged
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+
+      - name: Install dependencies
+        run: bundle install
+
+      - name: Build gem
+        run: gem build *.gemspec
+
+      - name: Push gem
+        env:
+          GEM_HOST_API_KEY: ${{secrets.RUBYGEMS_API_KEY}}
+        run: |
+          pwd
+          ls -la
+          filename=$(ls *.gem | head -n 1)
+          gem push "$filename"
