@@ -2,7 +2,7 @@ name: bbbevents gem release
 on:
   push:
     tags:
-      - v*
+      - '*'
 
 jobs:
   build:
