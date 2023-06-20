@@ -88,9 +88,9 @@ module BBBEvents
         duration: @duration,
         recent_talking_time: @recent_talking_time > 0 ? BBBEvents.format_datetime(Time.at(@recent_talking_time)) : '',
         engagement: @engagement,
-        sessions: @sessions.map { |session| {
+        sessions: @sessions.map { |key, session| {
             joins: session[:joins].map { |join| join.merge({ timestamp: BBBEvents.format_datetime(join[:timestamp])}) },
-            leaves: session[:leaves].map { |leave| leave.merge({ timestamp: BBBEvents.format_datetime(leave[:timestamp])}) }
+            lefts: session[:lefts].map { |leave| leave.merge({ timestamp: BBBEvents.format_datetime(leave[:timestamp])}) }
           }
         }
       }

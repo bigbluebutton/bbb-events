@@ -23,5 +23,15 @@ module BBBEvents
     def to_json
       JSON.generate(as_json)
     end
+
+    def as_json
+      {
+        id: @id,
+        published: @published,
+        options: @options,
+        start: BBBEvents.format_datetime(@start),
+        votes: @votes
+      }
+    end
   end
 end

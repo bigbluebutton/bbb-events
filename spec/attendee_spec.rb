@@ -40,4 +40,17 @@ RSpec.describe BBBEvents::Attendee do
       expect(@attendee).to respond_to(:moderator?)
     end
   end
+
+  context "#joins?" do
+    it "has joins as array." do
+      expect(@attendee.joins).to be_a(Array)
+      expect(@attendee.as_json[:joins][0]).to eql('2018-08-16T15:39:21.000+00:00')
+    end
+  end
+
+  context "session#joins?" do
+    it "has session joins as array." do
+      expect(@attendee.as_json[:sessions][0][:joins][0][:timestamp]).to eql('2018-08-16T15:39:21.000+00:00')
+    end
+  end
 end
