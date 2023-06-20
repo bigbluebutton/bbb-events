@@ -31,4 +31,11 @@ RSpec.describe BBBEvents::Poll do
       expect(@poll).to respond_to(:published?)
     end
   end
+
+  context "#poll json timestamp format" do
+    it "has fixed poll json timestamp format." do
+      puts @poll.as_json[:start]
+      expect(@poll.as_json[:start]).to eq('2023-05-17T18:59:56.000+00:00')
+    end
+  end
 end
