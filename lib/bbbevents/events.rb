@@ -152,7 +152,11 @@ module BBBEvents
       return unless attendee = @attendees[@externalUserId[intUserId]]
 
       if poll = @polls[poll_id]
-        poll.votes[@externalUserId[intUserId]] = poll.options[e["answerId"].to_i]
+        if poll.type == 'R-'
+          poll.votes[@externalUserId[intUserId]] = e["answer"]
+        else
+          poll.votes[@externalUserId[intUserId]] = poll.options[e["answerId"].to_i]
+        end
       end
 
       attendee.engagement[:poll_votes] += 1
