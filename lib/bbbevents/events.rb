@@ -155,13 +155,10 @@ module BBBEvents
         if poll.type == 'R-'
           poll.votes[@externalUserId[intUserId]] = e["answer"]
 
-          # We want to merge the same responses
-          poll_set = poll.options.to_set
-          poll_set.add(e["answer"])
-          poll.options = poll_set.to_a
-        else
-          poll.votes[@externalUserId[intUserId]] = poll.options[e["answerId"].to_i]
+          # We want to store the responses as options.
+          poll.options.insert(e["answerId"].to_i, e["answer"])
         end
+        poll.votes[@externalUserId[intUserId]] = poll.options[e["answerId"].to_i]
       end
 
       attendee.engagement[:poll_votes] += 1
