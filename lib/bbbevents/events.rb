@@ -152,6 +152,12 @@ module BBBEvents
       return unless attendee = @attendees[@externalUserId[intUserId]]
 
       if poll = @polls[poll_id]
+        if poll.type == 'R-'
+          poll.votes[@externalUserId[intUserId]] = e["answer"]
+
+          # We want to store the responses as options.
+          poll.options.insert(e["answerId"].to_i, e["answer"])
+        end
         poll.votes[@externalUserId[intUserId]] = poll.options[e["answerId"].to_i]
       end
 
