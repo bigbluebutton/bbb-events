@@ -102,7 +102,7 @@ module BBBEvents
         if status == RAISEHAND && status_value == 'true'
           # Count only raise hand event and not lower hand
           attendee.engagement[:raisehand] += 1
-        elsif status == 'reactionEmoji'
+        elsif status == 'reactionEmoji' && status_value != 'none'
           attendee.engagement[:emojis] += 1
 
         # Support old event format
