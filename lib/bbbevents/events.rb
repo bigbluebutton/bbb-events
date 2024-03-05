@@ -94,12 +94,21 @@ module BBBEvents
       intUserId = e['userId']
 
       return unless attendee = @attendees[@externalUserId[intUserId]]
-      status = e["value"]
+      status = e["status"]
+      status_value = e['value']
 
       if attendee
-        if status == RAISEHAND
+        # Support new event format
+        if status == RAISEHAND && status_value == 'true'
+          # Count only raise hand event and not lower hand
           attendee.engagement[:raisehand] += 1
-        elsif EMOJI_WHITELIST.include?(status)
+        elsif status == 'reactionEmoji' && status_value != 'none'
+          attendee.engagement[:emojis] += 1
+
+        # Support old event format
+        elsif  status_value == RAISEHAND
+          attendee.engagement[:raisehand] += 1
+        elsif EMOJI_WHITELIST.include?(status_value)
           attendee.engagement[:emojis] += 1
         end
       end
