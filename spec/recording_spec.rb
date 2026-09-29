@@ -448,4 +448,62 @@ RSpec.describe BBBEvents::Recording do
       expect(@sample.calculate_user_duration_based_on_userid(finish, sessions)).to eql(6735)
     end
   end
+
+  context "#duration calculations with several sessions" do
+    # Builds a session from [event, time] pairs, e.g. [:join, "10:00"]
+    def session(userid, *events)
+      joins, lefts = events.partition { |event, _| event == :join }.map do |list|
+        list.map do |event, time|
+          { :timestamp => Time.parse("2024-07-12 #{time}:00 +0000"), :userid => userid, :ext_userid => "4561", :event => event }
+        end
+      end
+      { :joins => joins, :lefts => lefts }
+    end
+
+    let(:finish) { Time.parse("2024-07-12 10:10:00 +0000") }
+
+    it "counts the time covered by more than one session once" do
+      # Two tabs, each reconnecting once, both still in at the end
+      sessions = {
+        "w_a" => session("w_a", [:join, "10:00"], [:left, "10:02"], [:join, "10:04"]),
+        "w_b" => session("w_b", [:join, "10:00"], [:left, "10:04"], [:join, "10:06"]),
+      }
+
+      expect(@sample.calculate_user_duration_based_on_userid(finish, sessions)).to eql(600)
+    end
+
+    it "keeps a session whose left event is missing in until the end" do
+      sessions = {
+        "w_a" => session("w_a", [:join, "10:00"]),
+        "w_b" => session("w_b", [:join, "10:00"], [:left, "10:02"], [:join, "10:04"]),
+      }
+
+      expect(@sample.calculate_user_duration_based_on_userid(finish, sessions)).to eql(600)
+    end
+
+    it "keeps a session in across a rejoin whose left event is missing" do
+      sessions = {
+        "w_a" => session("w_a", [:join, "10:00"], [:join, "10:04"], [:left, "10:06"]),
+      }
+
+      expect(@sample.calculate_user_duration_based_on_userid(finish, sessions)).to eql(360)
+    end
+
+    it "treats a left and a join at the same instant as a reconnection" do
+      sessions = {
+        "w_a" => session("w_a", [:join, "10:02"]),
+        "w_b" => session("w_b", [:join, "10:00"], [:left, "10:01"], [:join, "10:01"], [:left, "10:02"]),
+      }
+
+      expect(@sample.calculate_user_duration_based_on_userid(finish, sessions)).to eql(600)
+    end
+
+    it "does not count a join and a left at the same instant of a session that was out" do
+      sessions = {
+        "w_a" => session("w_a", [:join, "10:05"], [:left, "10:05"]),
+      }
+
+      expect(@sample.calculate_user_duration_based_on_userid(finish, sessions)).to eql(0)
+    end
+  end
 end
