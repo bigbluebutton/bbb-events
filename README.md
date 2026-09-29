@@ -61,6 +61,9 @@ recording.unpublished_polls
 # Returns a list of upload files (names only).
 recording.files
 
+# Returns a list of RecordedSegment objects, the periods that were recorded.
+recording.recorded_segments
+
 # Generate a CSV file with the data.
 recording.create_csv("data.csv")
 
@@ -107,6 +110,16 @@ poll.options
 
 # Returns a Hash mapping user_id's to their poll votes.
 poll.votes
+```
+
+### Recorded segments
+```ruby
+# Determine when the recording started and stopped.
+recorded_segment.start
+recorded_segment.stop
+
+# Duration of the recorded segment in seconds.
+recorded_segment.duration
 ```
 
 ## License
