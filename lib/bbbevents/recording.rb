@@ -11,7 +11,7 @@ module BBBEvents
   class Recording
     include Events
 
-    attr_accessor :metadata, :meeting_id, :timestamp, :start, :finish, :duration, :files
+    attr_accessor :metadata, :meeting_id, :timestamp, :start, :finish, :duration, :files, :recorded_segments
 
     def initialize(events_xml)
       filename = File.basename(events_xml)
@@ -50,6 +50,7 @@ module BBBEvents
       @attendees = {}
       @polls     = {}
       @files     = []
+      @recorded_segments = []
 
       # Map to look up external user id (for @data[:attendees]) from the
       # internal user id in most recording events
@@ -61,6 +62,10 @@ module BBBEvents
         att.leaves << @finish if att.joins.length > att.leaves.length
         att.duration = total_duration(@finish, att)
       end
+
+      # A recording that was never stopped ends with the meeting.
+      last_segment = @recorded_segments.last
+      last_segment.stop = @finish if last_segment && last_segment.stop.nil?
     end
 
     # Take only the values since we no longer need to index.
@@ -120,7 +125,8 @@ module BBBEvents
         finish: @finish,
         attendees: attendees.map(&:to_h),
         files: @files,
-        polls: polls.map(&:to_h)
+        polls: polls.map(&:to_h),
+        recorded_segments: @recorded_segments.map(&:to_h),
       }
     end
 
@@ -133,7 +139,8 @@ module BBBEvents
         finish: BBBEvents.format_datetime(@finish),
         attendees: attendees.map(&:as_json),
         files: @files,
-        polls: polls.map(&:as_json)
+        polls: polls.map(&:as_json),
+        recorded_segments: @recorded_segments.map(&:as_json),
       }
     end
 

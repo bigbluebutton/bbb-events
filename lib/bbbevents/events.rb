@@ -12,6 +12,7 @@ module BBBEvents
       "user_responded_to_poll_record_event",
       "add_shape_event",
       "poll_published_record_event",
+      "record_status_event",
     ]
 
     EMOJI_WHITELIST = %w(away neutral confused sad happy applause thumbsUp thumbsDown)
@@ -187,6 +188,19 @@ module BBBEvents
         if poll = @polls[e["pollId"]]
           poll.published = true
         end
+      end
+    end
+
+    # Track the periods in which the meeting was being recorded. A start while
+    # already recording and a stop while not recording are ignored.
+    def record_status_event(e)
+      timestamp = Time.at(timestamp_conversion(e["timestamp"]))
+      recording = @recorded_segments.any? && @recorded_segments.last.stop.nil?
+
+      if e["status"] == "true"
+        @recorded_segments << RecordedSegment.new(timestamp) unless recording
+      elsif recording
+        @recorded_segments.last.stop = timestamp
       end
     end
   end
