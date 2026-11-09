@@ -57,6 +57,9 @@ module BBBEvents
 
     # Log a users leave.
     def participant_left_event(e)
+      # Leaving the voice conference is recorded under the same event name.
+      return participant_left_voice_event(e) if e["module"] == "VOICE"
+
       intUserId = e['userId']
       # If the attendee exists, set their leave time.
       if att = @attendees[@externalUserId[intUserId]]
@@ -73,6 +76,13 @@ module BBBEvents
 
         record_stop_talking(att, e["timestamp"])
       end
+    end
+
+    # The user left the voice conference but is still in the meeting.
+    def participant_left_voice_event(e)
+      return unless attendee = @attendees[@externalUserId[e["participant"]]]
+
+      record_stop_talking(attendee, e["timestamp"])
     end
 
     # Log the uploaded file name.
@@ -140,9 +150,9 @@ module BBBEvents
 
       return unless attendee = @attendees[@externalUserId[intUserId]]
 
-      if e["muted"] == "true"
-        record_stop_talking(attendee, e["timestamp"])
-      end
+      # A talk never spans a mute change, in either direction: one still open
+      # at an unmute was reported while the user was muted.
+      record_stop_talking(attendee, e["timestamp"])
     end
 
     # Log all polls with metadata, options and votes.

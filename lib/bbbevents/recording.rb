@@ -58,6 +58,9 @@ module BBBEvents
       process_events(events)
 
       @attendees.values.each do |att|
+        # Count talks still open at the end, like the leaves below, instead
+        # of dropping them.
+        record_stop_talking(att, @last_event)
         att.leaves << @finish if att.joins.length > att.leaves.length
         att.duration = total_duration(@finish, att)
       end
