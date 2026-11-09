@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recording meeting_id="f3eb4795c4851cf22b05513ff9a963d572975e66-1792513265000" bbb_version="4.0.0">
+  <meeting id="f3eb4795c4851cf22b05513ff9a963d572975e66-1792513265000" externalId="talking-room" name="Talking" breakout="false"/>
+  <metadata meetingId="talking-room" meetingName="Talking"/>
+  <event timestamp="1000000" module="PARTICIPANT" eventname="ParticipantJoinEvent">
+    <name>Ana</name>
+    <role>MODERATOR</role>
+    <externalUserId>ext-ana</externalUserId>
+    <userId>w_ana</userId>
+  </event>
+  <event timestamp="1000000" module="PARTICIPANT" eventname="ParticipantJoinEvent">
+    <name>Bruno</name>
+    <role>VIEWER</role>
+    <externalUserId>ext-bruno</externalUserId>
+    <userId>w_bruno</userId>
+  </event>
+  <event timestamp="1000000" module="PARTICIPANT" eventname="ParticipantJoinEvent">
+    <name>Carla</name>
+    <role>VIEWER</role>
+    <externalUserId>ext-carla</externalUserId>
+    <userId>w_carla</userId>
+  </event>
+  <!-- Ana starts talking and is still talking when the meeting ends -->
+  <event timestamp="1010000" module="VOICE" eventname="ParticipantTalkingEvent">
+    <participant>w_ana</participant>
+    <talking>true</talking>
+    <bridge>27211</bridge>
+  </event>
+  <event timestamp="1020000" module="VOICE" eventname="ParticipantTalkingEvent">
+    <participant>w_bruno</participant>
+    <talking>true</talking>
+    <bridge>27211</bridge>
+  </event>
+  <event timestamp="1030000" module="VOICE" eventname="ParticipantMutedEvent">
+    <participant>w_bruno</participant>
+    <muted>true</muted>
+    <bridge>27211</bridge>
+  </event>
+  <!-- a late talking=true right after the mute, closed by leaving the voice conference -->
+  <event timestamp="1031000" module="VOICE" eventname="ParticipantTalkingEvent">
+    <participant>w_bruno</participant>
+    <talking>true</talking>
+    <bridge>27211</bridge>
+  </event>
+  <event timestamp="1033000" module="VOICE" eventname="ParticipantLeftEvent">
+    <participant>w_bruno</participant>
+    <bridge>27211</bridge>
+  </event>
+  <event timestamp="1040000" module="VOICE" eventname="ParticipantTalkingEvent">
+    <participant>w_carla</participant>
+    <talking>true</talking>
+    <bridge>27211</bridge>
+  </event>
+  <event timestamp="1042000" module="VOICE" eventname="ParticipantMutedEvent">
+    <participant>w_carla</participant>
+    <muted>true</muted>
+    <bridge>27211</bridge>
+  </event>
+  <!-- a late talking=true right after the mute, closed by the unmute -->
+  <event timestamp="1043000" module="VOICE" eventname="ParticipantTalkingEvent">
+    <participant>w_carla</participant>
+    <talking>true</talking>
+    <bridge>27211</bridge>
+  </event>
+  <event timestamp="1045000" module="VOICE" eventname="ParticipantMutedEvent">
+    <participant>w_carla</participant>
+    <muted>false</muted>
+    <bridge>27211</bridge>
+  </event>
+  <event timestamp="1050000" module="PARTICIPANT" eventname="ParticipantLeftEvent">
+    <userId>w_bruno</userId>
+  </event>
+  <event timestamp="1051000" module="VOICE" eventname="ParticipantTalkingEvent">
+    <participant>w_carla</participant>
+    <talking>true</talking>
+    <bridge>27211</bridge>
+  </event>
+  <event timestamp="1054000" module="VOICE" eventname="ParticipantTalkingEvent">
+    <participant>w_carla</participant>
+    <talking>false</talking>
+    <bridge>27211</bridge>
+  </event>
+  <event timestamp="1070000" module="PARTICIPANT" eventname="EndAndKickAllEvent">
+    <reason>ENDED_AFTER_USER_LOGGED_OUT</reason>
+  </event>
+</recording>
